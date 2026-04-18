@@ -121,15 +121,20 @@
     .hero {
       min-height: 100vh;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.15fr 0.85fr;
       padding-top: 68px;
     }
     .hero-left {
-      display: flex; flex-direction: column; justify-content: center;
-      padding: 6rem 6% 6rem 8%;
+      display: flex; flex-direction: column; justify-content: space-between;
+      padding: 5rem 6% 4rem 8%;
       background: var(--bg);
       position: relative; z-index: 1;
+      height: calc(100vh - 68px);
+      box-sizing: border-box;
     }
+    .hero-main { display: flex; flex-direction: column; }
+    .hero-bottom { display: flex; flex-direction: column; gap: 1.2rem; }
+    .hero-bottom .hero-rule { margin: 0; }
     .hero-tag {
       font-family: var(--heading); font-size: 0.72rem; font-weight: 500;
       letter-spacing: 0.22em; text-transform: uppercase;
@@ -140,8 +145,8 @@
       content: ''; display: block; width: 28px; height: 2px; background: var(--red);
     }
     .hero-name {
-      font-family: var(--heading); font-weight: 700; line-height: 0.92;
-      font-size: clamp(4.5rem, 9vw, 9.5rem);
+      font-family: var(--heading); font-weight: 700; line-height: 0.88;
+      font-size: clamp(5rem, 10vw, 16rem);
       letter-spacing: -0.01em; text-transform: uppercase;
       color: var(--white); margin-bottom: 0.6rem;
     }
@@ -162,6 +167,11 @@
       max-width: 440px; margin-bottom: 2.8rem;
     }
     .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hero-election-date {
+      font-family: var(--body); font-size: 0.72rem; font-weight: 300;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(255,255,255,0.22);
+    }
     .btn-red {
       font-family: var(--heading); font-size: 0.82rem; font-weight: 600;
       letter-spacing: 0.16em; text-transform: uppercase;
@@ -541,7 +551,8 @@
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; min-height: auto; }
       .hero-right { height: 72vw; max-height: 500px; order: -1; }
-      .hero-left { padding: 3rem 5%; align-items: center; text-align: center; }
+      .hero-left { padding: 3rem 5%; align-items: center; text-align: center; justify-content: flex-start; gap: 2rem; }
+      .hero-election-date { display: none; }
       .hero-tag { justify-content: center; }
       .hero-divider { margin: 1.6rem auto; }
       .hero-tagline { margin-left: auto; margin-right: auto; }
@@ -618,17 +629,22 @@
 <!-- HERO -->
 <div class="hero" role="banner">
   <div class="hero-left fade-up">
-    <div class="hero-tag">Republican &middot; WA State House &middot; LD-15 Position 2</div>
-    <h1 class="hero-name">
-      <span class="hero-name-solid">Reedy</span>
-      <span class="hero-name-outline">Berg</span>
-    </h1>
-    <div class="hero-rule"></div>
-    <div class="hero-sub">Washington State House &middot; Legislative District 15 &middot; 2026</div>
-    <p class="hero-tagline">Yakima Valley raised. Teacher by calling. Ready to fight for our community in Olympia.</p>
-    <div class="hero-btns">
-      <a href="#donate" class="btn-red">Donate Now</a>
-      <a href="#volunteer" class="btn-ghost">Volunteer</a>
+    <div class="hero-main">
+      <div class="hero-tag">Republican &middot; WA State House &middot; LD-15 Position 2</div>
+      <h1 class="hero-name">
+        <span class="hero-name-solid">Reedy</span>
+        <span class="hero-name-outline">Berg</span>
+      </h1>
+    </div>
+    <div class="hero-bottom">
+      <div class="hero-rule"></div>
+      <div class="hero-sub">Washington State House &middot; Legislative District 15 &middot; 2026</div>
+      <p class="hero-tagline">Yakima Valley raised. Teacher by calling. Ready to fight for our community in Olympia.</p>
+      <div class="hero-btns">
+        <a href="#donate" class="btn-red">Donate Now</a>
+        <a href="#volunteer" class="btn-ghost">Volunteer</a>
+      </div>
+      <div class="hero-election-date">General Election &mdash; November 3, 2026</div>
     </div>
   </div>
   <div class="hero-right">
