@@ -146,13 +146,13 @@
     }
     .hero-name {
       font-family: var(--heading); font-weight: 700; line-height: 0.88;
-      font-size: clamp(5rem, 10vw, 16rem);
+      font-size: clamp(5rem, 8.5vw, 11rem);
       letter-spacing: -0.01em; text-transform: uppercase;
       color: var(--white); margin-bottom: 0.6rem;
     }
-    .hero-name-solid { display: block; color: var(--white); }
+    .hero-name-solid { display: block; color: var(--white); overflow: visible; }
     .hero-name-outline {
-      display: block; color: transparent;
+      display: block; color: transparent; overflow: visible;
       -webkit-text-stroke: 2px var(--white);
     }
     .hero-rule { width: 100%; height: 1px; background: var(--border); margin: 1.6rem 0; }
@@ -530,7 +530,7 @@
       to   { clip-path: inset(0 0 0% 0);   transform: translateY(0);   opacity: 1; }
     }
     .hero-name-solid, .hero-name-outline {
-      display: block; overflow: hidden;
+      display: block;
     }
     .hero-left.in .hero-name-solid {
       animation: nameReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
