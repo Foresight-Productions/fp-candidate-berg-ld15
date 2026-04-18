@@ -125,12 +125,10 @@
       padding-top: 68px;
     }
     .hero-left {
-      display: flex; flex-direction: column; justify-content: space-between;
-      padding: 5rem 6% 4rem 8%;
+      display: flex; flex-direction: column; justify-content: center; gap: 3rem;
+      padding: 6rem 6% 6rem 8%;
       background: var(--bg);
       position: relative; z-index: 1;
-      height: calc(100vh - 68px);
-      box-sizing: border-box;
     }
     .hero-main { display: flex; flex-direction: column; }
     .hero-bottom { display: flex; flex-direction: column; gap: 1.2rem; }
@@ -527,7 +525,7 @@
     /* ===== HERO NAME REVEAL ===== */
     @keyframes nameReveal {
       from { clip-path: inset(0 0 100% 0); transform: translateY(8px); opacity: 0; }
-      to   { clip-path: inset(0 0 0% 0);   transform: translateY(0);   opacity: 1; }
+      to   { clip-path: none;              transform: translateY(0);   opacity: 1; }
     }
     .hero-name-solid, .hero-name-outline {
       display: block;
