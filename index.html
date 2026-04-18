@@ -18,15 +18,15 @@
   <meta property="og:url" content="https://foresight-productions.github.io/fp-candidate-berg-ld15/">
   <meta property="og:title" content="Reedy Berg for WA State House · LD-15 Position 2">
   <meta property="og:description" content="Yakima Valley raised. Teacher by calling. Fighting for LD-15 in Olympia.">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1200&h=630&fit=crop&auto=format">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
+  <meta property="og:image" content="https://foresight-productions.github.io/fp-candidate-berg-ld15/family.jpg">
+  <meta property="og:image:width" content="1400">
+  <meta property="og:image:height" content="1268">
   <meta property="og:site_name" content="Reedy Berg for State House">
   <meta property="og:locale" content="en_US">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Reedy Berg for WA State House · LD-15 Position 2">
   <meta name="twitter:description" content="Yakima Valley raised. Teacher by calling. Fighting for LD-15 in Olympia.">
-  <meta name="twitter:image" content="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1200&h=630&fit=crop&auto=format">
+  <meta name="twitter:image" content="https://foresight-productions.github.io/fp-candidate-berg-ld15/family.jpg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -499,41 +499,45 @@
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
       .hero-right { height: 55vw; max-height: 420px; order: -1; }
-      .hero-left { padding: 4rem 5%; align-items: center; text-align: center; }
+      .hero-left { padding: 3rem 5%; align-items: center; text-align: center; }
       .hero-tag { justify-content: center; }
       .hero-divider { margin: 1.6rem auto; }
       .hero-tagline { margin-left: auto; margin-right: auto; }
       .hero-btns { justify-content: center; }
       .hero-right-overlay { background: linear-gradient(to top, rgba(5,5,5,0.8) 0%, transparent 50%); }
-      .bio { grid-template-columns: 1fr; }
+      .bio { grid-template-columns: 1fr; min-height: auto; }
       .bio-photo { height: 60vw; }
       .bio-photo-overlay { background: linear-gradient(to top, var(--surface) 0%, transparent 40%); }
-      .bio-content { padding: 4rem 5%; }
+      .bio-content { padding: 3.5rem 5%; }
       .volunteer { grid-template-columns: 1fr; gap: 3rem; }
       .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
     }
 
     @media (max-width: 768px) {
-      section, .issues, .endorsements, .updates, .volunteer, .contact { padding: 5rem 5%; }
-      .donate-banner { padding: 5rem 5%; }
+      section, .issues, .endorsements, .updates, .volunteer, .contact { padding: 4rem 5%; }
+      .donate-banner { padding: 4rem 5%; }
       .nav-links { display: none; }
       .nav-toggle { display: flex; }
+      .section-heading { margin-bottom: 2rem; }
       .issue-row { grid-template-columns: 48px 1fr; }
       .issue-arrow { display: none; }
       .issue-num { font-size: 2.5rem; }
-      .donate-banner { flex-direction: column; align-items: flex-start; }
-      .hero-btns { flex-direction: column; }
+      .donate-banner { flex-direction: column; align-items: stretch; }
+      .donate-banner .btn-white { text-align: center; }
+      .hero-tag { display: block; text-align: center; }
+      .hero-tag::before { display: none; }
+      .hero-btns { flex-direction: column; align-items: center; width: 100%; }
       .hero-btns .btn-red, .hero-btns .btn-ghost { width: 100%; max-width: 300px; justify-content: center; }
       .bio-stats { grid-template-columns: 1fr 1fr; }
       .updates-form { flex-direction: column; }
       .updates-form button { padding: 0.9rem; min-height: 48px; }
       .form-row { grid-template-columns: 1fr; }
-      .checkbox-grid { grid-template-columns: 1fr; }
+      .checkbox-grid { grid-template-columns: 1fr 1fr; }
       .footer-top { flex-direction: column; align-items: flex-start; }
       .footer-bottom { flex-direction: column; }
-      .footer-disclosure { text-align: left; }
+      .footer-disclosure { text-align: left; max-width: 100%; }
     }
 
     @media (max-width: 480px) {
