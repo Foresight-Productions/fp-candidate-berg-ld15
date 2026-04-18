@@ -145,7 +145,8 @@
       letter-spacing: -0.01em; text-transform: uppercase;
       color: var(--white); margin-bottom: 0.6rem;
     }
-    .hero-name span {
+    .hero-name-solid { display: block; color: var(--white); }
+    .hero-name-outline {
       display: block; color: transparent;
       -webkit-text-stroke: 2px var(--white);
     }
@@ -183,12 +184,16 @@
     .hero-right {
       position: relative; overflow: hidden; background: #0a0a0a;
     }
+    @keyframes kenBurns {
+      0%   { transform: scale(1.18) translate(0, 0); }
+      100% { transform: scale(1.28) translate(-2%, 2%); }
+    }
     .hero-right img {
       width: 100%; height: 100%;
       object-fit: cover; object-position: 25% 70%;
       filter: brightness(0.92);
-      transform: scale(1.18);
       transform-origin: 25% 72%;
+      animation: kenBurns 20s ease-in-out infinite alternate;
     }
     .hero-right-overlay {
       position: absolute; inset: 0;
@@ -491,6 +496,39 @@
     }
     .footer-disclosure a { color: rgba(255,255,255,0.3); text-decoration: underline; }
 
+    /* ===== SCROLL PROGRESS ===== */
+    .scroll-progress {
+      position: fixed; top: 68px; left: 0; right: 0; height: 2px;
+      background: var(--red); transform-origin: left;
+      transform: scaleX(0); z-index: 1001; pointer-events: none;
+    }
+
+    /* ===== GRAIN TEXTURE ===== */
+    .hero-left::after, .issues::after, .bio-content::after {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none; z-index: 0;
+      opacity: 0.4;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+    }
+    .hero-left > * { position: relative; z-index: 1; }
+    .issues > * { position: relative; z-index: 1; }
+    .bio-content > * { position: relative; z-index: 1; }
+
+    /* ===== HERO NAME REVEAL ===== */
+    @keyframes nameReveal {
+      from { clip-path: inset(0 0 100% 0); transform: translateY(8px); opacity: 0; }
+      to   { clip-path: inset(0 0 0% 0);   transform: translateY(0);   opacity: 1; }
+    }
+    .hero-name-solid, .hero-name-outline {
+      display: block; overflow: hidden;
+    }
+    .hero-left.in .hero-name-solid {
+      animation: nameReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+    }
+    .hero-left.in .hero-name-outline {
+      animation: nameReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.38s both;
+    }
+
     /* ===== ANIMATIONS ===== */
     .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
     .fade-up.in { opacity: 1; transform: none; }
@@ -550,6 +588,8 @@
 </head>
 <body>
 
+<div class="scroll-progress" id="scrollProgress"></div>
+
 <!-- NAV -->
 <nav id="nav" role="navigation" aria-label="Main navigation">
   <div class="nav-brand">Reedy <em>Berg</em></div>
@@ -580,8 +620,8 @@
   <div class="hero-left fade-up">
     <div class="hero-tag">Republican &middot; WA State House &middot; LD-15 Position 2</div>
     <h1 class="hero-name">
-      Reedy
-      <span>Berg</span>
+      <span class="hero-name-solid">Reedy</span>
+      <span class="hero-name-outline">Berg</span>
     </h1>
     <div class="hero-rule"></div>
     <div class="hero-sub">Washington State House &middot; Legislative District 15 &middot; 2026</div>
@@ -875,14 +915,34 @@
   });
 
   const nav = document.getElementById('nav');
+  const progressBar = document.getElementById('scrollProgress');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 20);
+    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    progressBar.style.transform = `scaleX(${Math.min(pct, 1)})`;
   }, { passive: true });
 
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+  // Trigger hero-left reveal on load
+  const heroLeft = document.querySelector('.hero-left');
+  if (heroLeft) setTimeout(() => heroLeft.classList.add('in'), 100);
+
+  // Magnetic buttons
+  document.querySelectorAll('.btn-red, .btn-ghost, .btn-white').forEach(btn => {
+    btn.addEventListener('mousemove', e => {
+      const r = btn.getBoundingClientRect();
+      const x = (e.clientX - r.left - r.width / 2) * 0.22;
+      const y = (e.clientY - r.top - r.height / 2) * 0.22;
+      btn.style.transform = `translate(${x}px, ${y}px)`;
+    });
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = '';
+    });
+  });
 </script>
 </body>
 </html>
