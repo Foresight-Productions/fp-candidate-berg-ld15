@@ -2,18 +2,16 @@
 <html lang="en">
 <head>
   <!-- Design System
-    Style: Dark Presidential
-    Archetype: AGENCY PREMIUM (adapted for candidate)
-    Fonts: Oswald / Inter
-    Palette: bg #050505 | accent #C8102E | text #FFFFFF | surface #111111
-    Anti-patterns avoided: cream backgrounds, serif brochure fonts,
-      safe navy/red/white template look, generic card grids
+    Style: Dark Presidential — MAXIMUM IMPACT REBUILD
+    Archetype: BOLD POSTER × AGENCY PREMIUM hybrid
+    Fonts: Bebas Neue / Oswald / Inter
+    Palette: bg #070F1E | accent #C8102E | text #FFFFFF
+    Vibe: Campaign sign blown up to 100vh. Stars. Red. Aggression with class.
   -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reedy Berg for State House | WA LD-15 Position 2</title>
-  <meta name="description" content="Reedy Berg is running for Washington State House LD-15 Position 2. Yakima Valley native, middle school teacher, and city council member.">
-
+  <meta name="description" content="Reedy Berg is running for Washington State House LD-15 Position 2. Yakima Valley native, middle school teacher, city council member, and Deputy Mayor.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://foresight-productions.github.io/fp-candidate-berg-ld15/">
   <meta property="og:title" content="Reedy Berg for WA State House · LD-15 Position 2">
@@ -22,7 +20,6 @@
   <meta property="og:image:width" content="1400">
   <meta property="og:image:height" content="1268">
   <meta property="og:site_name" content="Reedy Berg for State House">
-  <meta property="og:locale" content="en_US">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Reedy Berg for WA State House · LD-15 Position 2">
   <meta name="twitter:description" content="Yakima Valley raised. Teacher by calling. Fighting for LD-15 in Olympia.">
@@ -30,21 +27,26 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
+    /* ===== TOKENS ===== */
     :root {
-      --bg: #0B1A2E;
-      --surface: #0F2140;
-      --surface-2: #162B52;
-      --red: #C8102E;
-      --red-bright: #E01530;
-      --white: #FFFFFF;
+      --bg:        #070F1E;
+      --bg-2:      #0B1A2E;
+      --surface:   #0D1F3C;
+      --surface-2: #122440;
+      --red:       #C8102E;
+      --red-b:     #E01530;
+      --red-dark:  #8B0B20;
+      --white:     #FFFFFF;
       --off-white: #E8ECF4;
-      --muted: rgba(255,255,255,0.55);
-      --border: rgba(255,255,255,0.1);
-      --heading: 'Oswald', sans-serif;
-      --body: 'Inter', sans-serif;
+      --muted:     rgba(255,255,255,0.52);
+      --border:    rgba(255,255,255,0.09);
+      --glow:      rgba(200,16,46,0.35);
+      --display:   'Bebas Neue', 'Oswald', sans-serif;
+      --heading:   'Oswald', sans-serif;
+      --body:      'Inter', sans-serif;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -59,138 +61,196 @@
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
 
+    /* ===== SCROLL PROGRESS ===== */
+    .scroll-progress {
+      position: fixed; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--red); transform-origin: left; transform: scaleX(0);
+      z-index: 2000; pointer-events: none;
+      box-shadow: 0 0 12px var(--glow);
+    }
+
     /* ===== NAV ===== */
     #nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      position: fixed; top: 3px; left: 0; right: 0; z-index: 1000;
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 5%; height: 68px;
-      background: rgba(11,26,46,0.96);
-      backdrop-filter: blur(20px);
+      background: rgba(7,15,30,0.97);
+      backdrop-filter: blur(24px);
       border-bottom: 1px solid var(--border);
-      transition: border-color 0.3s;
+      transition: border-color 0.3s, box-shadow 0.3s;
     }
-    #nav.scrolled { border-color: var(--red); }
+    #nav.scrolled { border-color: rgba(200,16,46,0.4); box-shadow: 0 4px 40px rgba(0,0,0,0.6); }
     .nav-brand {
-      font-family: var(--heading); font-weight: 700; font-size: 1.2rem;
-      letter-spacing: 0.12em; text-transform: uppercase; color: var(--white);
-      flex-shrink: 0;
+      font-family: var(--heading); font-weight: 700; font-size: 1.15rem;
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--white);
+      flex-shrink: 0; display: flex; align-items: center; gap: 0.5rem;
     }
     .nav-brand em { color: var(--red); font-style: normal; }
-    .nav-links { display: flex; align-items: center; gap: 2.2rem; flex-shrink: 0; }
+    .nav-brand-stars { color: var(--red); font-size: 0.55rem; letter-spacing: 0.08em; opacity: 0.8; }
+    .nav-links { display: flex; align-items: center; gap: 2.4rem; flex-shrink: 0; }
     .nav-links a {
-      font-family: var(--heading); font-size: 0.82rem; font-weight: 400;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--muted); transition: color 0.2s;
+      font-family: var(--heading); font-size: 0.78rem; font-weight: 400;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--muted); transition: color 0.2s; position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 1px; background: var(--red); transform: scaleX(0);
+      transform-origin: left; transition: transform 0.25s;
     }
     .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover::after { transform: scaleX(1); }
     .btn-nav-donate {
-      font-family: var(--heading); font-size: 0.78rem; font-weight: 600;
-      letter-spacing: 0.14em; text-transform: uppercase;
+      font-family: var(--heading); font-size: 0.76rem; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
       background: var(--red); color: var(--white) !important;
-      padding: 0.45rem 1.2rem; border: none; cursor: pointer;
-      transition: background 0.2s; min-height: 36px;
-      display: flex; align-items: center;
+      padding: 0.5rem 1.4rem; cursor: pointer;
+      transition: background 0.2s, box-shadow 0.2s; min-height: 36px;
+      display: inline-flex; align-items: center; border: none;
     }
-    .btn-nav-donate:hover { background: var(--red-bright); }
+    .btn-nav-donate:hover { background: var(--red-b); box-shadow: 0 0 20px var(--glow); }
+    .btn-nav-donate::after { display: none !important; }
     .nav-toggle {
       display: none; background: none; border: none; cursor: pointer;
       flex-direction: column; gap: 5px; padding: 4px; flex-shrink: 0;
     }
-    .nav-toggle span {
-      display: block; width: 24px; height: 2px; background: var(--white);
-      transition: transform 0.3s, opacity 0.3s;
-    }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--white); transition: transform 0.3s, opacity 0.3s; }
     .nav-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
     .nav-toggle.open span:nth-child(2) { opacity: 0; }
     .nav-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
     .nav-overlay {
       display: none; position: fixed; inset: 0; z-index: 999;
-      background: #071426; flex-direction: column; align-items: center;
-      justify-content: center; gap: 3rem; padding-top: 68px;
+      background: #040A14; flex-direction: column; align-items: center;
+      justify-content: center; gap: 2.5rem; padding-top: 71px;
     }
     .nav-overlay.open { display: flex; }
     .nav-overlay a {
-      font-family: var(--heading); font-size: 2.2rem; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase; color: var(--white);
+      font-family: var(--heading); font-size: 2.4rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--white);
       transition: color 0.2s;
     }
     .nav-overlay a:hover { color: var(--red); }
-    .nav-overlay .btn-nav-donate { font-size: 1rem; padding: 0.8rem 2.5rem; }
+    .nav-overlay .btn-nav-donate { font-size: 1rem; padding: 0.9rem 2.8rem; }
 
     /* ===== HERO ===== */
     .hero {
       min-height: 100vh;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      padding-top: 68px;
+      padding-top: 71px;
+      position: relative;
     }
     .hero-left {
-      display: flex; flex-direction: column; justify-content: center; gap: 3rem;
+      display: flex; flex-direction: column; justify-content: center;
       padding: 6rem 6% 6rem 8%;
       background: var(--bg);
-      position: relative; z-index: 1;
+      position: relative; z-index: 1; overflow: hidden;
     }
-    .hero-main { display: flex; flex-direction: column; }
-    .hero-bottom { display: flex; flex-direction: column; gap: 1.2rem; }
-    .hero-bottom .hero-rule { margin: 0; }
+    /* canvas stars background */
+    #hero-canvas {
+      position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    }
+    /* grid line texture */
+    .hero-left::before {
+      content: '';
+      position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .hero-left > * { position: relative; z-index: 2; }
+
+    /* decorative red vertical bar */
+    .hero-left-bar {
+      position: absolute; top: 0; left: 0; width: 4px; height: 100%;
+      background: var(--red);
+      box-shadow: 0 0 24px var(--glow), 0 0 60px rgba(200,16,46,0.2);
+      z-index: 3;
+    }
+
+    /* campaign stars decoration */
+    .hero-stars {
+      display: flex; gap: 0.55rem; margin-bottom: 1.8rem; align-items: center;
+    }
+    .hero-star {
+      color: var(--red); font-size: 0.9rem; line-height: 1;
+      filter: drop-shadow(0 0 6px var(--glow));
+    }
+    .hero-stars-line {
+      flex: 1; height: 1px; background: linear-gradient(to right, var(--red), transparent);
+      max-width: 120px; opacity: 0.5;
+    }
+
     .hero-tag {
-      font-family: var(--heading); font-size: 0.72rem; font-weight: 500;
-      letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--red); margin-bottom: 1.4rem;
+      font-family: var(--heading); font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.24em; text-transform: uppercase;
+      color: var(--red); margin-bottom: 1.2rem;
       display: flex; align-items: center; gap: 0.8rem;
     }
-    .hero-tag::before {
-      content: ''; display: block; width: 28px; height: 2px; background: var(--red);
-    }
+    .hero-tag::before { content: ''; display: block; width: 24px; height: 2px; background: var(--red); }
+
     .hero-name {
-      font-family: var(--heading); font-weight: 700; line-height: 0.88;
-      font-size: clamp(5rem, 8.5vw, 11rem);
-      letter-spacing: -0.01em; text-transform: uppercase;
-      color: var(--white); margin-bottom: 0.6rem;
+      font-family: 'Bebas Neue', 'Oswald', sans-serif;
+      font-weight: 400;
+      line-height: 0.85;
+      font-size: clamp(6rem, 10vw, 13rem);
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      margin-bottom: 0;
     }
-    .hero-name-solid { display: block; color: var(--white); overflow: visible; }
+    .hero-name-solid { display: block; color: var(--white); }
     .hero-name-outline {
-      display: block; color: transparent; overflow: visible;
-      -webkit-text-stroke: 2px var(--white);
+      display: block; color: transparent;
+      -webkit-text-stroke: 3px var(--red);
+      text-shadow: 0 0 40px rgba(200,16,46,0.25);
     }
-    .hero-rule { width: 100%; height: 1px; background: var(--border); margin: 1.6rem 0; }
+
+    .hero-divider {
+      display: flex; align-items: center; gap: 1rem;
+      margin: 2rem 0 1.6rem;
+    }
+    .hero-divider-line { flex: 1; height: 1px; background: var(--border); max-width: 280px; }
+    .hero-divider-dot { width: 5px; height: 5px; background: var(--red); flex-shrink: 0; transform: rotate(45deg); }
+
     .hero-sub {
-      font-family: var(--body); font-size: 0.9rem; font-weight: 300;
-      letter-spacing: 0.08em; color: var(--muted); text-transform: uppercase;
-      margin-bottom: 2rem;
+      font-family: var(--body); font-size: 0.82rem; font-weight: 300;
+      letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase;
+      margin-bottom: 1.4rem;
     }
     .hero-tagline {
-      font-family: var(--heading); font-size: clamp(1rem, 1.6vw, 1.35rem);
-      font-weight: 300; color: var(--off-white); line-height: 1.55;
-      max-width: 440px; margin-bottom: 2.8rem;
+      font-family: var(--heading); font-size: clamp(1rem, 1.5vw, 1.3rem);
+      font-weight: 300; color: var(--off-white); line-height: 1.6;
+      max-width: 420px; margin-bottom: 2.4rem;
     }
-    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.4rem; }
     .hero-election-date {
-      font-family: var(--body); font-size: 0.72rem; font-weight: 300;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: rgba(255,255,255,0.22);
+      font-family: var(--body); font-size: 0.7rem; font-weight: 300;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
     }
+
     .btn-red {
-      font-family: var(--heading); font-size: 0.82rem; font-weight: 600;
-      letter-spacing: 0.16em; text-transform: uppercase;
+      font-family: var(--heading); font-size: 0.8rem; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
       background: var(--red); color: var(--white);
-      padding: 0.9rem 2.4rem; border: 2px solid var(--red);
-      cursor: pointer; transition: background 0.2s;
-      min-height: 48px; display: inline-flex; align-items: center;
+      padding: 0.95rem 2.6rem; border: 2px solid var(--red);
+      cursor: pointer; transition: background 0.2s, box-shadow 0.2s;
+      min-height: 50px; display: inline-flex; align-items: center;
     }
-    .btn-red:hover { background: var(--red-bright); border-color: var(--red-bright); }
+    .btn-red:hover { background: var(--red-b); border-color: var(--red-b); box-shadow: 0 6px 30px var(--glow); }
     .btn-ghost {
-      font-family: var(--heading); font-size: 0.82rem; font-weight: 600;
-      letter-spacing: 0.16em; text-transform: uppercase;
+      font-family: var(--heading); font-size: 0.8rem; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
       background: transparent; color: var(--white);
-      padding: 0.9rem 2.4rem; border: 2px solid rgba(255,255,255,0.3);
+      padding: 0.95rem 2.6rem; border: 2px solid rgba(255,255,255,0.25);
       cursor: pointer; transition: border-color 0.2s, background 0.2s;
-      min-height: 48px; display: inline-flex; align-items: center;
+      min-height: 50px; display: inline-flex; align-items: center;
     }
-    .btn-ghost:hover { border-color: var(--white); background: rgba(255,255,255,0.06); }
+    .btn-ghost:hover { border-color: var(--white); background: rgba(255,255,255,0.05); }
 
     .hero-right {
-      position: relative; overflow: hidden; background: #071426;
+      position: relative; overflow: hidden; background: #040C1A;
     }
     @keyframes kenBurns {
       0%   { transform: scale(1.18) translate(0, 0); }
@@ -199,320 +259,543 @@
     .hero-right img {
       width: 100%; height: 100%;
       object-fit: cover; object-position: 42% 70%;
-      filter: brightness(0.92);
+      filter: brightness(0.88) contrast(1.06) saturate(1.08);
       transform-origin: 25% 72%;
-      animation: kenBurns 20s ease-in-out infinite alternate;
+      animation: kenBurns 22s ease-in-out infinite alternate;
     }
     .hero-right-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to right, rgba(11,26,46,0.88) 0%, rgba(11,26,46,0.2) 10%, transparent 25%);
+      background: linear-gradient(to right, rgba(7,15,30,0.9) 0%, rgba(7,15,30,0.2) 12%, transparent 28%),
+                  linear-gradient(to top, rgba(7,15,30,0.55) 0%, transparent 35%);
+    }
+    /* diagonal slice */
+    .hero-slice {
+      position: absolute; top: 0; left: -2px; bottom: 0; width: 60px;
+      z-index: 3;
+      background: linear-gradient(to bottom, var(--bg) 0%, var(--bg) 100%);
+      clip-path: polygon(0 0, 100% 0, 0 100%);
+      pointer-events: none;
     }
 
     /* ===== TICKER ===== */
-    .ticker {
-      background: var(--red); overflow: hidden; white-space: nowrap;
-      padding: 0.85rem 0; border-bottom: 1px solid rgba(0,0,0,0.2);
+    .ticker-wrap {
+      background: var(--red); overflow: hidden;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      border-bottom: 1px solid rgba(0,0,0,0.25);
     }
+    .ticker { white-space: nowrap; padding: 0.9rem 0; overflow: hidden; }
     .ticker-track {
-      display: inline-flex; align-items: center; gap: 2.5rem;
-      animation: marquee 28s linear infinite;
+      display: inline-flex; align-items: center; gap: 2rem;
+      animation: marquee 30s linear infinite;
     }
     .ticker-track span {
       font-family: var(--heading); font-size: 0.72rem; font-weight: 600;
-      letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.92);
-      flex-shrink: 0;
+      letter-spacing: 0.24em; text-transform: uppercase;
+      color: rgba(255,255,255,0.95); flex-shrink: 0;
     }
-    .ticker-dot { opacity: 0.45 !important; }
-    @keyframes marquee {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
+    .ticker-star { color: rgba(255,255,255,0.6) !important; font-size: 0.6rem !important; }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
     @media (prefers-reduced-motion: reduce) { .ticker-track { animation: none; } }
 
-    /* ===== ISSUES ===== */
-    .issues { background: var(--bg); padding: 7rem 8%; }
+    /* ===== SECTION UTILITIES ===== */
     .section-eyebrow {
-      font-family: var(--heading); font-size: 0.72rem; font-weight: 500;
-      letter-spacing: 0.22em; text-transform: uppercase; color: var(--red);
-      display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.2rem;
+      font-family: var(--heading); font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.26em; text-transform: uppercase; color: var(--red);
+      display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.4rem;
     }
     .section-eyebrow::before { content: ''; display: block; width: 28px; height: 2px; background: var(--red); }
     .section-heading {
-      font-family: var(--heading); font-weight: 700; text-transform: uppercase;
-      font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing: 0.02em;
-      color: var(--white); line-height: 1; margin-bottom: 4rem;
+      font-family: 'Bebas Neue', 'Oswald', sans-serif;
+      font-weight: 400; text-transform: uppercase;
+      font-size: clamp(3rem, 6vw, 6rem); letter-spacing: 0.02em;
+      color: var(--white); line-height: 0.9; margin-bottom: 4rem;
     }
+
+    /* ===== ISSUES ===== */
+    .issues {
+      background: var(--bg); padding: 8rem 8%;
+      position: relative; overflow: hidden;
+    }
+    /* ghost BG text */
+    .issues::before {
+      content: 'PLATFORM';
+      position: absolute; right: -2%; top: 50%; transform: translateY(-50%);
+      font-family: 'Bebas Neue', sans-serif; font-size: clamp(10rem, 18vw, 22rem);
+      color: rgba(255,255,255,0.025); line-height: 1;
+      pointer-events: none; z-index: 0; letter-spacing: 0.04em; user-select: none;
+    }
+    .issues > * { position: relative; z-index: 1; }
     .issues-list { display: flex; flex-direction: column; }
     .issue-row {
-      display: grid; grid-template-columns: 80px 1fr auto;
-      align-items: start; gap: 2rem;
-      padding: 2.2rem 0;
-      border-top: 1px solid var(--border);
-      transition: border-color 0.2s;
-      cursor: default;
+      display: grid; grid-template-columns: 90px 1fr 40px;
+      align-items: center; gap: 2.5rem;
+      padding: 0; border-top: 1px solid var(--border);
+      transition: border-color 0.3s;
+      cursor: default; position: relative; overflow: hidden;
     }
     .issue-row:last-child { border-bottom: 1px solid var(--border); }
-    .issue-row:hover { border-top-color: var(--red); }
-    .issue-num {
-      font-family: var(--heading); font-size: 3.5rem; font-weight: 700;
-      color: var(--red); letter-spacing: -0.02em; line-height: 1;
-      opacity: 0.35; transition: opacity 0.2s;
+    /* sweep fill */
+    .issue-row::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--red);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 0;
     }
-    .issue-row:hover .issue-num { opacity: 1; }
-    .issue-body {}
+    .issue-row:hover::before { transform: scaleX(1); }
+    .issue-row:hover { border-top-color: var(--red); }
+    .issue-row > * { position: relative; z-index: 1; }
+    .issue-num {
+      font-family: 'Bebas Neue', sans-serif; font-size: 4.5rem;
+      color: var(--red); letter-spacing: -0.02em; line-height: 1;
+      opacity: 0.28; transition: opacity 0.3s, color 0.3s;
+      padding: 2rem 0;
+    }
+    .issue-row:hover .issue-num { opacity: 1; color: rgba(255,255,255,0.6); }
+    .issue-body { padding: 2rem 0; }
     .issue-title {
-      font-family: var(--heading); font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-family: var(--heading); font-size: clamp(1.5rem, 2.5vw, 2.1rem);
       font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em;
-      color: var(--white); margin-bottom: 0.6rem; line-height: 1;
+      color: var(--white); margin-bottom: 0.5rem; line-height: 1;
+      transition: color 0.2s;
     }
     .issue-desc {
-      font-family: var(--body); font-size: 0.92rem; font-weight: 300;
+      font-family: var(--body); font-size: 0.9rem; font-weight: 300;
       color: var(--muted); line-height: 1.7; max-width: 580px;
+      transition: color 0.2s;
     }
+    .issue-row:hover .issue-desc { color: rgba(255,255,255,0.85); }
     .issue-arrow {
-      font-size: 1.5rem; color: rgba(255,255,255,0.15);
-      align-self: center; transition: color 0.2s, transform 0.2s;
+      font-size: 1.4rem; color: rgba(255,255,255,0.15);
+      transition: color 0.2s, transform 0.3s;
     }
-    .issue-row:hover .issue-arrow { color: var(--red); transform: translateX(4px); }
+    .issue-row:hover .issue-arrow { color: var(--white); transform: translateX(6px); }
+
+    /* ===== STATEMENT ===== */
+    .statement {
+      background: #040A14;
+      padding: clamp(6rem, 12vw, 12rem) 8%;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .statement::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .statement-stars {
+      display: flex; justify-content: center; gap: 1.2rem;
+      margin-bottom: 3rem; position: relative; z-index: 1;
+    }
+    .stmt-star {
+      color: var(--red); font-size: 1.4rem; line-height: 1;
+      filter: drop-shadow(0 0 10px var(--glow));
+      animation: starPulse 2.5s ease-in-out infinite;
+    }
+    .stmt-star:nth-child(2) { animation-delay: 0.4s; }
+    .stmt-star:nth-child(3) { animation-delay: 0.8s; }
+    @keyframes starPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.55; transform: scale(0.88); }
+    }
+    .statement-quote {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.2rem, 7vw, 8.5rem);
+      font-weight: 400; letter-spacing: 0.03em; text-transform: uppercase;
+      color: var(--white); line-height: 0.92; margin-bottom: 2.5rem;
+      position: relative; z-index: 1;
+    }
+    .statement-quote em {
+      color: var(--red); font-style: normal;
+      text-shadow: 0 0 60px rgba(200,16,46,0.4);
+    }
+    .statement-cite {
+      font-family: var(--heading); font-size: 0.78rem; font-weight: 400;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: rgba(255,255,255,0.3); position: relative; z-index: 1;
+    }
 
     /* ===== BIO ===== */
     .bio {
       background: var(--surface);
       display: grid; grid-template-columns: 1fr 1fr;
-      min-height: 80vh;
+      min-height: 85vh; position: relative;
     }
-    .bio-photo {
-      position: relative; overflow: hidden; background: #071426;
-    }
+    .bio-photo { position: relative; overflow: hidden; background: #040C1A; }
     .bio-photo img {
       width: 100%; height: 100%;
       object-fit: cover; object-position: center center;
-      filter: brightness(0.78) contrast(1.05) saturate(1.1);
+      filter: brightness(0.75) contrast(1.1) saturate(1.1);
     }
     .bio-photo-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to right, transparent 50%, var(--surface) 100%);
+      background:
+        linear-gradient(to right, transparent 55%, var(--surface) 100%),
+        linear-gradient(to top, rgba(200,16,46,0.1) 0%, transparent 40%);
+    }
+    /* red diagonal accent on photo */
+    .bio-photo-accent {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
+      background: var(--red); box-shadow: 0 0 20px var(--glow);
     }
     .bio-content {
       padding: 7rem 8% 7rem 5%;
       display: flex; flex-direction: column; justify-content: center;
+      position: relative; overflow: hidden;
     }
+    .bio-content::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px);
+      background-size: 40px 40px; pointer-events: none;
+    }
+    .bio-content > * { position: relative; z-index: 1; }
     .bio-pull {
-      font-family: var(--heading); font-size: clamp(1.4rem, 2.2vw, 2rem);
-      font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em;
-      color: var(--white); line-height: 1.3; margin-bottom: 2rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 3.5vw, 3.5rem);
+      font-weight: 400; text-transform: uppercase; letter-spacing: 0.03em;
+      color: var(--white); line-height: 1.05; margin-bottom: 2rem;
     }
     .bio-pull em { color: var(--red); font-style: normal; }
     .bio-body {
-      font-family: var(--body); font-size: 0.92rem; font-weight: 300;
-      color: var(--muted); line-height: 1.8; margin-bottom: 1rem;
+      font-family: var(--body); font-size: 0.9rem; font-weight: 300;
+      color: var(--muted); line-height: 1.85; margin-bottom: 0.9rem;
+    }
+    .bio-body-highlight {
+      font-family: var(--body); font-size: 0.9rem; font-weight: 400;
+      color: var(--off-white); line-height: 1.8; margin-bottom: 0;
+      font-style: italic; border-left: 3px solid var(--red);
+      padding-left: 1.2rem; margin-top: 0.8rem;
     }
     .bio-stats {
       display: grid; grid-template-columns: 1fr 1fr;
-      gap: 1px; background: var(--border);
-      margin-top: 2.5rem; border: 1px solid var(--border);
+      gap: 1px; background: rgba(200,16,46,0.2);
+      margin-top: 2.5rem; border: 1px solid rgba(200,16,46,0.2);
     }
-    .bio-stat {
-      background: var(--surface-2); padding: 1.4rem 1.6rem;
-    }
+    .bio-stat { background: var(--surface-2); padding: 1.5rem 1.8rem; }
     .bio-stat-val {
-      font-family: var(--heading); font-size: 2.2rem; font-weight: 700;
-      color: var(--red); letter-spacing: -0.02em; line-height: 1;
+      font-family: 'Bebas Neue', sans-serif; font-size: 3rem;
+      color: var(--red); letter-spacing: -0.01em; line-height: 1;
+      text-shadow: 0 0 30px rgba(200,16,46,0.35);
     }
     .bio-stat-label {
-      font-family: var(--body); font-size: 0.75rem; font-weight: 500;
-      letter-spacing: 0.12em; text-transform: uppercase;
+      font-family: var(--body); font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase;
       color: var(--muted); margin-top: 0.3rem;
     }
 
-    /* ===== EXPERIENCE ===== */
-    .experience { background: var(--bg); padding: 7rem 8%; }
-    .experience-inner { max-width: 900px; }
-    .experience-intro {
-      font-family: var(--body); font-size: 1rem; line-height: 1.8;
-      color: rgba(255,255,255,0.6); margin-bottom: 4rem; max-width: 680px;
+    /* ===== STATS STRIP ===== */
+    .stats-strip {
+      background: var(--red);
+      padding: 5rem 8%;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative; overflow: hidden;
     }
-    .exp-timeline { display: flex; flex-direction: column; }
+    .stats-strip::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 60%);
+    }
+    .stats-strip::after {
+      content: '2026';
+      position: absolute; right: -1%; top: 50%; transform: translateY(-50%);
+      font-family: 'Bebas Neue', sans-serif; font-size: 22rem;
+      color: rgba(0,0,0,0.08); line-height: 1; pointer-events: none; z-index: 0;
+      letter-spacing: 0.04em; user-select: none;
+    }
+    .stat-item {
+      padding: 2rem 3rem 2rem 2rem;
+      border-right: 1px solid rgba(255,255,255,0.2);
+      position: relative; z-index: 1;
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-number {
+      font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.5rem, 5vw, 5.5rem);
+      color: var(--white); line-height: 0.9; letter-spacing: -0.01em;
+      margin-bottom: 0.5rem;
+    }
+    .stat-label {
+      font-family: var(--heading); font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+    }
+
+    /* ===== EXPERIENCE ===== */
+    .experience {
+      background: var(--bg-2); padding: 8rem 8%;
+      position: relative; overflow: hidden;
+    }
+    .experience::before {
+      content: 'RECORD';
+      position: absolute; right: -1%; bottom: -4%;
+      font-family: 'Bebas Neue', sans-serif; font-size: clamp(8rem, 16vw, 20rem);
+      color: rgba(255,255,255,0.022); line-height: 1;
+      pointer-events: none; z-index: 0; letter-spacing: 0.04em; user-select: none;
+    }
+    .experience > * { position: relative; z-index: 1; }
+    .experience-intro {
+      font-family: var(--body); font-size: 0.95rem; line-height: 1.85;
+      color: rgba(255,255,255,0.55); margin-bottom: 4rem; max-width: 660px;
+    }
+    .exp-timeline { display: flex; flex-direction: column; position: relative; }
+    /* vertical line */
+    .exp-timeline::before {
+      content: ''; position: absolute; left: 196px; top: 0; bottom: 0;
+      width: 2px; background: linear-gradient(to bottom, var(--red), rgba(200,16,46,0.1));
+    }
     .exp-item {
       display: grid;
-      grid-template-columns: 160px 1fr;
-      gap: 2rem;
-      padding: 2rem 0;
+      grid-template-columns: 180px 1fr;
+      gap: 3rem;
+      padding: 2.2rem 0;
       border-top: 1px solid var(--border);
-      align-items: start;
-      transition: border-color 0.2s;
+      align-items: center;
+      transition: border-color 0.25s;
+      position: relative;
     }
     .exp-item:last-child { border-bottom: 1px solid var(--border); }
-    .exp-item:hover { border-color: var(--red); }
-    .exp-dates {
-      font-family: var(--heading); font-size: 0.72rem; font-weight: 500;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--red); padding-top: 0.2rem;
+    .exp-item:hover { border-top-color: var(--red); }
+    /* timeline dot */
+    .exp-item::after {
+      content: ''; position: absolute; left: 190px; top: 50%; transform: translateY(-50%);
+      width: 14px; height: 14px; background: var(--red); border-radius: 0;
+      transform: translateY(-50%) rotate(45deg);
+      box-shadow: 0 0 12px var(--glow);
+      transition: transform 0.2s;
     }
+    .exp-item:hover::after { transform: translateY(-50%) rotate(45deg) scale(1.3); }
+    .exp-dates {
+      font-family: var(--heading); font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--red); text-align: right;
+    }
+    .exp-right { padding-left: 1.5rem; }
     .exp-role {
-      font-family: var(--heading); font-size: 1.4rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.04em;
-      color: var(--white); line-height: 1.1; margin-bottom: 0.3rem;
+      font-family: var(--heading); font-size: 1.5rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      color: var(--white); line-height: 1.1; margin-bottom: 0.25rem;
     }
     .exp-org {
-      font-family: var(--body); font-size: 0.85rem;
-      color: rgba(255,255,255,0.45); letter-spacing: 0.06em; text-transform: uppercase;
-    }
-    @media (max-width: 600px) {
-      .exp-item { grid-template-columns: 1fr; gap: 0.4rem; }
-      .exp-dates { font-size: 0.68rem; }
+      font-family: var(--body); font-size: 0.82rem;
+      color: rgba(255,255,255,0.4); letter-spacing: 0.08em; text-transform: uppercase;
     }
 
     /* ===== ENDORSEMENTS ===== */
-    .endorsements { background: var(--surface-2); padding: 7rem 8%; }
+    .endorsements {
+      background: var(--surface-2); padding: 8rem 8%;
+      position: relative; overflow: hidden;
+    }
+    .endorsements::before {
+      content: '★';
+      position: absolute; right: 5%; top: 50%; transform: translateY(-50%);
+      font-size: 40vw; color: rgba(255,255,255,0.012);
+      pointer-events: none; z-index: 0; line-height: 1; user-select: none;
+    }
+    .endorsements > * { position: relative; z-index: 1; }
     .endorse-placeholder {
-      border: 1px solid var(--border); padding: 4rem;
-      text-align: center;
-      font-family: var(--body); font-size: 0.9rem;
-      color: rgba(255,255,255,0.2); letter-spacing: 0.06em;
-      text-transform: uppercase;
+      border: 1px solid var(--border); padding: 5rem;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .endorse-placeholder::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(to right, transparent, var(--red), transparent);
+    }
+    .endorse-placeholder p {
+      font-family: var(--heading); font-size: 0.82rem;
+      color: rgba(255,255,255,0.2); letter-spacing: 0.14em; text-transform: uppercase;
     }
 
     /* ===== UPDATES ===== */
-    .updates { background: var(--surface); padding: 6rem 8%; }
-    .updates-inner { max-width: 600px; }
-    .updates-form { display: flex; gap: 0; margin-top: 2rem; }
+    .updates { background: var(--surface); padding: 7rem 8%; }
+    .updates-inner { max-width: 640px; }
+    .updates-form { display: flex; gap: 0; margin-top: 2.5rem; }
     .updates-form input {
-      flex: 1; padding: 0.9rem 1.2rem;
+      flex: 1; padding: 0.95rem 1.2rem;
       background: var(--surface-2); border: 1px solid var(--border);
       border-right: none; color: var(--white);
-      font-family: var(--body); font-size: 0.9rem; min-height: 52px;
+      font-family: var(--body); font-size: 0.9rem; min-height: 54px;
+      transition: border-color 0.2s;
     }
     .updates-form input:focus { outline: none; border-color: var(--red); }
-    .updates-form input::placeholder { color: var(--muted); }
+    .updates-form input::placeholder { color: rgba(255,255,255,0.22); }
     .updates-form button {
       background: var(--red); color: var(--white); border: none;
-      padding: 0 1.8rem; font-family: var(--heading); font-size: 0.78rem;
-      font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
-      cursor: pointer; transition: background 0.2s; white-space: nowrap; min-height: 52px;
+      padding: 0 2rem; font-family: var(--heading); font-size: 0.78rem;
+      font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+      cursor: pointer; transition: background 0.2s, box-shadow 0.2s;
+      white-space: nowrap; min-height: 54px;
     }
-    .updates-form button:hover { background: var(--red-bright); }
+    .updates-form button:hover { background: var(--red-b); box-shadow: 0 4px 20px var(--glow); }
 
     /* ===== DONATE ===== */
-    .donate-banner {
-      background: var(--red); padding: 7rem 8%;
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 3rem; flex-wrap: wrap;
+    .donate-section {
+      background: var(--red);
+      padding: clamp(7rem, 12vw, 12rem) 8%;
+      position: relative; overflow: hidden; text-align: center;
     }
-    .donate-banner h2 {
-      font-family: var(--heading); font-weight: 700; text-transform: uppercase;
-      font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing: 0.02em;
-      color: var(--white); line-height: 1;
-    }
-    .donate-banner h2 span { display: block; opacity: 0.45; font-size: 0.45em; font-weight: 400; letter-spacing: 0.12em; }
-    .btn-white {
-      font-family: var(--heading); font-size: 0.82rem; font-weight: 700;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      background: var(--white); color: var(--red);
-      padding: 1.1rem 3rem; border: 2px solid var(--white);
-      cursor: pointer; transition: background 0.2s, color 0.2s;
-      min-height: 52px; display: inline-flex; align-items: center;
+    /* giant name watermark */
+    .donate-section::before {
+      content: 'BERG';
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+      font-family: 'Bebas Neue', sans-serif; font-size: clamp(14rem, 28vw, 38rem);
+      color: rgba(0,0,0,0.1); line-height: 1;
+      pointer-events: none; z-index: 0; letter-spacing: 0.06em; user-select: none;
       white-space: nowrap;
     }
-    .btn-white:hover { background: transparent; color: var(--white); }
+    .donate-section::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.07) 0%, transparent 60%);
+    }
+    .donate-inner { position: relative; z-index: 1; }
+    .donate-stars {
+      display: flex; justify-content: center; gap: 1rem; margin-bottom: 2.5rem;
+    }
+    .donate-star {
+      color: rgba(255,255,255,0.7); font-size: 1.2rem;
+      filter: drop-shadow(0 0 8px rgba(255,255,255,0.4));
+    }
+    .donate-tagline {
+      font-family: var(--heading); font-size: 0.82rem; font-weight: 400;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: rgba(255,255,255,0.7); margin-bottom: 1.5rem;
+    }
+    .donate-headline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 7vw, 8rem);
+      font-weight: 400; text-transform: uppercase; letter-spacing: 0.03em;
+      color: var(--white); line-height: 0.9; margin-bottom: 3rem;
+    }
+    .btn-white {
+      font-family: var(--heading); font-size: 0.88rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      background: var(--white); color: var(--red);
+      padding: 1.2rem 4rem; border: 2px solid var(--white);
+      cursor: pointer; transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      min-height: 56px; display: inline-flex; align-items: center;
+    }
+    .btn-white:hover { background: transparent; color: var(--white); box-shadow: 0 0 40px rgba(255,255,255,0.2); }
 
     /* ===== VOLUNTEER ===== */
     .volunteer {
-      background: var(--bg); padding: 7rem 8%;
-      display: grid; grid-template-columns: 1fr 1.5fr; gap: 6rem; align-items: start;
+      background: var(--bg); padding: 8rem 8%;
+      display: grid; grid-template-columns: 1fr 1.5fr; gap: 7rem; align-items: start;
+      position: relative; overflow: hidden;
     }
+    .volunteer::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.016) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.016) 1px, transparent 1px);
+      background-size: 52px 52px; pointer-events: none;
+    }
+    .volunteer > * { position: relative; z-index: 1; }
     .volunteer-cta h2 {
-      font-family: var(--heading); font-weight: 700; text-transform: uppercase;
-      font-size: clamp(2rem, 3.5vw, 3rem); letter-spacing: 0.04em;
-      color: var(--white); line-height: 1; margin-bottom: 1.5rem;
+      font-family: 'Bebas Neue', sans-serif; font-weight: 400; text-transform: uppercase;
+      font-size: clamp(2.8rem, 4.5vw, 4.5rem); letter-spacing: 0.03em;
+      color: var(--white); line-height: 0.9; margin-bottom: 1.5rem;
     }
     .volunteer-cta p {
       font-family: var(--body); font-size: 0.9rem; font-weight: 300;
-      color: var(--muted); line-height: 1.75; margin-bottom: 2rem;
+      color: var(--muted); line-height: 1.8; margin-bottom: 2rem;
     }
     .ways-list { list-style: none; }
     .ways-list li {
-      font-family: var(--body); font-size: 0.88rem; font-weight: 400;
-      color: var(--muted); padding: 0.7rem 0;
-      border-bottom: 1px solid var(--border);
-      display: flex; align-items: center; gap: 0.8rem;
+      font-family: var(--body); font-size: 0.88rem; color: var(--muted);
+      padding: 0.75rem 0; border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 1rem;
+      transition: color 0.2s;
     }
+    .ways-list li:hover { color: var(--white); }
     .ways-list li::before {
-      content: ''; display: block; width: 6px; height: 6px;
-      background: var(--red); flex-shrink: 0;
+      content: '★'; color: var(--red); font-size: 0.55rem; flex-shrink: 0;
+      filter: drop-shadow(0 0 4px var(--glow));
     }
     .ways-list li:last-child { border-bottom: none; }
-    .vol-form {}
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
     .form-group { margin-bottom: 1rem; }
     .form-group label {
-      display: block; font-family: var(--heading); font-size: 0.68rem;
-      font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
+      display: block; font-family: var(--heading); font-size: 0.66rem;
+      font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
       color: var(--muted); margin-bottom: 0.5rem;
     }
     .form-group input, .form-group textarea {
-      width: 100%; padding: 0.85rem 1rem;
+      width: 100%; padding: 0.9rem 1rem;
       background: var(--surface); border: 1px solid var(--border);
       color: var(--white); font-family: var(--body); font-size: 0.9rem;
-      min-height: 48px; transition: border-color 0.2s;
+      min-height: 50px; transition: border-color 0.2s;
     }
     .form-group textarea { min-height: 100px; resize: vertical; }
     .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--red); }
-    .form-group input::placeholder { color: rgba(255,255,255,0.2); }
-    .checkbox-section { padding: 1.4rem 0; }
+    .form-group input::placeholder { color: rgba(255,255,255,0.18); }
+    .checkbox-section { padding: 1.5rem 0; }
     .checkbox-label {
-      font-family: var(--heading); font-size: 0.68rem; font-weight: 500;
-      letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted);
+      font-family: var(--heading); font-size: 0.66rem; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);
       display: block; margin-bottom: 1rem;
     }
-    .checkbox-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+    .checkbox-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
     .checkbox-grid label {
       display: flex; align-items: center; gap: 0.6rem;
-      font-family: var(--body); font-size: 0.85rem; color: var(--muted);
-      cursor: pointer;
+      font-family: var(--body); font-size: 0.85rem; color: var(--muted); cursor: pointer;
+      transition: color 0.2s;
     }
+    .checkbox-grid label:hover { color: var(--white); }
     .checkbox-grid input[type="checkbox"] { accent-color: var(--red); width: 16px; height: 16px; }
     .btn-submit {
       width: 100%; background: var(--white); color: var(--bg);
-      border: none; padding: 1rem;
+      border: none; padding: 1.1rem;
       font-family: var(--heading); font-size: 0.82rem; font-weight: 700;
-      letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer;
-      transition: background 0.2s; min-height: 52px; margin-top: 1.4rem;
+      letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer;
+      transition: background 0.2s; min-height: 54px; margin-top: 1.5rem;
     }
     .btn-submit:hover { background: var(--off-white); }
 
     /* ===== CONTACT ===== */
-    .contact { background: var(--surface); padding: 7rem 8%; }
-    .contact-inner { display: grid; grid-template-columns: 1fr 1.5fr; gap: 6rem; margin-top: 3rem; }
-    .contact-info {}
+    .contact { background: var(--surface); padding: 8rem 8%; }
+    .contact-inner { display: grid; grid-template-columns: 1fr 1.5fr; gap: 7rem; margin-top: 3rem; }
     .contact-line {
       display: flex; align-items: center; gap: 1.2rem;
-      padding: 1.1rem 0; border-bottom: 1px solid var(--border);
+      padding: 1.2rem 0; border-bottom: 1px solid var(--border);
     }
     .contact-line:first-child { border-top: 1px solid var(--border); }
     .contact-icon { color: var(--red); flex-shrink: 0; }
     .contact-icon svg { width: 18px; height: 18px; }
-    .contact-text {
-      font-family: var(--body); font-size: 0.9rem; color: var(--muted);
-    }
+    .contact-text { font-family: var(--body); font-size: 0.9rem; color: var(--muted); }
     .contact-text a { color: var(--white); transition: color 0.2s; }
     .contact-text a:hover { color: var(--red); }
     .socials { display: flex; gap: 0.8rem; margin-top: 2rem; }
     .social-btn {
-      width: 42px; height: 42px; background: var(--surface-2);
+      width: 44px; height: 44px; background: var(--surface-2);
       border: 1px solid var(--border);
       display: flex; align-items: center; justify-content: center;
       color: var(--muted); transition: color 0.2s, border-color 0.2s, background 0.2s;
     }
     .social-btn:hover { color: var(--white); border-color: var(--red); background: var(--red); }
-    .social-btn svg { width: 18px; height: 18px; }
-    .contact-form {}
+    .social-btn svg { width: 17px; height: 17px; }
 
     /* ===== FOOTER ===== */
     footer {
-      background: #071426; padding: 3rem 8%;
-      border-top: 1px solid var(--border);
+      background: #040A14; padding: 3.5rem 8%;
+      border-top: 3px solid var(--red);
+      position: relative; overflow: hidden;
     }
+    footer::before {
+      content: 'BERG 2026';
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+      font-family: 'Bebas Neue', sans-serif; font-size: clamp(6rem, 14vw, 18rem);
+      color: rgba(255,255,255,0.02); line-height: 1; white-space: nowrap;
+      pointer-events: none; z-index: 0; letter-spacing: 0.08em; user-select: none;
+    }
+    .footer-inner { position: relative; z-index: 1; }
     .footer-top {
       display: flex; justify-content: space-between; align-items: center;
       gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem;
@@ -520,116 +803,118 @@
     }
     .footer-brand {
       font-family: var(--heading); font-weight: 700; font-size: 1.1rem;
-      letter-spacing: 0.12em; text-transform: uppercase; color: var(--white);
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--white);
+      display: flex; align-items: center; gap: 0.8rem;
     }
     .footer-brand em { color: var(--red); font-style: normal; }
-    .footer-nav { display: flex; gap: 1.8rem; flex-wrap: wrap; }
+    .footer-brand-stars { color: var(--red); font-size: 0.55rem; letter-spacing: 0.06em; }
+    .footer-nav { display: flex; gap: 2rem; flex-wrap: wrap; }
     .footer-nav a {
-      font-family: var(--heading); font-size: 0.72rem; font-weight: 400;
-      letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
+      font-family: var(--heading); font-size: 0.7rem; font-weight: 400;
+      letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted);
       transition: color 0.2s;
     }
     .footer-nav a:hover { color: var(--white); }
-    .footer-bottom {
-      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
-    }
-    .footer-copy {
-      font-family: var(--body); font-size: 0.75rem; color: rgba(255,255,255,0.25);
-    }
+    .footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .footer-copy { font-family: var(--body); font-size: 0.72rem; color: rgba(255,255,255,0.22); }
     .footer-disclosure {
-      font-family: var(--body); font-size: 0.72rem; color: rgba(255,255,255,0.2);
-      text-align: right; max-width: 520px; line-height: 1.6;
+      font-family: var(--body); font-size: 0.7rem; color: rgba(255,255,255,0.18);
+      text-align: right; max-width: 520px; line-height: 1.65;
     }
-    .footer-disclosure a { color: rgba(255,255,255,0.3); text-decoration: underline; }
-
-    /* ===== SCROLL PROGRESS ===== */
-    .scroll-progress {
-      position: fixed; top: 68px; left: 0; right: 0; height: 2px;
-      background: var(--red); transform-origin: left;
-      transform: scaleX(0); z-index: 1001; pointer-events: none;
-    }
-
-    /* ===== GRAIN TEXTURE ===== */
-    .hero-left::after, .issues::after, .bio-content::after {
-      content: '';
-      position: absolute; inset: 0; pointer-events: none; z-index: 0;
-      opacity: 0.4;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
-    }
-    .hero-left > * { position: relative; z-index: 1; }
-    .issues > * { position: relative; z-index: 1; }
-    .bio-content > * { position: relative; z-index: 1; }
-
-    /* ===== HERO NAME REVEAL ===== */
-    @keyframes nameReveal {
-      from { clip-path: inset(0 0 100% 0); transform: translateY(8px); opacity: 0; }
-      to   { clip-path: none;              transform: translateY(0);   opacity: 1; }
-    }
-    .hero-name-solid, .hero-name-outline {
-      display: block;
-    }
-    .hero-left.in .hero-name-solid {
-      animation: nameReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
-    }
-    .hero-left.in .hero-name-outline {
-      animation: nameReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.38s both;
-    }
+    .footer-disclosure a { color: rgba(255,255,255,0.28); text-decoration: underline; }
 
     /* ===== ANIMATIONS ===== */
-    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .fade-up { opacity: 0; transform: translateY(32px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
     .fade-up.in { opacity: 1; transform: none; }
+    .fade-left { opacity: 0; transform: translateX(-32px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+    .fade-left.in { opacity: 1; transform: none; }
+    [data-delay="1"] { transition-delay: 0.1s; }
+    [data-delay="2"] { transition-delay: 0.2s; }
+    [data-delay="3"] { transition-delay: 0.3s; }
+    [data-delay="4"] { transition-delay: 0.4s; }
+    [data-delay="5"] { transition-delay: 0.5s; }
+    [data-delay="6"] { transition-delay: 0.6s; }
+
+    @keyframes nameReveal {
+      from { clip-path: inset(0 0 100% 0); transform: translateY(10px); opacity: 0; }
+      to   { clip-path: none; transform: translateY(0); opacity: 1; }
+    }
+    .hero-left.in .hero-name-solid { animation: nameReveal 0.85s cubic-bezier(0.16,1,0.3,1) 0.1s both; }
+    .hero-left.in .hero-name-outline { animation: nameReveal 0.85s cubic-bezier(0.16,1,0.3,1) 0.32s both; }
+
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
 
     @media (prefers-reduced-motion: reduce) {
-      .fade-up { opacity: 1 !important; transform: none !important; transition: none !important; }
+      .fade-up, .fade-left { opacity: 1 !important; transform: none !important; transition: none !important; }
+      .ticker-track, .hero-right img { animation: none !important; }
     }
 
     /* ===== RESPONSIVE ===== */
+    @media (max-width: 1100px) {
+      .stats-strip { grid-template-columns: repeat(2, 1fr); }
+      .stat-item:nth-child(2) { border-right: none; }
+      .stat-item:nth-child(1), .stat-item:nth-child(2) { border-bottom: 1px solid rgba(255,255,255,0.2); }
+    }
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero-right { height: 72vw; max-height: 500px; order: -1; }
-      .hero-left { padding: 3rem 5%; align-items: center; text-align: center; justify-content: flex-start; gap: 2rem; }
-      .hero-election-date { display: none; }
+      .hero-right { height: 72vw; max-height: 520px; order: -1; }
+      .hero-right .hero-slice { display: none; }
+      .hero-left { padding: 3rem 5%; align-items: center; text-align: center; justify-content: flex-start; }
       .hero-tag { justify-content: center; }
-      .hero-divider { margin: 1.6rem auto; }
+      .hero-tag::before { display: none; }
+      .hero-stars { justify-content: center; }
+      .hero-stars-line { max-width: 60px; }
+      .hero-divider { justify-content: center; }
+      .hero-divider-line { max-width: 100px; }
       .hero-tagline { margin-left: auto; margin-right: auto; }
       .hero-btns { justify-content: center; }
-      .hero-right-overlay { background: linear-gradient(to top, rgba(11,26,46,0.85) 0%, transparent 50%); }
+      .hero-right-overlay { background: linear-gradient(to top, rgba(7,15,30,0.88) 0%, transparent 50%); }
       .bio { grid-template-columns: 1fr; min-height: auto; }
-      .bio-photo { height: 60vw; }
+      .bio-photo { height: 65vw; }
       .bio-photo-overlay { background: linear-gradient(to top, var(--surface) 0%, transparent 40%); }
       .bio-content { padding: 3.5rem 5%; }
       .volunteer { grid-template-columns: 1fr; gap: 3rem; }
       .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .exp-timeline::before { display: none; }
+      .exp-item::after { display: none; }
     }
-
     @media (max-width: 768px) {
-      section, .issues, .endorsements, .updates, .volunteer, .contact { padding: 4rem 5%; }
-      .donate-banner { padding: 4rem 5%; }
+      section, .issues, .endorsements, .updates, .volunteer, .contact { padding: 5rem 5%; }
+      .experience, .bio-content { padding: 5rem 5%; }
+      .donate-section { padding: 5rem 5%; }
       .nav-links { display: none; }
       .nav-toggle { display: flex; }
       .section-heading { margin-bottom: 2rem; }
-      .issue-row { grid-template-columns: 48px 1fr; }
+      .issue-row { grid-template-columns: 56px 1fr; }
       .issue-arrow { display: none; }
-      .issue-num { font-size: 2.5rem; }
-      .donate-banner { flex-direction: column; align-items: stretch; }
-      .donate-banner .btn-white { text-align: center; }
-      .hero-tag { display: block; text-align: center; font-size: 0.62rem; letter-spacing: 0.14em; }
-      .hero-tag::before { display: none; }
+      .issue-num { font-size: 3rem; }
+      .hero-tag { display: block; text-align: center; font-size: 0.6rem; letter-spacing: 0.16em; }
       .hero-btns { flex-direction: column; align-items: center; width: 100%; }
       .hero-btns .btn-red, .hero-btns .btn-ghost { width: 100%; max-width: 300px; justify-content: center; }
+      .hero-election-date { display: none; }
       .bio-stats { grid-template-columns: 1fr 1fr; }
+      .stats-strip { grid-template-columns: 1fr 1fr; }
+      .stat-item { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.18); }
+      .stat-item:last-child { border-bottom: none; }
       .updates-form { flex-direction: column; }
-      .updates-form button { padding: 0.9rem; min-height: 48px; }
+      .updates-form button { padding: 0.9rem; }
       .form-row { grid-template-columns: 1fr; }
       .checkbox-grid { grid-template-columns: 1fr 1fr; }
       .footer-top { flex-direction: column; align-items: flex-start; }
       .footer-bottom { flex-direction: column; }
       .footer-disclosure { text-align: left; max-width: 100%; }
+      .exp-item { grid-template-columns: 1fr; gap: 0.4rem; }
+      .exp-dates { text-align: left; }
+      .exp-right { padding-left: 0; }
     }
-
     @media (max-width: 480px) {
-      .hero-name { font-size: 3.8rem; }
-      .hero-name span { -webkit-text-stroke-width: 1.5px; }
+      .hero-name { font-size: clamp(4rem, 18vw, 7rem); }
+      .hero-name-outline { -webkit-text-stroke-width: 2px; }
+      .statement-quote { font-size: clamp(2.8rem, 9vw, 5rem); }
+      .stats-strip { grid-template-columns: 1fr; padding: 3rem 5%; }
     }
   </style>
 </head>
@@ -639,7 +924,10 @@
 
 <!-- NAV -->
 <nav id="nav" role="navigation" aria-label="Main navigation">
-  <div class="nav-brand">Reedy <em>Berg</em></div>
+  <div class="nav-brand">
+    Reedy <em>Berg</em>
+    <span class="nav-brand-stars">★ ★ ★</span>
+  </div>
   <div class="nav-links">
     <a href="#issues">Issues</a>
     <a href="#about">About</a>
@@ -665,59 +953,75 @@
 <!-- HERO -->
 <div class="hero" role="banner">
   <div class="hero-left fade-up">
-    <div class="hero-main">
-      <div class="hero-tag">Republican &middot; WA State House &middot; LD-15 Position 2</div>
-      <h1 class="hero-name">
-        <span class="hero-name-solid">Reedy</span>
-        <span class="hero-name-outline">Berg</span>
-      </h1>
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-left-bar"></div>
+
+    <div class="hero-stars">
+      <span class="hero-star">★</span>
+      <span class="hero-star">★</span>
+      <span class="hero-star">★</span>
+      <span class="hero-stars-line"></span>
     </div>
-    <div class="hero-bottom">
-      <div class="hero-rule"></div>
-      <div class="hero-sub">Washington State House &middot; Legislative District 15 &middot; 2026</div>
-      <p class="hero-tagline">Yakima Valley raised. Teacher by calling. Ready to fight for our community in Olympia.</p>
-      <div class="hero-btns">
-        <a href="#donate" class="btn-red">Donate Now</a>
-        <a href="#volunteer" class="btn-ghost">Volunteer</a>
-      </div>
-      <div class="hero-election-date">General Election &mdash; November 3, 2026</div>
+
+    <div class="hero-tag">Republican &middot; WA State House &middot; LD-15 Position 2</div>
+
+    <h1 class="hero-name">
+      <span class="hero-name-solid">Reedy</span>
+      <span class="hero-name-outline">Berg</span>
+    </h1>
+
+    <div class="hero-divider">
+      <div class="hero-divider-line"></div>
+      <div class="hero-divider-dot"></div>
     </div>
+
+    <div class="hero-sub">Washington State House &middot; Legislative District 15 &middot; 2026</div>
+    <p class="hero-tagline">Yakima Valley raised. Teacher by calling. Ready to fight for our community in Olympia.</p>
+    <div class="hero-btns">
+      <a href="#donate" class="btn-red">Donate Now</a>
+      <a href="#volunteer" class="btn-ghost">Volunteer</a>
+    </div>
+    <div class="hero-election-date">General Election &mdash; November 3, 2026</div>
   </div>
+
   <div class="hero-right">
     <img src="family.jpg"
          alt="Reedy Berg with his family in a Yakima Valley orchard"
          loading="eager">
     <div class="hero-right-overlay"></div>
+    <div class="hero-slice"></div>
   </div>
 </div>
 
 <!-- TICKER -->
-<div class="ticker" aria-hidden="true">
-  <div class="ticker-track">
-    <span>Yakima Valley</span><span class="ticker-dot">·</span>
-    <span>Public Safety</span><span class="ticker-dot">·</span>
-    <span>Agriculture &amp; Water</span><span class="ticker-dot">·</span>
-    <span>Education</span><span class="ticker-dot">·</span>
-    <span>Lower Taxes</span><span class="ticker-dot">·</span>
-    <span>Fiscal Responsibility</span><span class="ticker-dot">·</span>
-    <span>Vote Reedy Berg 2026</span><span class="ticker-dot">·</span>
-    <span>Yakima Valley</span><span class="ticker-dot">·</span>
-    <span>Public Safety</span><span class="ticker-dot">·</span>
-    <span>Agriculture &amp; Water</span><span class="ticker-dot">·</span>
-    <span>Education</span><span class="ticker-dot">·</span>
-    <span>Lower Taxes</span><span class="ticker-dot">·</span>
-    <span>Fiscal Responsibility</span><span class="ticker-dot">·</span>
-    <span>Vote Reedy Berg 2026</span><span class="ticker-dot">·</span>
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker">
+    <div class="ticker-track">
+      <span>Yakima Valley</span><span class="ticker-star">★</span>
+      <span>Public Safety</span><span class="ticker-star">★</span>
+      <span>Agriculture &amp; Water</span><span class="ticker-star">★</span>
+      <span>Education</span><span class="ticker-star">★</span>
+      <span>Lower Taxes</span><span class="ticker-star">★</span>
+      <span>Fiscal Responsibility</span><span class="ticker-star">★</span>
+      <span>Vote Reedy Berg 2026</span><span class="ticker-star">★</span>
+      <span>Yakima Valley</span><span class="ticker-star">★</span>
+      <span>Public Safety</span><span class="ticker-star">★</span>
+      <span>Agriculture &amp; Water</span><span class="ticker-star">★</span>
+      <span>Education</span><span class="ticker-star">★</span>
+      <span>Lower Taxes</span><span class="ticker-star">★</span>
+      <span>Fiscal Responsibility</span><span class="ticker-star">★</span>
+      <span>Vote Reedy Berg 2026</span><span class="ticker-star">★</span>
+    </div>
   </div>
 </div>
 
 <!-- ISSUES -->
 <section class="issues" id="issues">
-  <div class="section-eyebrow">Platform</div>
-  <h2 class="section-heading">What Reedy<br>Stands For</h2>
+  <div class="section-eyebrow fade-up">Platform</div>
+  <h2 class="section-heading fade-up">What Reedy<br>Stands For</h2>
   <div class="issues-list">
 
-    <div class="issue-row fade-up">
+    <div class="issue-row fade-up" data-delay="1">
       <div class="issue-num">01</div>
       <div class="issue-body">
         <div class="issue-title">Public Safety</div>
@@ -726,7 +1030,7 @@
       <div class="issue-arrow">&#8594;</div>
     </div>
 
-    <div class="issue-row fade-up">
+    <div class="issue-row fade-up" data-delay="2">
       <div class="issue-num">02</div>
       <div class="issue-body">
         <div class="issue-title">Agriculture &amp; Water</div>
@@ -735,7 +1039,7 @@
       <div class="issue-arrow">&#8594;</div>
     </div>
 
-    <div class="issue-row fade-up">
+    <div class="issue-row fade-up" data-delay="3">
       <div class="issue-num">03</div>
       <div class="issue-body">
         <div class="issue-title">Education &amp; Parent Rights</div>
@@ -744,7 +1048,7 @@
       <div class="issue-arrow">&#8594;</div>
     </div>
 
-    <div class="issue-row fade-up">
+    <div class="issue-row fade-up" data-delay="4">
       <div class="issue-num">04</div>
       <div class="issue-body">
         <div class="issue-title">Small Business &amp; Lower Taxes</div>
@@ -753,7 +1057,7 @@
       <div class="issue-arrow">&#8594;</div>
     </div>
 
-    <div class="issue-row fade-up">
+    <div class="issue-row fade-up" data-delay="5">
       <div class="issue-num">05</div>
       <div class="issue-body">
         <div class="issue-title">Fiscal Responsibility</div>
@@ -765,12 +1069,26 @@
   </div>
 </section>
 
+<!-- STATEMENT -->
+<section class="statement">
+  <div class="statement-stars">
+    <span class="stmt-star">★</span>
+    <span class="stmt-star">★</span>
+    <span class="stmt-star">★</span>
+  </div>
+  <blockquote class="statement-quote fade-up">
+    Fighting For<br><em>The Yakima Valley.</em><br>Not For Olympia.
+  </blockquote>
+  <p class="statement-cite fade-up" data-delay="2">— Reedy Berg &nbsp;·&nbsp; State Representative, District 15</p>
+</section>
+
 <!-- BIO -->
 <div class="bio" id="about">
   <div class="bio-photo">
     <img src="family.jpg"
          alt="Reedy Berg with his family in a Yakima Valley orchard">
     <div class="bio-photo-overlay"></div>
+    <div class="bio-photo-accent"></div>
   </div>
   <div class="bio-content fade-up">
     <div class="section-eyebrow">About Reedy</div>
@@ -782,10 +1100,10 @@
     <p class="bio-body">After college, Reedy spent several years working in the Valley's agricultural industry, gaining firsthand knowledge of farming and the challenges facing local producers — experience that informs his commitment to representing the Yakima Valley.</p>
     <p class="bio-body">Driven by a passion for education, Reedy earned a master's degree from Heritage University and has taught history and civics at Toppenish Middle School since 2016, helping students understand government and their role in it.</p>
     <p class="bio-body">In 2024, voters elected Reedy to the Yakima City Council. In 2026, his fellow council members selected him to serve as Deputy Mayor. He and his wife Nicole are raising their two children, Reedy Jr. (8) and Sadie (6), in the Valley where their family roots run deep.</p>
-    <p class="bio-body" style="color:var(--off-white); font-style:italic;">A conservative Republican committed to smaller government, protecting the rural way of life, slowing tax growth, and greater accountability in Olympia.</p>
+    <p class="bio-body-highlight">A conservative Republican committed to smaller government, protecting the rural way of life, slowing tax growth, and greater accountability in Olympia.</p>
     <div class="bio-stats">
       <div class="bio-stat">
-        <div class="bio-stat-val">37</div>
+        <div class="bio-stat-val counter" data-target="37">0</div>
         <div class="bio-stat-label">Years Old</div>
       </div>
       <div class="bio-stat">
@@ -793,7 +1111,7 @@
         <div class="bio-stat-label">Years Teaching</div>
       </div>
       <div class="bio-stat">
-        <div class="bio-stat-val">2</div>
+        <div class="bio-stat-val counter" data-target="2">0</div>
         <div class="bio-stat-label">Kids in Local Schools</div>
       </div>
       <div class="bio-stat">
@@ -804,71 +1122,91 @@
   </div>
 </div>
 
+<!-- STATS STRIP -->
+<section class="stats-strip" aria-label="Key facts about Reedy Berg">
+  <div class="stat-item fade-up">
+    <div class="stat-number">9+</div>
+    <div class="stat-label">Years in the Classroom</div>
+  </div>
+  <div class="stat-item fade-up" data-delay="2">
+    <div class="stat-number">40+</div>
+    <div class="stat-label">Years Family in Valley</div>
+  </div>
+  <div class="stat-item fade-up" data-delay="3">
+    <div class="stat-number">2</div>
+    <div class="stat-label">Kids in Local Schools</div>
+  </div>
+  <div class="stat-item fade-up" data-delay="4">
+    <div class="stat-number">&#x2605;</div>
+    <div class="stat-label">Yakima Deputy Mayor</div>
+  </div>
+</section>
+
 <!-- EXPERIENCE -->
 <section class="experience" id="experience">
-  <div class="experience-inner">
-    <div class="section-eyebrow fade-up">Experience</div>
-    <h2 class="section-heading fade-up">Proven.<br>Local. Ready.</h2>
-    <p class="experience-intro fade-up">Reedy Berg's commitment to public service is rooted in real experience, steady leadership, and a deep connection to the community he serves. Throughout his career, he has taken on roles that require accountability, thoughtful decision-making, and a focus on practical results.</p>
-    <div class="exp-timeline">
+  <div class="section-eyebrow fade-up">Experience</div>
+  <h2 class="section-heading fade-up">Proven.<br>Local. Ready.</h2>
+  <p class="experience-intro fade-up">Reedy Berg's commitment to public service is rooted in real experience, steady leadership, and a deep connection to the community he serves. Every role he has taken demands accountability, thoughtful decision-making, and practical results.</p>
+  <div class="exp-timeline">
 
-      <div class="exp-item fade-up">
-        <div class="exp-dates">2023 &ndash; Present</div>
-        <div>
-          <div class="exp-role">City Council Member</div>
-          <div class="exp-org">Yakima City Council</div>
-        </div>
+    <div class="exp-item fade-up" data-delay="1">
+      <div class="exp-dates">2026 &ndash; Present</div>
+      <div class="exp-right">
+        <div class="exp-role">Deputy Mayor</div>
+        <div class="exp-org">City of Yakima</div>
       </div>
-
-      <div class="exp-item fade-up">
-        <div class="exp-dates">2026 &ndash; Present</div>
-        <div>
-          <div class="exp-role">Deputy Mayor</div>
-          <div class="exp-org">City of Yakima</div>
-        </div>
-      </div>
-
-      <div class="exp-item fade-up">
-        <div class="exp-dates">2022 &ndash; Present</div>
-        <div>
-          <div class="exp-role">Professional Learning Community Lead</div>
-          <div class="exp-org">Toppenish School District</div>
-        </div>
-      </div>
-
-      <div class="exp-item fade-up">
-        <div class="exp-dates">2016 &ndash; Present</div>
-        <div>
-          <div class="exp-role">Educator</div>
-          <div class="exp-org">Toppenish Middle School</div>
-        </div>
-      </div>
-
-      <div class="exp-item fade-up">
-        <div class="exp-dates">2021 &ndash; Present</div>
-        <div>
-          <div class="exp-role">Little League Coach</div>
-          <div class="exp-org">Yakima Valley Little League</div>
-        </div>
-      </div>
-
     </div>
+
+    <div class="exp-item fade-up" data-delay="2">
+      <div class="exp-dates">2023 &ndash; Present</div>
+      <div class="exp-right">
+        <div class="exp-role">City Council Member</div>
+        <div class="exp-org">Yakima City Council</div>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up" data-delay="3">
+      <div class="exp-dates">2022 &ndash; Present</div>
+      <div class="exp-right">
+        <div class="exp-role">Professional Learning Community Lead</div>
+        <div class="exp-org">Toppenish School District</div>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up" data-delay="4">
+      <div class="exp-dates">2021 &ndash; Present</div>
+      <div class="exp-right">
+        <div class="exp-role">Little League Coach</div>
+        <div class="exp-org">Yakima Valley Little League</div>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up" data-delay="5">
+      <div class="exp-dates">2016 &ndash; Present</div>
+      <div class="exp-right">
+        <div class="exp-role">Educator &mdash; History &amp; Civics</div>
+        <div class="exp-org">Toppenish Middle School</div>
+      </div>
+    </div>
+
   </div>
 </section>
 
 <!-- ENDORSEMENTS -->
 <section class="endorsements" id="endorsements">
-  <div class="section-eyebrow">Endorsements</div>
-  <h2 class="section-heading" style="margin-bottom:2.5rem;">Standing<br>With Reedy</h2>
-  <div class="endorse-placeholder">Endorsements coming soon &mdash; coalition growing daily</div>
+  <div class="section-eyebrow fade-up">Endorsements</div>
+  <h2 class="section-heading fade-up">Standing<br>With Reedy</h2>
+  <div class="endorse-placeholder fade-up">
+    <p>Endorsements coming soon &mdash; coalition growing daily</p>
+  </div>
 </section>
 
 <!-- UPDATES -->
 <section class="updates" id="updates">
   <div class="updates-inner fade-up">
     <div class="section-eyebrow">Stay Connected</div>
-    <h2 class="section-heading" style="font-size:clamp(2rem,4vw,3.5rem); margin-bottom:0.5rem;">Get Campaign Updates</h2>
-    <p style="font-family:var(--body);font-size:0.9rem;color:var(--muted);margin-top:0.5rem;">Events, endorsements, and ways to make a difference in this race.</p>
+    <h2 class="section-heading" style="font-size:clamp(2.5rem,5vw,5rem); margin-bottom:0.5rem;">Get Campaign<br>Updates</h2>
+    <p style="font-family:var(--body);font-size:0.9rem;color:var(--muted);margin-top:0.8rem;line-height:1.75;">Events, endorsements, and ways to make a difference in this race.</p>
     <form class="updates-form" action="mailto:[CAMPAIGN-EMAIL-PLACEHOLDER]" method="post" enctype="text/plain">
       <input type="email" name="email" placeholder="Your email address" required aria-label="Email address">
       <button type="submit">Sign Up</button>
@@ -877,12 +1215,19 @@
 </section>
 
 <!-- DONATE -->
-<div class="donate-banner" id="donate" role="region" aria-label="Donate">
-  <h2>
-    <span>Help Elect</span>
-    Reedy Berg
-  </h2>
-  <a href="#donate-placeholder" class="btn-white">Donate Today</a>
+<div class="donate-section" id="donate" role="region" aria-label="Donate">
+  <div class="donate-inner">
+    <div class="donate-stars">
+      <span class="donate-star">★</span>
+      <span class="donate-star">★</span>
+      <span class="donate-star">★</span>
+      <span class="donate-star">★</span>
+      <span class="donate-star">★</span>
+    </div>
+    <p class="donate-tagline">Help Elect</p>
+    <h2 class="donate-headline fade-up">Reedy Berg<br>For State House</h2>
+    <a href="#donate-placeholder" class="btn-white fade-up" data-delay="2">Donate Today</a>
+  </div>
 </div>
 
 <!-- VOLUNTEER -->
@@ -890,7 +1235,7 @@
   <div class="volunteer-cta fade-up">
     <div class="section-eyebrow">Get Involved</div>
     <h2>Join<br>The Team</h2>
-    <p>Winning LD-15 takes neighbors talking to neighbors. Whether you have five hours or fifty, there's a place for you.</p>
+    <p>Winning LD-15 takes neighbors talking to neighbors. Whether you have five hours or fifty, there's a place for you on this team.</p>
     <ul class="ways-list">
       <li>Door-to-door canvassing</li>
       <li>Phone banking</li>
@@ -899,7 +1244,7 @@
       <li>Social media &amp; digital outreach</li>
     </ul>
   </div>
-  <form class="vol-form fade-up" action="mailto:[VOLUNTEER-EMAIL-PLACEHOLDER]" method="post" enctype="text/plain">
+  <form class="vol-form fade-up" data-delay="2" action="mailto:[VOLUNTEER-EMAIL-PLACEHOLDER]" method="post" enctype="text/plain">
     <div class="form-row">
       <div class="form-group">
         <label for="v-first">First Name</label>
@@ -935,8 +1280,8 @@
 
 <!-- CONTACT -->
 <section class="contact" id="contact">
-  <div class="section-eyebrow">Contact</div>
-  <h2 class="section-heading" style="font-size:clamp(2rem,4vw,3.5rem); margin-bottom:0;">Get in Touch</h2>
+  <div class="section-eyebrow fade-up">Contact</div>
+  <h2 class="section-heading fade-up" style="font-size:clamp(2.5rem,5vw,5rem); margin-bottom:0;">Get in Touch</h2>
   <div class="contact-inner">
     <div class="contact-info fade-up">
       <div class="contact-line">
@@ -955,12 +1300,12 @@
         <a href="#" class="social-btn" aria-label="Facebook">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
         </a>
-        <a href="#" class="social-btn" aria-label="X">
+        <a href="#" class="social-btn" aria-label="X / Twitter">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
         </a>
       </div>
     </div>
-    <form class="contact-form fade-up" action="mailto:[CAMPAIGN-EMAIL-PLACEHOLDER]" method="post" enctype="text/plain">
+    <form class="contact-form fade-up" data-delay="2" action="mailto:[CAMPAIGN-EMAIL-PLACEHOLDER]" method="post" enctype="text/plain">
       <div class="form-row">
         <div class="form-group">
           <label for="c-name">Name</label>
@@ -982,73 +1327,161 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-top">
-    <div class="footer-brand">Reedy <em>Berg</em></div>
-    <div class="footer-nav">
-      <a href="#issues">Issues</a>
-      <a href="#about">About</a>
-      <a href="#endorsements">Endorsements</a>
-      <a href="#volunteer">Volunteer</a>
-      <a href="#donate">Donate</a>
-      <a href="#contact">Contact</a>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        Reedy <em>Berg</em>
+        <span class="footer-brand-stars">★ ★ ★</span>
+      </div>
+      <div class="footer-nav">
+        <a href="#issues">Issues</a>
+        <a href="#about">About</a>
+        <a href="#endorsements">Endorsements</a>
+        <a href="#volunteer">Volunteer</a>
+        <a href="#donate">Donate</a>
+        <a href="#contact">Contact</a>
+      </div>
     </div>
-  </div>
-  <div class="footer-bottom">
-    <span class="footer-copy">&copy; 2026 Reedy Berg for State House</span>
-    <span class="footer-disclosure">
-      Paid for by [COMMITTEE NAME &mdash; PENDING PDC REGISTRATION].
-      Disclosures at <a href="https://www.pdc.wa.gov/" target="_blank" rel="noopener">pdc.wa.gov</a>.
-    </span>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2026 Reedy Berg for State House</span>
+      <span class="footer-disclosure">
+        Paid for by [COMMITTEE NAME &mdash; PENDING PDC REGISTRATION].
+        Disclosures at <a href="https://www.pdc.wa.gov/" target="_blank" rel="noopener">pdc.wa.gov</a>.
+      </span>
+    </div>
   </div>
 </footer>
 
 <script>
-  const toggle = document.getElementById('navToggle');
-  const overlay = document.getElementById('navOverlay');
-  function closeNav() {
-    toggle.classList.remove('open');
-    overlay.classList.remove('open');
-    toggle.setAttribute('aria-expanded','false');
-    overlay.setAttribute('aria-hidden','true');
-    document.body.style.overflow = '';
+/* ===== NAV ===== */
+const toggle = document.getElementById('navToggle');
+const overlay = document.getElementById('navOverlay');
+function closeNav() {
+  toggle.classList.remove('open');
+  overlay.classList.remove('open');
+  toggle.setAttribute('aria-expanded','false');
+  overlay.setAttribute('aria-hidden','true');
+  document.body.style.overflow = '';
+}
+toggle.addEventListener('click', () => {
+  const open = toggle.classList.toggle('open');
+  overlay.classList.toggle('open', open);
+  toggle.setAttribute('aria-expanded', String(open));
+  overlay.setAttribute('aria-hidden', String(!open));
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+
+/* ===== SCROLL PROGRESS ===== */
+const nav = document.getElementById('nav');
+const progressBar = document.getElementById('scrollProgress');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 20);
+  const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+  progressBar.style.transform = `scaleX(${Math.min(pct, 1)})`;
+}, { passive: true });
+
+/* ===== INTERSECTION OBSERVER ===== */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade-up, .fade-left').forEach(el => io.observe(el));
+
+/* ===== HERO NAME REVEAL ===== */
+const heroLeft = document.querySelector('.hero-left');
+if (heroLeft) setTimeout(() => heroLeft.classList.add('in'), 80);
+
+/* ===== HERO CANVAS STARS ===== */
+(function() {
+  const canvas = document.getElementById('hero-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, stars = [];
+  function resize() {
+    W = canvas.width = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
   }
-  toggle.addEventListener('click', () => {
-    const open = toggle.classList.toggle('open');
-    overlay.classList.toggle('open', open);
-    toggle.setAttribute('aria-expanded', String(open));
-    overlay.setAttribute('aria-hidden', String(!open));
-    document.body.style.overflow = open ? 'hidden' : '';
-  });
+  function mkStars() {
+    stars = [];
+    const count = Math.floor((W * H) / 6000);
+    for (let i = 0; i < count; i++) {
+      stars.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: Math.random() * 1.4 + 0.3,
+        a: Math.random(),
+        da: (Math.random() - 0.5) * 0.004,
+        vx: (Math.random() - 0.5) * 0.08,
+        vy: (Math.random() - 0.5) * 0.08,
+      });
+    }
+  }
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    for (const s of stars) {
+      s.a += s.da;
+      if (s.a > 1) s.da = -Math.abs(s.da);
+      if (s.a < 0.05) s.da = Math.abs(s.da);
+      s.x += s.vx; s.y += s.vy;
+      if (s.x < 0) s.x = W;
+      if (s.x > W) s.x = 0;
+      if (s.y < 0) s.y = H;
+      if (s.y > H) s.y = 0;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${s.a * 0.55})`;
+      ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+  resize(); mkStars(); draw();
+  window.addEventListener('resize', () => { resize(); mkStars(); });
+})();
 
-  const nav = document.getElementById('nav');
-  const progressBar = document.getElementById('scrollProgress');
+/* ===== COUNT-UP ANIMATION ===== */
+function countUp(el) {
+  const target = parseInt(el.dataset.target, 10);
+  const duration = 1600;
+  const start = performance.now();
+  function step(now) {
+    const p = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.round(ease * target);
+    if (p < 1) requestAnimationFrame(step);
+    else el.textContent = target;
+  }
+  requestAnimationFrame(step);
+}
+const counterObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { countUp(e.target); counterObs.unobserve(e.target); }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.counter').forEach(el => counterObs.observe(el));
+
+/* ===== MAGNETIC BUTTONS ===== */
+document.querySelectorAll('.btn-red, .btn-ghost, .btn-white, .btn-nav-donate').forEach(btn => {
+  btn.addEventListener('mousemove', e => {
+    const r = btn.getBoundingClientRect();
+    const x = (e.clientX - r.left - r.width / 2) * 0.2;
+    const y = (e.clientY - r.top - r.height / 2) * 0.2;
+    btn.style.transform = `translate(${x}px, ${y}px)`;
+  });
+  btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+});
+
+/* ===== PARALLAX HERO PHOTO ===== */
+const heroRight = document.querySelector('.hero-right img');
+if (heroRight && window.matchMedia('(min-width: 900px)').matches) {
   window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 20);
-    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-    progressBar.style.transform = `scaleX(${Math.min(pct, 1)})`;
+    const y = window.scrollY;
+    heroRight.style.transform = `scale(1.18) translate(0, ${y * 0.04}%)`;
   }, { passive: true });
-
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
-
-  // Trigger hero-left reveal on load
-  const heroLeft = document.querySelector('.hero-left');
-  if (heroLeft) setTimeout(() => heroLeft.classList.add('in'), 100);
-
-  // Magnetic buttons
-  document.querySelectorAll('.btn-red, .btn-ghost, .btn-white').forEach(btn => {
-    btn.addEventListener('mousemove', e => {
-      const r = btn.getBoundingClientRect();
-      const x = (e.clientX - r.left - r.width / 2) * 0.22;
-      const y = (e.clientY - r.top - r.height / 2) * 0.22;
-      btn.style.transform = `translate(${x}px, ${y}px)`;
-    });
-    btn.addEventListener('mouseleave', () => {
-      btn.style.transform = '';
-    });
-  });
+}
 </script>
 </body>
 </html>
