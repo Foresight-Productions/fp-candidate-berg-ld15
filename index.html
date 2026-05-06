@@ -1390,10 +1390,11 @@
     <div class="section-eyebrow">Stay Connected</div>
     <h2 class="section-heading" style="font-size:clamp(2.5rem,5vw,5rem); margin-bottom:0.5rem;">Get Campaign<br>Updates</h2>
     <p style="font-family:var(--body);font-size:0.9rem;color:var(--muted);margin-top:0.8rem;line-height:1.75;">Events, endorsements, and ways to make a difference in this race.</p>
-    <form class="updates-form" action="mailto:info@reedyberg.com" method="post" enctype="text/plain">
-      <input type="email" name="email" placeholder="Your email address" required aria-label="Email address">
-      <button type="submit">Sign Up</button>
+    <form class="updates-form" id="updatesForm">
+      <input type="email" name="email" id="updatesEmail" placeholder="Your email address" required aria-label="Email address">
+      <button type="submit" id="updatesBtn">Sign Up</button>
     </form>
+    <div id="updatesStatus" style="display:none; margin-top:1rem; font-family:var(--body); font-size:0.85rem; color:var(--muted);"></div>
   </div>
 </section>
 
@@ -1447,7 +1448,7 @@
     </div>
 
     <!-- RIGHT: Single form -->
-    <form class="connect-form" action="mailto:info@reedyberg.com" method="post" enctype="text/plain">
+    <form class="connect-form" id="campaignForm">
       <div class="form-row">
         <div class="form-group">
           <label for="cf-first">First Name</label>
@@ -1483,7 +1484,8 @@
         <label for="cf-msg">Message (optional)</label>
         <textarea id="cf-msg" name="message" placeholder="Say hello, ask a question, or share what matters to you..."></textarea>
       </div>
-      <button type="submit" class="btn-submit">Send Message</button>
+      <button type="submit" class="btn-submit" id="formSubmitBtn">Send Message</button>
+      <div id="formStatus" style="display:none; margin-top:1rem; font-family:var(--body); font-size:0.88rem; padding:1rem; border-left:3px solid var(--red);"></div>
     </form>
 
   </div>
@@ -1672,6 +1674,81 @@ if (heroRight && window.matchMedia('(min-width: 900px)').matches) {
     heroRight.style.transform = `scale(1.18) translate(0, ${y * 0.04}%)`;
   }, { passive: true });
 }
+
+/* ===== EMAIL SIGNUP ===== */
+(function() {
+  const form = document.getElementById('updatesForm');
+  if (!form) return;
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('updatesBtn');
+    const status = document.getElementById('updatesStatus');
+    const email = document.getElementById('updatesEmail').value;
+    btn.textContent = '...';
+    btn.disabled = true;
+    try {
+      const res = await fetch('https://reedy-berg-contact.matt-14c.workers.dev', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ first_name: 'Email Signup', last_name: '', email, message: 'Signed up for campaign updates.' }),
+      });
+      const result = await res.json();
+      status.textContent = result.success ? 'You\'re signed up — thanks for your support!' : 'Something went wrong. Try again.';
+    } catch { status.textContent = 'Something went wrong. Try again.'; }
+    status.style.display = 'block';
+    btn.textContent = 'Sign Up';
+    btn.disabled = false;
+  });
+})();
+
+/* ===== CONTACT FORM SUBMISSION ===== */
+(function() {
+  const form = document.getElementById('campaignForm');
+  if (!form) return;
+  const btn = document.getElementById('formSubmitBtn');
+  const status = document.getElementById('formStatus');
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    status.style.display = 'none';
+
+    const data = {
+      first_name: form.querySelector('[name=first_name]').value,
+      last_name:  form.querySelector('[name=last_name]').value,
+      email:      form.querySelector('[name=email]').value,
+      phone:      form.querySelector('[name=phone]').value,
+      message:    form.querySelector('[name=message]').value,
+      interests:  [...form.querySelectorAll('[name=interests]:checked')].map(el => el.value),
+    };
+
+    try {
+      const res = await fetch('https://reedy-berg-contact.matt-14c.workers.dev', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      const result = await res.json();
+      if (result.success) {
+        status.style.borderColor = 'var(--red)';
+        status.style.color = 'var(--white)';
+        status.textContent = 'Message sent — thank you! The campaign will be in touch soon.';
+        form.reset();
+      } else {
+        throw new Error(result.error || 'Unknown error');
+      }
+    } catch (err) {
+      status.style.borderColor = '#e55';
+      status.style.color = '#f99';
+      status.textContent = 'Something went wrong. Please try again or call (509) 255-7116.';
+    }
+
+    status.style.display = 'block';
+    btn.textContent = 'Send Message';
+    btn.disabled = false;
+  });
+})();
 
 /* ===== DONATE COMING SOON MODAL ===== */
 (function() {
