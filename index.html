@@ -784,34 +784,21 @@
       background-size: 52px 52px; pointer-events: none;
     }
     .connect-section > * { position: relative; z-index: 1; }
-    .connect-header { margin-bottom: 4rem; }
+    .connect-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 7rem;
+      align-items: start;
+    }
     .connect-heading {
       font-family: 'Bebas Neue', sans-serif; font-weight: 400; text-transform: uppercase;
       font-size: clamp(2.8rem, 4.5vw, 4.5rem); letter-spacing: 0.03em;
-      color: var(--white); line-height: 0.92; margin-top: 0.5rem;
-    }
-    .connect-grid {
-      display: grid;
-      grid-template-columns: 1fr 1px 1fr;
-      gap: 0 5rem;
-      align-items: start;
-    }
-    .connect-divider {
-      background: var(--border);
-      align-self: stretch;
-    }
-    .connect-panel-label {
-      display: flex; align-items: center; gap: 0.6rem;
-      font-family: var(--heading); font-size: 0.66rem; font-weight: 700;
-      letter-spacing: 0.2em; text-transform: uppercase; color: var(--red);
-      margin-bottom: 1rem; padding-bottom: 1rem;
-      border-bottom: 1px solid var(--border);
+      color: var(--white); line-height: 0.92; margin-top: 0.5rem; margin-bottom: 1.5rem;
     }
     .connect-panel-desc {
       font-family: var(--body); font-size: 0.9rem; font-weight: 300;
       color: var(--muted); line-height: 1.8; margin-bottom: 1.5rem;
     }
-    .contact-lines { margin-bottom: 1.5rem; }
     .ways-list { list-style: none; }
     .ways-list li {
       font-family: var(--body); font-size: 0.88rem; color: var(--muted);
@@ -979,7 +966,6 @@
       .bio-photo-overlay { background: linear-gradient(to top, var(--surface) 0%, transparent 40%); }
       .bio-content { padding: 3.5rem 5%; }
       .connect-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .connect-divider { display: none; }
       .exp-timeline::before { display: none; }
       .exp-item::after { display: none; }
     }
@@ -1362,21 +1348,15 @@
   </div>
 </div>
 
-<!-- CONNECT: Volunteer + Contact combined -->
+<!-- CONNECT: Single unified section -->
 <section class="connect-section" id="volunteer">
-  <div class="connect-header fade-up">
-    <div class="section-eyebrow">Get Involved</div>
-    <h2 class="connect-heading">Connect With<br>The Campaign</h2>
-  </div>
   <div class="connect-grid">
 
-    <!-- LEFT: Volunteer -->
-    <div class="connect-panel fade-up" id="contact">
-      <div class="connect-panel-label">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-        Volunteer
-      </div>
-      <p class="connect-panel-desc">Winning LD-15 takes neighbors talking to neighbors. Whether you have five hours or fifty, there's a place for you on this team.</p>
+    <!-- LEFT: Intro + info -->
+    <div class="connect-info fade-up" id="contact">
+      <div class="section-eyebrow">Get Involved</div>
+      <h2 class="connect-heading">Join the<br>Campaign</h2>
+      <p class="connect-panel-desc">Winning LD-15 takes neighbors talking to neighbors. Whether you want to volunteer, ask a question, or just say hello — Reedy's team wants to hear from you.</p>
       <ul class="ways-list">
         <li>Door-to-door canvassing</li>
         <li>Phone banking</li>
@@ -1384,62 +1364,16 @@
         <li>Host a neighborhood meet-and-greet</li>
         <li>Social media &amp; digital outreach</li>
       </ul>
-      <form class="vol-form" action="mailto:[VOLUNTEER-EMAIL-PLACEHOLDER]" method="post" enctype="text/plain" style="margin-top:2rem;">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="v-first">First Name</label>
-            <input type="text" id="v-first" name="first_name" required>
-          </div>
-          <div class="form-group">
-            <label for="v-last">Last Name</label>
-            <input type="text" id="v-last" name="last_name" required>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="v-email">Email Address</label>
-          <input type="email" id="v-email" name="email" required>
-        </div>
-        <div class="form-group">
-          <label for="v-phone">Phone (optional)</label>
-          <input type="tel" id="v-phone" name="phone">
-        </div>
-        <div class="checkbox-section">
-          <span class="checkbox-label">I want to help with:</span>
-          <div class="checkbox-grid">
-            <label><input type="checkbox" name="interests" value="canvassing"> Door Knocking</label>
-            <label><input type="checkbox" name="interests" value="phones"> Phone Banking</label>
-            <label><input type="checkbox" name="interests" value="signs"> Yard Signs</label>
-            <label><input type="checkbox" name="interests" value="events"> Host an Event</label>
-            <label><input type="checkbox" name="interests" value="social"> Social Media</label>
-            <label><input type="checkbox" name="interests" value="other"> Other</label>
-          </div>
-        </div>
-        <button type="submit" class="btn-submit">Sign Up to Volunteer</button>
-      </form>
-    </div>
-
-    <!-- DIVIDER -->
-    <div class="connect-divider" aria-hidden="true"></div>
-
-    <!-- RIGHT: Contact -->
-    <div class="connect-panel fade-up" data-delay="2">
-      <div class="connect-panel-label">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.4 10.8 19.79 19.79 0 01.34 2.18 2 2 0 012.33 0h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L6.26 7.95a16 16 0 006.07 6.07l1.31-1.31a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
-        Get in Touch
-      </div>
-      <p class="connect-panel-desc">Have a question, a concern, or just want to share what matters to you? Reedy's team reads every message.</p>
-      <div class="contact-lines">
-        <div class="contact-line">
-          <span class="contact-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          </span>
-          <div class="contact-text">
-            4001 Summitview Ave Ste 5 Mailbox 207<br>
-            Yakima, WA 98908
-          </div>
+      <div class="contact-line" style="margin-top:2rem;">
+        <span class="contact-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </span>
+        <div class="contact-text">
+          4001 Summitview Ave Ste 5 Mailbox 207<br>
+          Yakima, WA 98908
         </div>
       </div>
-      <div class="socials" style="margin-bottom:1.5rem;">
+      <div class="socials" style="margin-top:1.5rem;">
         <a href="#" class="social-btn" aria-label="Facebook">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
         </a>
@@ -1447,24 +1381,47 @@
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
         </a>
       </div>
-      <form class="contact-form" action="mailto:[CAMPAIGN-EMAIL-PLACEHOLDER]" method="post" enctype="text/plain">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="c-name">Name</label>
-            <input type="text" id="c-name" name="name" required>
-          </div>
-          <div class="form-group">
-            <label for="c-email">Email</label>
-            <input type="email" id="c-email" name="email" required>
-          </div>
+    </div>
+
+    <!-- RIGHT: Single form -->
+    <form class="connect-form fade-up" data-delay="2" action="mailto:[CAMPAIGN-EMAIL-PLACEHOLDER]" method="post" enctype="text/plain">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="cf-first">First Name</label>
+          <input type="text" id="cf-first" name="first_name" required>
         </div>
         <div class="form-group">
-          <label for="c-msg">Message</label>
-          <textarea id="c-msg" name="message" required placeholder="Say hello or share what matters to you..."></textarea>
+          <label for="cf-last">Last Name</label>
+          <input type="text" id="cf-last" name="last_name" required>
         </div>
-        <button type="submit" class="btn-submit">Send Message</button>
-      </form>
-    </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="cf-email">Email Address</label>
+          <input type="email" id="cf-email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="cf-phone">Phone (optional)</label>
+          <input type="tel" id="cf-phone" name="phone">
+        </div>
+      </div>
+      <div class="checkbox-section">
+        <span class="checkbox-label">I want to help with: (optional)</span>
+        <div class="checkbox-grid">
+          <label><input type="checkbox" name="interests" value="canvassing"> Door Knocking</label>
+          <label><input type="checkbox" name="interests" value="phones"> Phone Banking</label>
+          <label><input type="checkbox" name="interests" value="signs"> Yard Signs</label>
+          <label><input type="checkbox" name="interests" value="events"> Host an Event</label>
+          <label><input type="checkbox" name="interests" value="social"> Social Media</label>
+          <label><input type="checkbox" name="interests" value="other"> Other</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="cf-msg">Message (optional)</label>
+        <textarea id="cf-msg" name="message" placeholder="Say hello, ask a question, or share what matters to you..."></textarea>
+      </div>
+      <button type="submit" class="btn-submit">Send Message</button>
+    </form>
 
   </div>
 </section>
