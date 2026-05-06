@@ -437,8 +437,8 @@
 
     /* ===== VALLEY PHOTO STRIP ===== */
     .valley-strip {
-      display: grid; grid-template-columns: 1fr 1fr 1fr;
-      height: clamp(220px, 30vw, 420px);
+      display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;
+      height: clamp(220px, 28vw, 400px);
       overflow: hidden;
     }
     .valley-panel {
@@ -1182,9 +1182,16 @@
   <div class="valley-panel">
     <img id="valleyImg3"
          src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-         alt="Yakima Valley with Cascade Mountains">
+         alt="Apple orchard in the Yakima Valley">
     <div class="valley-panel-overlay"></div>
-    <span class="valley-panel-label">The Valley</span>
+    <span class="valley-panel-label">Valley Orchards</span>
+  </div>
+  <div class="valley-panel">
+    <img id="valleyImg4"
+         src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+         alt="Hop vines growing in the Yakima Valley">
+    <div class="valley-panel-overlay"></div>
+    <span class="valley-panel-label">Yakima Hops</span>
   </div>
 </div>
 
@@ -1588,7 +1595,8 @@ if (statementBg) {
 const valleyPhotos = [
   { id: 'valleyImg1', url: 'yakima-hills.jpg' },
   { id: 'valleyImg2', url: 'yakima-river.jpg' },
-  { id: 'valleyImg3', url: 'yakima-valley2.jpg' },
+  { id: 'valleyImg3', url: 'yakima-apples.jpg' },
+  { id: 'valleyImg4', url: 'yakima-hops.jpg' },
 ];
 valleyPhotos.forEach(({ id, url }) => {
   const el = document.getElementById(id);
