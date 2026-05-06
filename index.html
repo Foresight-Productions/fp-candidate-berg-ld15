@@ -685,14 +685,43 @@
       pointer-events: none; z-index: 0; line-height: 1; user-select: none;
     }
     .endorsements > * { position: relative; z-index: 1; }
-    .endorse-placeholder {
-      border: 1px solid var(--border); padding: 5rem;
-      text-align: center; position: relative; overflow: hidden;
+    .endorse-group-label {
+      font-family: var(--heading); font-size: 0.64rem; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--red);
+      margin-bottom: 1.5rem; padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--border);
     }
-    .endorse-placeholder::before {
+    .endorse-group { margin-bottom: 3.5rem; }
+    .endorse-group:last-child { margin-bottom: 0; }
+    .endorse-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+    .endorse-card {
+      background: var(--bg);
+      padding: 1.6rem 1.8rem;
+      position: relative;
+      transition: background 0.2s;
+    }
+    .endorse-card::before {
       content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(to right, transparent, var(--red), transparent);
+      position: absolute; top: 0; left: 0; width: 3px; height: 0;
+      background: var(--red);
+      transition: height 0.35s cubic-bezier(0.16,1,0.3,1);
+    }
+    .endorse-card:hover { background: rgba(200,16,46,0.04); }
+    .endorse-card:hover::before { height: 100%; }
+    .endorse-name {
+      font-family: var(--heading); font-size: 0.88rem; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--white); margin-bottom: 0.4rem;
+    }
+    .endorse-title {
+      font-family: var(--body); font-size: 0.8rem;
+      color: var(--muted); line-height: 1.5;
     }
     .endorse-placeholder p {
       font-family: var(--heading); font-size: 0.82rem;
@@ -1314,8 +1343,44 @@
 <section class="endorsements" id="endorsements">
   <div class="section-eyebrow fade-up">Endorsements</div>
   <h2 class="section-heading fade-up">Standing<br>With Reedy</h2>
-  <div class="endorse-placeholder fade-up">
-    <p>Endorsements coming soon &mdash; coalition growing daily</p>
+  <div class="endorse-group fade-up">
+    <div class="endorse-group-label">State Legislators</div>
+    <div class="endorse-grid">
+      <div class="endorse-card">
+        <div class="endorse-name">Jeremie Dufault</div>
+        <div class="endorse-title">State Representative<br>District 15, Position 2</div>
+      </div>
+      <div class="endorse-card">
+        <div class="endorse-name">Gloria Mendoza</div>
+        <div class="endorse-title">State Representative<br>District 14, Position 1</div>
+      </div>
+      <div class="endorse-card">
+        <div class="endorse-name">Deb Manjarrez</div>
+        <div class="endorse-title">State Representative<br>District 14, Position 2</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="endorse-group fade-up" data-delay="2">
+    <div class="endorse-group-label">City of Yakima Officials</div>
+    <div class="endorse-grid">
+      <div class="endorse-card">
+        <div class="endorse-name">Matt Brown</div>
+        <div class="endorse-title">Mayor<br>City of Yakima</div>
+      </div>
+      <div class="endorse-card">
+        <div class="endorse-name">Juliet Potrykus</div>
+        <div class="endorse-title">City Councilwoman<br>Yakima District 4</div>
+      </div>
+      <div class="endorse-card">
+        <div class="endorse-name">Rick Glenn</div>
+        <div class="endorse-title">City Councilman<br>Yakima District 5</div>
+      </div>
+      <div class="endorse-card">
+        <div class="endorse-name">Leo Roy</div>
+        <div class="endorse-title">City Councilman<br>Yakima District 1</div>
+      </div>
+    </div>
   </div>
 </section>
 
