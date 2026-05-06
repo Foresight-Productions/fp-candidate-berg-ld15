@@ -1610,59 +1610,67 @@ if (heroRight && window.matchMedia('(min-width: 900px)').matches) {
   }, { passive: true });
 }
 
-/* ===== DONATE COMING SOON ===== */
+/* ===== DONATE COMING SOON MODAL ===== */
 (function() {
-  // Build toast element
-  const toast = document.createElement('div');
-  toast.id = 'donate-toast';
-  toast.innerHTML = `
-    <div class="dt-inner">
-      <span class="dt-icon">★</span>
-      <div>
-        <strong>Online donations coming soon!</strong>
-        <p>We're setting up our secure donation page. Check back shortly.</p>
-      </div>
-      <button class="dt-close" aria-label="Close">&#10005;</button>
+  const modal = document.createElement('div');
+  modal.id = 'donate-modal';
+  modal.innerHTML = `
+    <div class="dm-overlay"></div>
+    <div class="dm-box">
+      <div class="dm-stars">★ ★ ★ ★ ★</div>
+      <h2 class="dm-heading">Coming Soon</h2>
+      <p class="dm-sub">Reedy Berg for State House</p>
+      <p class="dm-body">Our secure online donation page is on its way. Check back shortly — every contribution makes a difference in LD-15.</p>
+      <button class="dm-close-btn">Got It</button>
+      <button class="dm-x" aria-label="Close">&#10005;</button>
     </div>`;
-  document.body.appendChild(toast);
+  document.body.appendChild(modal);
 
   const style = document.createElement('style');
   style.textContent = `
-    #donate-toast {
-      position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(120%);
+    #donate-modal { display: none; position: fixed; inset: 0; z-index: 9999; align-items: center; justify-content: center; }
+    #donate-modal.open { display: flex; }
+    .dm-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.72); backdrop-filter: blur(4px); cursor: pointer; }
+    .dm-box {
+      position: relative; z-index: 1;
       background: var(--bg); border: 1px solid var(--red);
-      box-shadow: 0 8px 40px rgba(200,16,46,0.25);
-      padding: 1.2rem 1.5rem; z-index: 9999;
-      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
-      min-width: 300px; max-width: 90vw;
+      box-shadow: 0 24px 80px rgba(200,16,46,0.3);
+      padding: 3.5rem; text-align: center;
+      max-width: 420px; width: 90%;
+      animation: dmIn 0.35s cubic-bezier(0.16,1,0.3,1);
     }
-    #donate-toast.show { transform: translateX(-50%) translateY(0); }
-    .dt-inner { display: flex; align-items: flex-start; gap: 1rem; }
-    .dt-icon { color: var(--red); font-size: 1.3rem; flex-shrink: 0; margin-top: 0.1rem; }
-    .dt-inner strong { font-family: var(--heading); font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); display: block; margin-bottom: 0.25rem; }
-    .dt-inner p { font-family: var(--body); font-size: 0.82rem; color: var(--muted); margin: 0; }
-    .dt-close { margin-left: auto; background: none; border: none; color: var(--muted); font-size: 1rem; cursor: pointer; flex-shrink: 0; padding: 0 0 0 0.5rem; transition: color 0.2s; }
-    .dt-close:hover { color: var(--white); }
+    @keyframes dmIn { from { opacity:0; transform: scale(0.92) translateY(16px); } to { opacity:1; transform: none; } }
+    .dm-stars { color: var(--red); font-size: 0.7rem; letter-spacing: 0.4em; margin-bottom: 1.5rem; }
+    .dm-heading { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.8rem,8vw,4rem); letter-spacing: 0.05em; color: var(--white); line-height: 1; margin-bottom: 0.4rem; }
+    .dm-sub { font-family: var(--heading); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 1.5rem; }
+    .dm-body { font-family: var(--body); font-size: 0.9rem; color: var(--muted); line-height: 1.7; margin-bottom: 2rem; }
+    .dm-close-btn {
+      display: block; width: 100%; padding: 1rem;
+      background: var(--red); color: var(--white); border: none; cursor: pointer;
+      font-family: var(--heading); font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      transition: background 0.2s;
+    }
+    .dm-close-btn:hover { background: var(--red-b); }
+    .dm-x {
+      position: absolute; top: 1rem; right: 1rem;
+      background: none; border: none; color: var(--muted); font-size: 1.1rem;
+      cursor: pointer; padding: 0.4rem; transition: color 0.2s; line-height: 1;
+    }
+    .dm-x:hover { color: var(--white); }
   `;
   document.head.appendChild(style);
 
-  let toastTimer;
-  function showToast() {
-    toast.classList.add('show');
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => toast.classList.remove('show'), 4000);
-  }
-  toast.querySelector('.dt-close').addEventListener('click', () => {
-    toast.classList.remove('show');
-    clearTimeout(toastTimer);
-  });
+  function openModal() { modal.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeModal() { modal.classList.remove('open'); document.body.style.overflow = ''; }
 
-  // Intercept all donate links/buttons
+  modal.querySelector('.dm-overlay').addEventListener('click', closeModal);
+  modal.querySelector('.dm-close-btn').addEventListener('click', closeModal);
+  modal.querySelector('.dm-x').addEventListener('click', closeModal);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
   document.querySelectorAll('a[href="#donate"], a[href="#donate-placeholder"], .btn-nav-donate').forEach(el => {
-    el.addEventListener('click', function(e) {
-      e.preventDefault();
-      showToast();
-    });
+    el.addEventListener('click', e => { e.preventDefault(); openModal(); });
   });
 })();
 </script>
