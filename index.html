@@ -1170,21 +1170,21 @@
          src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
          alt="Yakima Canyon — dry hills and sagebrush of Eastern Washington">
     <div class="valley-panel-overlay"></div>
-    <span class="valley-panel-label">Yakima Canyon</span>
+    <span class="valley-panel-label">Yakima Hills</span>
   </div>
   <div class="valley-panel">
     <img id="valleyImg2"
          src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-         alt="Irrigated farm fields in the Yakima Valley">
+         alt="Yakima River Canyon">
     <div class="valley-panel-overlay"></div>
-    <span class="valley-panel-label">Valley Farmland</span>
+    <span class="valley-panel-label">Yakima River</span>
   </div>
   <div class="valley-panel">
     <img id="valleyImg3"
          src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-         alt="Mt. Rainier rising over Washington farm fields">
+         alt="Yakima Valley with Cascade Mountains">
     <div class="valley-panel-overlay"></div>
-    <span class="valley-panel-label">Mt. Rainier</span>
+    <span class="valley-panel-label">The Valley</span>
   </div>
 </div>
 
@@ -1582,13 +1582,13 @@ if (statementBg) {
   img.onload = () => {
     statementBg.style.backgroundImage = `url(${img.src})`;
   };
-  img.src = 'https://images.unsplash.com/photo-1655174421207-1589eaa122fa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1800';
+  img.src = 'yakima-valley2.jpg';
 }
 // Valley photo strip
 const valleyPhotos = [
-  { id: 'valleyImg1', url: 'https://images.unsplash.com/photo-1655174421207-1589eaa122fa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800' },
-  { id: 'valleyImg2', url: 'https://images.unsplash.com/photo-1714786654492-a78602ed7b8c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800' },
-  { id: 'valleyImg3', url: 'https://images.unsplash.com/photo-1714793982502-c2a4d88dccc5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800' },
+  { id: 'valleyImg1', url: 'yakima-hills.jpg' },
+  { id: 'valleyImg2', url: 'yakima-river.jpg' },
+  { id: 'valleyImg3', url: 'yakima-valley2.jpg' },
 ];
 valleyPhotos.forEach(({ id, url }) => {
   const el = document.getElementById(id);
