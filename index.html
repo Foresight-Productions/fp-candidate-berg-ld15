@@ -553,21 +553,19 @@
       font-style: italic; border-left: 3px solid var(--red);
       padding-left: 1.2rem; margin-top: 0.8rem;
     }
-    .bio-stats {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 1px; background: rgba(200,16,46,0.2);
-      margin-top: 2.5rem; border: 1px solid rgba(200,16,46,0.2);
+    .bio-creds {
+      display: flex; flex-wrap: wrap; gap: 0.6rem;
+      margin-top: 2rem;
     }
-    .bio-stat { background: var(--surface-2); padding: 1.5rem 1.8rem; }
-    .bio-stat-val {
-      font-family: 'Bebas Neue', sans-serif; font-size: 3rem;
-      color: var(--red); letter-spacing: -0.01em; line-height: 1;
-      text-shadow: 0 0 30px rgba(200,16,46,0.35);
-    }
-    .bio-stat-label {
-      font-family: var(--body); font-size: 0.72rem; font-weight: 500;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--muted); margin-top: 0.3rem;
+    .bio-cred {
+      font-family: var(--body); font-size: 0.78rem; font-weight: 500;
+      color: var(--off-white);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-left: 3px solid var(--red);
+      padding: 0.5rem 0.9rem;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
     }
 
     /* ===== STATS STRIP ===== */
@@ -1201,19 +1199,13 @@
 <!-- BIO -->
 <div class="bio" id="about">
   <div class="bio-photo">
-    <img src="family.jpg"
-         alt="Reedy Berg with his family in the Yakima Valley">
+    <img src="reedy-headshot.jpg"
+         alt="Reedy Berg, candidate for WA State House District 15"
+         style="object-position: center top;">
     <div class="bio-photo-overlay"></div>
     <div class="bio-photo-accent"></div>
   </div>
   <div class="bio-content fade-up">
-    <div class="bio-headshot-wrap">
-      <img src="reedy-headshot.jpg" alt="Reedy Berg" class="bio-headshot">
-      <div class="bio-headshot-meta">
-        <span class="bio-headshot-name">Reedy Berg</span>
-        <span class="bio-headshot-title">Candidate &mdash; WA House LD-15 Pos. 2</span>
-      </div>
-    </div>
     <div class="section-eyebrow">About Reedy</div>
     <p class="bio-pull">
       Not a career politician.<br>
@@ -1224,23 +1216,12 @@
     <p class="bio-body">Driven by a passion for education, Reedy earned a master's degree from Heritage University and has taught history and civics at Toppenish Middle School since 2016, helping students understand government and their role in it.</p>
     <p class="bio-body">In 2024, voters elected Reedy to the Yakima City Council. In 2026, his fellow council members selected him to serve as Deputy Mayor. He and his wife Nicole are raising their two children, Reedy Jr. (8) and Sadie (6), in the Valley where their family roots run deep.</p>
     <p class="bio-body-highlight">A conservative Republican committed to smaller government, protecting the rural way of life, slowing tax growth, and greater accountability in Olympia.</p>
-    <div class="bio-stats">
-      <div class="bio-stat">
-        <div class="bio-stat-val counter" data-target="37">0</div>
-        <div class="bio-stat-label">Years Old</div>
-      </div>
-      <div class="bio-stat">
-        <div class="bio-stat-val">9+</div>
-        <div class="bio-stat-label">Years Teaching</div>
-      </div>
-      <div class="bio-stat">
-        <div class="bio-stat-val counter" data-target="2">0</div>
-        <div class="bio-stat-label">Kids in Local Schools</div>
-      </div>
-      <div class="bio-stat">
-        <div class="bio-stat-val">D.M.</div>
-        <div class="bio-stat-label">Yakima Deputy Mayor</div>
-      </div>
+    <div class="bio-creds">
+      <span class="bio-cred">⭐ Deputy Mayor, Yakima</span>
+      <span class="bio-cred">🏛 City Council Member</span>
+      <span class="bio-cred">📚 9+ Years Teaching</span>
+      <span class="bio-cred">🎓 Gonzaga University</span>
+      <span class="bio-cred">🌾 Ag Industry Background</span>
     </div>
   </div>
 </div>
