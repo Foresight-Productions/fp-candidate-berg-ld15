@@ -325,6 +325,44 @@
       color: var(--muted); margin-top: 0.3rem;
     }
 
+    /* ===== EXPERIENCE ===== */
+    .experience { background: var(--bg); padding: 7rem 8%; }
+    .experience-inner { max-width: 900px; }
+    .experience-intro {
+      font-family: var(--body); font-size: 1rem; line-height: 1.8;
+      color: rgba(255,255,255,0.6); margin-bottom: 4rem; max-width: 680px;
+    }
+    .exp-timeline { display: flex; flex-direction: column; }
+    .exp-item {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 2rem;
+      padding: 2rem 0;
+      border-top: 1px solid var(--border);
+      align-items: start;
+      transition: border-color 0.2s;
+    }
+    .exp-item:last-child { border-bottom: 1px solid var(--border); }
+    .exp-item:hover { border-color: var(--red); }
+    .exp-dates {
+      font-family: var(--heading); font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--red); padding-top: 0.2rem;
+    }
+    .exp-role {
+      font-family: var(--heading); font-size: 1.4rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.04em;
+      color: var(--white); line-height: 1.1; margin-bottom: 0.3rem;
+    }
+    .exp-org {
+      font-family: var(--body); font-size: 0.85rem;
+      color: rgba(255,255,255,0.45); letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    @media (max-width: 600px) {
+      .exp-item { grid-template-columns: 1fr; gap: 0.4rem; }
+      .exp-dates { font-size: 0.68rem; }
+    }
+
     /* ===== ENDORSEMENTS ===== */
     .endorsements { background: var(--surface-2); padding: 7rem 8%; }
     .endorse-placeholder {
@@ -740,29 +778,83 @@
       Not a career politician.<br>
       <em>Your neighbor.</em>
     </p>
-    <p class="bio-body">Reedy Berg grew up in the Yakima Valley, graduated from Eisenhower High School, and earned his degree from Gonzaga University where he pitched for the baseball program. After years in the fruit industry, he chose to give back by becoming an educator.</p>
-    <p class="bio-body">Since 2016, Reedy has taught history and civics at Toppenish Middle School. He holds a Master's in Education from Heritage University. In 2024, the community elected him to Yakima City Council, where he now serves as Deputy Mayor.</p>
-    <p class="bio-body">Reedy and his wife have two young children and family roots in the Valley stretching back 40+ years. He knows what's at stake here because he lives it.</p>
+    <p class="bio-body">Reedy Berg, 37, was raised in the Yakima Valley. He graduated from Eisenhower High School and earned a bachelor's degree from Gonzaga University, where he pitched for the baseball team.</p>
+    <p class="bio-body">After college, Reedy spent several years working in the Valley's agricultural industry, gaining firsthand knowledge of farming and the challenges facing local producers — experience that informs his commitment to representing the Yakima Valley.</p>
+    <p class="bio-body">Driven by a passion for education, Reedy earned a master's degree from Heritage University and has taught history and civics at Toppenish Middle School since 2016, helping students understand government and their role in it.</p>
+    <p class="bio-body">In 2024, voters elected Reedy to the Yakima City Council. In 2026, his fellow council members selected him to serve as Deputy Mayor. He and his wife Nicole are raising their two children, Reedy Jr. (8) and Sadie (6), in the Valley where their family roots run deep.</p>
+    <p class="bio-body" style="color:var(--off-white); font-style:italic;">A conservative Republican committed to smaller government, protecting the rural way of life, slowing tax growth, and greater accountability in Olympia.</p>
     <div class="bio-stats">
       <div class="bio-stat">
-        <div class="bio-stat-val">8+</div>
-        <div class="bio-stat-label">Years Teaching</div>
+        <div class="bio-stat-val">37</div>
+        <div class="bio-stat-label">Years Old</div>
       </div>
       <div class="bio-stat">
-        <div class="bio-stat-val">40+</div>
-        <div class="bio-stat-label">Years Family in Valley</div>
+        <div class="bio-stat-val">9+</div>
+        <div class="bio-stat-label">Years Teaching</div>
       </div>
       <div class="bio-stat">
         <div class="bio-stat-val">2</div>
         <div class="bio-stat-label">Kids in Local Schools</div>
       </div>
       <div class="bio-stat">
-        <div class="bio-stat-val">D7</div>
+        <div class="bio-stat-val">D.M.</div>
         <div class="bio-stat-label">Yakima Deputy Mayor</div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- EXPERIENCE -->
+<section class="experience" id="experience">
+  <div class="experience-inner">
+    <div class="section-eyebrow fade-up">Experience</div>
+    <h2 class="section-heading fade-up">Proven.<br>Local. Ready.</h2>
+    <p class="experience-intro fade-up">Reedy Berg's commitment to public service is rooted in real experience, steady leadership, and a deep connection to the community he serves. Throughout his career, he has taken on roles that require accountability, thoughtful decision-making, and a focus on practical results.</p>
+    <div class="exp-timeline">
+
+      <div class="exp-item fade-up">
+        <div class="exp-dates">2023 &ndash; Present</div>
+        <div>
+          <div class="exp-role">City Council Member</div>
+          <div class="exp-org">Yakima City Council</div>
+        </div>
+      </div>
+
+      <div class="exp-item fade-up">
+        <div class="exp-dates">2026 &ndash; Present</div>
+        <div>
+          <div class="exp-role">Deputy Mayor</div>
+          <div class="exp-org">City of Yakima</div>
+        </div>
+      </div>
+
+      <div class="exp-item fade-up">
+        <div class="exp-dates">2022 &ndash; Present</div>
+        <div>
+          <div class="exp-role">Professional Learning Community Lead</div>
+          <div class="exp-org">Toppenish School District</div>
+        </div>
+      </div>
+
+      <div class="exp-item fade-up">
+        <div class="exp-dates">2016 &ndash; Present</div>
+        <div>
+          <div class="exp-role">Educator</div>
+          <div class="exp-org">Toppenish Middle School</div>
+        </div>
+      </div>
+
+      <div class="exp-item fade-up">
+        <div class="exp-dates">2021 &ndash; Present</div>
+        <div>
+          <div class="exp-role">Little League Coach</div>
+          <div class="exp-org">Yakima Valley Little League</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <!-- ENDORSEMENTS -->
 <section class="endorsements" id="endorsements">
