@@ -547,42 +547,49 @@
     }
 
     /* ===== STATS STRIP ===== */
-    .stats-strip {
-      background: var(--red);
-      padding: 5rem 8%;
+    /* ===== PILLARS STRIP ===== */
+    .pillars-strip {
+      background: #040912;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 0;
       position: relative; overflow: hidden;
+      border-top: 3px solid var(--red);
     }
-    .stats-strip::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 60%);
+    .pillar-item {
+      padding: 4rem 2.5rem;
+      border-right: 1px solid rgba(255,255,255,0.07);
+      position: relative; overflow: hidden;
+      cursor: default;
+      transition: background 0.4s ease;
     }
-    .stats-strip::after {
-      content: '2026';
-      position: absolute; right: -1%; top: 50%; transform: translateY(-50%);
-      font-family: 'Bebas Neue', sans-serif; font-size: 22rem;
-      color: rgba(0,0,0,0.08); line-height: 1; pointer-events: none; z-index: 0;
-      letter-spacing: 0.04em; user-select: none;
+    .pillar-item:last-child { border-right: none; }
+    .pillar-item::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--red);
+      transform: scaleY(0); transform-origin: bottom;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 0;
     }
-    .stat-item {
-      padding: 2rem 3rem 2rem 2rem;
-      border-right: 1px solid rgba(255,255,255,0.2);
+    .pillar-item:hover::before { transform: scaleY(1); }
+    .pillar-icon {
+      font-size: 1.8rem; margin-bottom: 1.2rem;
+      position: relative; z-index: 1;
+      line-height: 1;
+    }
+    .pillar-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.6rem, 2.4vw, 2.4rem);
+      color: var(--white); letter-spacing: 0.04em;
+      line-height: 1.05; margin-bottom: 0.8rem;
       position: relative; z-index: 1;
     }
-    .stat-item:last-child { border-right: none; }
-    .stat-number {
-      font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.5rem, 5vw, 5.5rem);
-      color: var(--white); line-height: 0.9; letter-spacing: -0.01em;
-      margin-bottom: 0.5rem;
+    .pillar-desc {
+      font-family: var(--body); font-size: 0.82rem;
+      color: rgba(255,255,255,0.55); line-height: 1.6;
+      position: relative; z-index: 1;
+      transition: color 0.3s;
     }
-    .stat-label {
-      font-family: var(--heading); font-size: 0.72rem; font-weight: 500;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: rgba(255,255,255,0.75);
-    }
+    .pillar-item:hover .pillar-desc { color: rgba(255,255,255,0.9); }
 
     /* ===== EXPERIENCE ===== */
     .experience {
@@ -912,9 +919,9 @@
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 1100px) {
-      .stats-strip { grid-template-columns: repeat(2, 1fr); }
-      .stat-item:nth-child(2) { border-right: none; }
-      .stat-item:nth-child(1), .stat-item:nth-child(2) { border-bottom: 1px solid rgba(255,255,255,0.2); }
+      .pillars-strip { grid-template-columns: repeat(2, 1fr); }
+      .pillar-item:nth-child(2) { border-right: none; }
+      .pillar-item:nth-child(1), .pillar-item:nth-child(2) { border-bottom: 1px solid rgba(255,255,255,0.07); }
     }
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; min-height: auto; }
@@ -954,9 +961,9 @@
       .hero-btns .btn-red, .hero-btns .btn-ghost { width: 100%; max-width: 300px; justify-content: center; }
       .hero-election-date { display: none; }
       .bio-stats { grid-template-columns: 1fr 1fr; }
-      .stats-strip { grid-template-columns: 1fr 1fr; }
-      .stat-item { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.18); }
-      .stat-item:last-child { border-bottom: none; }
+      .pillars-strip { grid-template-columns: 1fr 1fr; }
+      .pillar-item { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.07); }
+      .pillar-item:last-child { border-bottom: none; }
       .updates-form { flex-direction: column; }
       .updates-form button { padding: 0.9rem; }
       .form-row { grid-template-columns: 1fr; }
@@ -972,7 +979,8 @@
       .hero-name { font-size: clamp(4rem, 18vw, 7rem); }
       .hero-name-outline { -webkit-text-stroke-width: 2px; }
       .statement-quote { font-size: clamp(2.8rem, 9vw, 5rem); }
-      .stats-strip { grid-template-columns: 1fr; padding: 3rem 5%; }
+      .pillars-strip { grid-template-columns: 1fr; }
+      .pillar-item { padding: 2.5rem 2rem; }
     }
   </style>
 </head>
@@ -1043,9 +1051,9 @@
   </div>
 
   <div class="hero-right">
-    <img src="family.jpg"
-         alt="Reedy Berg with his family in a Yakima Valley orchard"
-         loading="eager">
+    <img src="reedy-berg.png"
+         alt="Reedy Berg, candidate for WA State House District 15 Position 2"
+         loading="eager" style="object-position: center top;">
     <div class="hero-right-overlay"></div>
     <div class="hero-slice"></div>
   </div>
@@ -1136,7 +1144,7 @@
     <span class="stmt-star">★</span>
   </div>
   <blockquote class="statement-quote fade-up">
-    Fighting For<br><em>The Yakima Valley.</em><br>Not For Olympia.
+    Working For<br><em>The Yakima Valley.</em><br>Not Olympia.
   </blockquote>
   <p class="statement-cite fade-up" data-delay="2">— Reedy Berg &nbsp;·&nbsp; State Representative, District 15</p>
 </section>
@@ -1169,8 +1177,9 @@
 <!-- BIO -->
 <div class="bio" id="about">
   <div class="bio-photo">
-    <img src="family.jpg"
-         alt="Reedy Berg with his family in a Yakima Valley orchard">
+    <img src="reedy-berg.png"
+         alt="Reedy Berg, candidate for WA State House District 15"
+         style="object-position: center top;">
     <div class="bio-photo-overlay"></div>
     <div class="bio-photo-accent"></div>
   </div>
@@ -1206,23 +1215,27 @@
   </div>
 </div>
 
-<!-- STATS STRIP -->
-<section class="stats-strip" aria-label="Key facts about Reedy Berg">
-  <div class="stat-item fade-up">
-    <div class="stat-number">9+</div>
-    <div class="stat-label">Years in the Classroom</div>
+<!-- PILLARS STRIP -->
+<section class="pillars-strip" aria-label="Reedy Berg's core commitments">
+  <div class="pillar-item fade-up">
+    <div class="pillar-icon">💰</div>
+    <div class="pillar-title">Lower Taxes</div>
+    <div class="pillar-desc">Cut wasteful government spending. Keep more money in the hands of Valley families and small businesses.</div>
   </div>
-  <div class="stat-item fade-up" data-delay="2">
-    <div class="stat-number">40+</div>
-    <div class="stat-label">Years Family in Valley</div>
+  <div class="pillar-item fade-up" data-delay="2">
+    <div class="pillar-icon">🌾</div>
+    <div class="pillar-title">Protect Agriculture</div>
+    <div class="pillar-desc">Fight for water rights, fair regulations, and policies that keep farming viable for the next generation.</div>
   </div>
-  <div class="stat-item fade-up" data-delay="3">
-    <div class="stat-number">2</div>
-    <div class="stat-label">Kids in Local Schools</div>
+  <div class="pillar-item fade-up" data-delay="3">
+    <div class="pillar-icon">👨‍👩‍👧</div>
+    <div class="pillar-title">Parental Rights</div>
+    <div class="pillar-desc">Parents — not bureaucrats — raise our children. Restore transparency and local control in our schools.</div>
   </div>
-  <div class="stat-item fade-up" data-delay="4">
-    <div class="stat-number">&#x2605;</div>
-    <div class="stat-label">Yakima Deputy Mayor</div>
+  <div class="pillar-item fade-up" data-delay="4">
+    <div class="pillar-icon">🔒</div>
+    <div class="pillar-title">Safe Communities</div>
+    <div class="pillar-desc">Back the badge. Stop the fentanyl flood devastating Yakima. Enforce the laws already on the books.</div>
   </div>
 </section>
 
