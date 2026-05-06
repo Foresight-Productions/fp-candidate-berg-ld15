@@ -771,12 +771,11 @@
     .btn-white:hover { background: transparent; color: var(--white); box-shadow: 0 0 40px rgba(255,255,255,0.2); }
 
     /* ===== VOLUNTEER ===== */
-    .volunteer {
+    .connect-section {
       background: var(--bg); padding: 8rem 8%;
-      display: grid; grid-template-columns: 1fr 1.5fr; gap: 7rem; align-items: start;
       position: relative; overflow: hidden;
     }
-    .volunteer::before {
+    .connect-section::before {
       content: '';
       position: absolute; inset: 0;
       background-image:
@@ -784,16 +783,35 @@
         linear-gradient(90deg, rgba(255,255,255,0.016) 1px, transparent 1px);
       background-size: 52px 52px; pointer-events: none;
     }
-    .volunteer > * { position: relative; z-index: 1; }
-    .volunteer-cta h2 {
+    .connect-section > * { position: relative; z-index: 1; }
+    .connect-header { margin-bottom: 4rem; }
+    .connect-heading {
       font-family: 'Bebas Neue', sans-serif; font-weight: 400; text-transform: uppercase;
       font-size: clamp(2.8rem, 4.5vw, 4.5rem); letter-spacing: 0.03em;
-      color: var(--white); line-height: 0.9; margin-bottom: 1.5rem;
+      color: var(--white); line-height: 0.92; margin-top: 0.5rem;
     }
-    .volunteer-cta p {
+    .connect-grid {
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr;
+      gap: 0 5rem;
+      align-items: start;
+    }
+    .connect-divider {
+      background: var(--border);
+      align-self: stretch;
+    }
+    .connect-panel-label {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-family: var(--heading); font-size: 0.66rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--red);
+      margin-bottom: 1rem; padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .connect-panel-desc {
       font-family: var(--body); font-size: 0.9rem; font-weight: 300;
-      color: var(--muted); line-height: 1.8; margin-bottom: 2rem;
+      color: var(--muted); line-height: 1.8; margin-bottom: 1.5rem;
     }
+    .contact-lines { margin-bottom: 1.5rem; }
     .ways-list { list-style: none; }
     .ways-list li {
       font-family: var(--body); font-size: 0.88rem; color: var(--muted);
@@ -846,9 +864,7 @@
     }
     .btn-submit:hover { background: var(--off-white); }
 
-    /* ===== CONTACT ===== */
-    .contact { background: var(--surface); padding: 8rem 8%; }
-    .contact-inner { display: grid; grid-template-columns: 1fr 1.5fr; gap: 7rem; margin-top: 3rem; }
+    /* ===== CONTACT LINES (used in combined connect section) ===== */
     .contact-line {
       display: flex; align-items: center; gap: 1.2rem;
       padding: 1.2rem 0; border-bottom: 1px solid var(--border);
@@ -962,13 +978,13 @@
       .bio-photo { height: 65vw; }
       .bio-photo-overlay { background: linear-gradient(to top, var(--surface) 0%, transparent 40%); }
       .bio-content { padding: 3.5rem 5%; }
-      .volunteer { grid-template-columns: 1fr; gap: 3rem; }
-      .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .connect-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .connect-divider { display: none; }
       .exp-timeline::before { display: none; }
       .exp-item::after { display: none; }
     }
     @media (max-width: 768px) {
-      section, .issues, .endorsements, .updates, .volunteer, .contact { padding: 5rem 5%; }
+      section, .issues, .endorsements, .updates, .connect-section { padding: 5rem 5%; }
       .experience, .bio-content { padding: 5rem 5%; }
       .donate-section { padding: 5rem 5%; }
       .nav-links { display: none; }
@@ -1346,76 +1362,84 @@
   </div>
 </div>
 
-<!-- VOLUNTEER -->
-<div class="volunteer" id="volunteer">
-  <div class="volunteer-cta fade-up">
+<!-- CONNECT: Volunteer + Contact combined -->
+<section class="connect-section" id="volunteer">
+  <div class="connect-header fade-up">
     <div class="section-eyebrow">Get Involved</div>
-    <h2>Join<br>The Team</h2>
-    <p>Winning LD-15 takes neighbors talking to neighbors. Whether you have five hours or fifty, there's a place for you on this team.</p>
-    <ul class="ways-list">
-      <li>Door-to-door canvassing</li>
-      <li>Phone banking</li>
-      <li>Yard signs &amp; literature drops</li>
-      <li>Host a neighborhood meet-and-greet</li>
-      <li>Social media &amp; digital outreach</li>
-    </ul>
+    <h2 class="connect-heading">Connect With<br>The Campaign</h2>
   </div>
-  <form class="vol-form fade-up" data-delay="2" action="mailto:[VOLUNTEER-EMAIL-PLACEHOLDER]" method="post" enctype="text/plain">
-    <div class="form-row">
-      <div class="form-group">
-        <label for="v-first">First Name</label>
-        <input type="text" id="v-first" name="first_name" required>
-      </div>
-      <div class="form-group">
-        <label for="v-last">Last Name</label>
-        <input type="text" id="v-last" name="last_name" required>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="v-email">Email Address</label>
-      <input type="email" id="v-email" name="email" required>
-    </div>
-    <div class="form-group">
-      <label for="v-phone">Phone (optional)</label>
-      <input type="tel" id="v-phone" name="phone">
-    </div>
-    <div class="checkbox-section">
-      <span class="checkbox-label">I want to help with:</span>
-      <div class="checkbox-grid">
-        <label><input type="checkbox" name="interests" value="canvassing"> Door Knocking</label>
-        <label><input type="checkbox" name="interests" value="phones"> Phone Banking</label>
-        <label><input type="checkbox" name="interests" value="signs"> Yard Signs</label>
-        <label><input type="checkbox" name="interests" value="events"> Host an Event</label>
-        <label><input type="checkbox" name="interests" value="social"> Social Media</label>
-        <label><input type="checkbox" name="interests" value="other"> Other</label>
-      </div>
-    </div>
-    <button type="submit" class="btn-submit">Sign Up to Volunteer</button>
-  </form>
-</div>
+  <div class="connect-grid">
 
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="section-eyebrow fade-up">Contact</div>
-  <h2 class="section-heading fade-up" style="font-size:clamp(2.5rem,5vw,5rem); margin-bottom:0;">Get in Touch</h2>
-  <div class="contact-inner">
-    <div class="contact-info fade-up">
-      <div class="contact-line">
-        <span class="contact-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.4 10.8 19.79 19.79 0 01.34 2.18 2 2 0 012.33 0h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L6.26 7.95a16 16 0 006.07 6.07l1.31-1.31a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
-        </span>
-        <div class="contact-text"><a href="tel:[CAMPAIGN-PHONE-PLACEHOLDER]">[CAMPAIGN PHONE]</a></div>
+    <!-- LEFT: Volunteer -->
+    <div class="connect-panel fade-up" id="contact">
+      <div class="connect-panel-label">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        Volunteer
       </div>
-      <div class="contact-line">
-        <span class="contact-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        </span>
-        <div class="contact-text">
-          4001 Summitview Ave Ste 5 Mailbox 207<br>
-          Yakima, WA 98908
+      <p class="connect-panel-desc">Winning LD-15 takes neighbors talking to neighbors. Whether you have five hours or fifty, there's a place for you on this team.</p>
+      <ul class="ways-list">
+        <li>Door-to-door canvassing</li>
+        <li>Phone banking</li>
+        <li>Yard signs &amp; literature drops</li>
+        <li>Host a neighborhood meet-and-greet</li>
+        <li>Social media &amp; digital outreach</li>
+      </ul>
+      <form class="vol-form" action="mailto:[VOLUNTEER-EMAIL-PLACEHOLDER]" method="post" enctype="text/plain" style="margin-top:2rem;">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="v-first">First Name</label>
+            <input type="text" id="v-first" name="first_name" required>
+          </div>
+          <div class="form-group">
+            <label for="v-last">Last Name</label>
+            <input type="text" id="v-last" name="last_name" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="v-email">Email Address</label>
+          <input type="email" id="v-email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="v-phone">Phone (optional)</label>
+          <input type="tel" id="v-phone" name="phone">
+        </div>
+        <div class="checkbox-section">
+          <span class="checkbox-label">I want to help with:</span>
+          <div class="checkbox-grid">
+            <label><input type="checkbox" name="interests" value="canvassing"> Door Knocking</label>
+            <label><input type="checkbox" name="interests" value="phones"> Phone Banking</label>
+            <label><input type="checkbox" name="interests" value="signs"> Yard Signs</label>
+            <label><input type="checkbox" name="interests" value="events"> Host an Event</label>
+            <label><input type="checkbox" name="interests" value="social"> Social Media</label>
+            <label><input type="checkbox" name="interests" value="other"> Other</label>
+          </div>
+        </div>
+        <button type="submit" class="btn-submit">Sign Up to Volunteer</button>
+      </form>
+    </div>
+
+    <!-- DIVIDER -->
+    <div class="connect-divider" aria-hidden="true"></div>
+
+    <!-- RIGHT: Contact -->
+    <div class="connect-panel fade-up" data-delay="2">
+      <div class="connect-panel-label">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.4 10.8 19.79 19.79 0 01.34 2.18 2 2 0 012.33 0h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L6.26 7.95a16 16 0 006.07 6.07l1.31-1.31a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Get in Touch
+      </div>
+      <p class="connect-panel-desc">Have a question, a concern, or just want to share what matters to you? Reedy's team reads every message.</p>
+      <div class="contact-lines">
+        <div class="contact-line">
+          <span class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          <div class="contact-text">
+            4001 Summitview Ave Ste 5 Mailbox 207<br>
+            Yakima, WA 98908
+          </div>
         </div>
       </div>
-      <div class="socials">
+      <div class="socials" style="margin-bottom:1.5rem;">
         <a href="#" class="social-btn" aria-label="Facebook">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
         </a>
@@ -1423,24 +1447,25 @@
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
         </a>
       </div>
+      <form class="contact-form" action="mailto:[CAMPAIGN-EMAIL-PLACEHOLDER]" method="post" enctype="text/plain">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="c-name">Name</label>
+            <input type="text" id="c-name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="c-email">Email</label>
+            <input type="email" id="c-email" name="email" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="c-msg">Message</label>
+          <textarea id="c-msg" name="message" required placeholder="Say hello or share what matters to you..."></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Send Message</button>
+      </form>
     </div>
-    <form class="contact-form fade-up" data-delay="2" action="mailto:[CAMPAIGN-EMAIL-PLACEHOLDER]" method="post" enctype="text/plain">
-      <div class="form-row">
-        <div class="form-group">
-          <label for="c-name">Name</label>
-          <input type="text" id="c-name" name="name" required>
-        </div>
-        <div class="form-group">
-          <label for="c-email">Email</label>
-          <input type="email" id="c-email" name="email" required>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="c-msg">Message</label>
-        <textarea id="c-msg" name="message" required placeholder="Say hello or share what matters to you..."></textarea>
-      </div>
-      <button type="submit" class="btn-submit">Send Message</button>
-    </form>
+
   </div>
 </section>
 
