@@ -1693,7 +1693,7 @@ if (heroRight && window.matchMedia('(min-width: 900px)').matches) {
         body: JSON.stringify({ first_name: 'Email Signup', last_name: '', email, message: 'Signed up for campaign updates.' }),
       });
       const result = await res.json();
-      status.textContent = result.success ? 'You\'re signed up — thanks for your support!' : 'Something went wrong. Try again.';
+      status.textContent = result.success ? 'Thank you for subscribing to our newsletter!' : 'Something went wrong. Please try again.';
     } catch { status.textContent = 'Something went wrong. Try again.'; }
     status.style.display = 'block';
     btn.textContent = 'Sign Up';
