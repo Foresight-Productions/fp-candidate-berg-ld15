@@ -952,10 +952,9 @@
       .hero-left { padding: 3rem 5%; align-items: center; text-align: center; justify-content: flex-start; }
       .hero-tag { justify-content: center; }
       .hero-tag::before { display: none; }
-      .hero-stars { justify-content: center; }
-      .hero-stars-line { max-width: 60px; }
-      .hero-divider { justify-content: center; }
-      .hero-divider-line { max-width: 100px; }
+      .hero-divider { display: none; }
+      .hero-left-bar { display: none; }
+      .hero-left::before { opacity: 0.3; }
       .hero-tagline { margin-left: auto; margin-right: auto; }
       .hero-btns { justify-content: center; }
       .hero-right-overlay { background: linear-gradient(to top, rgba(7,15,30,0.88) 0%, transparent 50%); }
@@ -1043,13 +1042,6 @@
   <div class="hero-left fade-up">
     <canvas id="hero-canvas"></canvas>
     <div class="hero-left-bar"></div>
-
-    <div class="hero-stars">
-      <span class="hero-star">★</span>
-      <span class="hero-star">★</span>
-      <span class="hero-star">★</span>
-      <span class="hero-stars-line"></span>
-    </div>
 
     <div class="hero-tag">Republican &middot; WA State House &middot; LD-15 Position 2</div>
 
