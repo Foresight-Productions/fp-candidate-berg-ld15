@@ -498,6 +498,30 @@
       position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
       background: var(--red); box-shadow: 0 0 20px var(--glow);
     }
+    /* Headshot portrait in bio */
+    .bio-headshot-wrap {
+      display: flex; align-items: center; gap: 1.4rem;
+      margin-bottom: 2rem;
+    }
+    .bio-headshot {
+      width: 88px; height: 88px; flex-shrink: 0;
+      border-radius: 50%;
+      border: 3px solid var(--red);
+      box-shadow: 0 0 0 2px rgba(200,16,46,0.25), 0 0 24px rgba(200,16,46,0.2);
+      object-fit: cover; object-position: center top;
+      background: var(--surface);
+    }
+    .bio-headshot-meta { display: flex; flex-direction: column; gap: 0.3rem; }
+    .bio-headshot-name {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem;
+      color: var(--white); letter-spacing: 0.06em; line-height: 1;
+    }
+    .bio-headshot-title {
+      font-family: var(--heading); font-size: 0.68rem; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--red);
+    }
+
     .bio-content {
       padding: 7rem 8% 7rem 5%;
       display: flex; flex-direction: column; justify-content: center;
@@ -1051,9 +1075,9 @@
   </div>
 
   <div class="hero-right">
-    <img src="reedy-berg.png"
-         alt="Reedy Berg, candidate for WA State House District 15 Position 2"
-         loading="eager" style="object-position: center top;">
+    <img src="family.jpg"
+         alt="Reedy Berg with his family in the Yakima Valley"
+         loading="eager">
     <div class="hero-right-overlay"></div>
     <div class="hero-slice"></div>
   </div>
@@ -1154,36 +1178,42 @@
   <div class="valley-panel">
     <img id="valleyImg1"
          src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-         alt="Rolling farmland of Eastern Washington">
+         alt="Yakima Canyon — dry hills and sagebrush of Eastern Washington">
     <div class="valley-panel-overlay"></div>
-    <span class="valley-panel-label">Eastern Washington</span>
+    <span class="valley-panel-label">Yakima Canyon</span>
   </div>
   <div class="valley-panel">
     <img id="valleyImg2"
          src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-         alt="Yakima Valley orchard with mountain backdrop">
+         alt="Irrigated farm fields in the Yakima Valley">
     <div class="valley-panel-overlay"></div>
-    <span class="valley-panel-label">Valley Orchards</span>
+    <span class="valley-panel-label">Valley Farmland</span>
   </div>
   <div class="valley-panel">
     <img id="valleyImg3"
          src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-         alt="Fresh apples from Yakima Valley">
+         alt="Mt. Rainier rising over Washington farm fields">
     <div class="valley-panel-overlay"></div>
-    <span class="valley-panel-label">Yakima Harvest</span>
+    <span class="valley-panel-label">Mt. Rainier</span>
   </div>
 </div>
 
 <!-- BIO -->
 <div class="bio" id="about">
   <div class="bio-photo">
-    <img src="reedy-berg.png"
-         alt="Reedy Berg, candidate for WA State House District 15"
-         style="object-position: center top;">
+    <img src="family.jpg"
+         alt="Reedy Berg with his family in the Yakima Valley">
     <div class="bio-photo-overlay"></div>
     <div class="bio-photo-accent"></div>
   </div>
   <div class="bio-content fade-up">
+    <div class="bio-headshot-wrap">
+      <img src="reedy-berg.png" alt="Reedy Berg" class="bio-headshot">
+      <div class="bio-headshot-meta">
+        <span class="bio-headshot-name">Reedy Berg</span>
+        <span class="bio-headshot-title">Candidate &mdash; WA House LD-15 Pos. 2</span>
+      </div>
+    </div>
     <div class="section-eyebrow">About Reedy</div>
     <p class="bio-pull">
       Not a career politician.<br>
@@ -1579,13 +1609,13 @@ if (statementBg) {
   img.onload = () => {
     statementBg.style.backgroundImage = `url(${img.src})`;
   };
-  img.src = 'https://images.unsplash.com/photo-1554068927-86c8f6f9e6c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1800';
+  img.src = 'https://images.unsplash.com/photo-1655174421207-1589eaa122fa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1800';
 }
 // Valley photo strip
 const valleyPhotos = [
-  { id: 'valleyImg1', url: 'https://images.unsplash.com/photo-1554068927-86c8f6f9e6c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800' },
-  { id: 'valleyImg2', url: 'https://images.unsplash.com/photo-1768479619615-882d67330c6d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800' },
-  { id: 'valleyImg3', url: 'https://images.unsplash.com/photo-1690224721454-f170a2932f49?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800' },
+  { id: 'valleyImg1', url: 'https://images.unsplash.com/photo-1655174421207-1589eaa122fa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800' },
+  { id: 'valleyImg2', url: 'https://images.unsplash.com/photo-1714786654492-a78602ed7b8c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800' },
+  { id: 'valleyImg3', url: 'https://images.unsplash.com/photo-1714793982502-c2a4d88dccc5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800' },
 ];
 valleyPhotos.forEach(({ id, url }) => {
   const el = document.getElementById(id);
