@@ -149,10 +149,6 @@
       background: var(--bg);
       position: relative; z-index: 1; overflow: hidden;
     }
-    /* canvas stars background */
-    #hero-canvas {
-      position: absolute; inset: 0; pointer-events: none; z-index: 0;
-    }
     /* grid line texture */
     .hero-left::before {
       content: '';
@@ -1098,7 +1094,6 @@
 <!-- HERO -->
 <div class="hero" role="banner">
   <div class="hero-left fade-up">
-    <canvas id="hero-canvas"></canvas>
     <div class="hero-left-bar"></div>
 
     <div class="hero-tag">Republican &middot; WA State House &middot; LD-15 Position 2</div>
@@ -1588,52 +1583,6 @@ document.querySelectorAll('.fade-up, .fade-left').forEach(el => io.observe(el));
 const heroLeft = document.querySelector('.hero-left');
 if (heroLeft) setTimeout(() => heroLeft.classList.add('in'), 80);
 
-/* ===== HERO CANVAS STARS ===== */
-(function() {
-  const canvas = document.getElementById('hero-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let W, H, stars = [];
-  function resize() {
-    W = canvas.width = canvas.offsetWidth;
-    H = canvas.height = canvas.offsetHeight;
-  }
-  function mkStars() {
-    stars = [];
-    const count = Math.floor((W * H) / 6000);
-    for (let i = 0; i < count; i++) {
-      stars.push({
-        x: Math.random() * W,
-        y: Math.random() * H,
-        r: Math.random() * 1.4 + 0.3,
-        a: Math.random(),
-        da: (Math.random() - 0.5) * 0.004,
-        vx: (Math.random() - 0.5) * 0.08,
-        vy: (Math.random() - 0.5) * 0.08,
-      });
-    }
-  }
-  function draw() {
-    ctx.clearRect(0, 0, W, H);
-    for (const s of stars) {
-      s.a += s.da;
-      if (s.a > 1) s.da = -Math.abs(s.da);
-      if (s.a < 0.05) s.da = Math.abs(s.da);
-      s.x += s.vx; s.y += s.vy;
-      if (s.x < 0) s.x = W;
-      if (s.x > W) s.x = 0;
-      if (s.y < 0) s.y = H;
-      if (s.y > H) s.y = 0;
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(255,255,255,${s.a * 0.55})`;
-      ctx.fill();
-    }
-    requestAnimationFrame(draw);
-  }
-  resize(); mkStars(); draw();
-  window.addEventListener('resize', () => { resize(); mkStars(); });
-})();
 
 /* ===== COUNT-UP ANIMATION ===== */
 function countUp(el) {
