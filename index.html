@@ -81,6 +81,7 @@
       transition: box-shadow 0.3s;
     }
     #nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.18); }
+    .nav-spacer { display: none; }
     .nav-brand {
       flex-shrink: 0; display: flex; align-items: center;
     }
@@ -1018,7 +1019,11 @@
       .experience, .bio-content { padding: 4rem 5%; }
       .donate-section { padding: 4rem 5%; }
       .nav-links { display: none; }
-      .nav-toggle { display: flex; }
+      .nav-toggle { display: flex; flex-shrink: 0; width: 32px; }
+      .nav-spacer { display: block; width: 32px; flex-shrink: 0; }
+      #nav { justify-content: space-between; position: relative; }
+      .nav-brand { position: absolute; left: 50%; transform: translateX(-50%); }
+      .nav-brand img { height: 44px; max-width: 220px; object-fit: contain; }
       .section-heading { margin-bottom: 2rem; }
       .issue-row { grid-template-columns: 48px 1fr; gap: 1rem; }
       .issue-arrow { display: none; }
@@ -1064,6 +1069,7 @@
 
 <!-- NAV -->
 <nav id="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-spacer"></div>
   <div class="nav-brand">
     <img src="reedy-wide.png" alt="Reedy Berg — State Representative District 15">
   </div>
