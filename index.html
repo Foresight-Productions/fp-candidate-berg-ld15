@@ -484,7 +484,7 @@
     .bio-photo { position: relative; overflow: hidden; background: #040C1A; }
     .bio-photo img {
       width: 100%; height: 100%;
-      object-fit: cover; object-position: center center;
+      object-fit: cover; object-position: center 20%;
       filter: brightness(0.75) contrast(1.1) saturate(1.1);
     }
     .bio-photo-overlay {
@@ -979,7 +979,7 @@
     }
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero-right { height: 72vw; max-height: 520px; order: -1; }
+      .hero-right { height: 82vw; max-height: 520px; order: -1; }
       .hero-right .hero-slice { display: none; }
       .hero-left { padding: 3rem 5%; align-items: center; text-align: center; justify-content: flex-start; }
       .hero-tag { justify-content: center; }
@@ -991,49 +991,58 @@
       .hero-btns { justify-content: center; }
       .hero-right-overlay { background: linear-gradient(to top, rgba(7,15,30,0.88) 0%, transparent 50%); }
       .bio { grid-template-columns: 1fr; min-height: auto; }
-      .bio-photo { height: 110vw; max-height: 480px; }
-      .bio-photo img { filter: brightness(0.95) contrast(1.05) saturate(1.05); object-position: center 15%; }
-      .bio-photo-overlay { background: linear-gradient(to top, var(--surface) 0%, transparent 55%); }
+      .bio-photo { height: 115vw; max-height: 500px; }
+      .bio-photo img { filter: brightness(0.9) contrast(1.05) saturate(1.05); object-position: center 10%; }
+      .bio-photo-overlay { background: linear-gradient(to top, var(--surface) 0%, transparent 60%); }
       .bio-content { padding: 3.5rem 5%; }
       .connect-grid { grid-template-columns: 1fr; gap: 3rem; }
       .exp-timeline::before { display: none; }
       .exp-item::after { display: none; }
+      .experience { padding: 5rem 5%; }
+      .connect-heading { font-size: clamp(2.2rem, 7vw, 3rem); }
     }
     @media (max-width: 768px) {
-      section, .issues, .endorsements, .updates, .connect-section { padding: 5rem 5%; }
-      .experience, .bio-content { padding: 5rem 5%; }
-      .donate-section { padding: 5rem 5%; }
+      section, .issues, .endorsements, .updates, .connect-section { padding: 4rem 5%; }
+      .experience, .bio-content { padding: 4rem 5%; }
+      .donate-section { padding: 4rem 5%; }
       .nav-links { display: none; }
       .nav-toggle { display: flex; }
       .section-heading { margin-bottom: 2rem; }
-      .issue-row { grid-template-columns: 56px 1fr; }
+      .issue-row { grid-template-columns: 48px 1fr; gap: 1rem; }
       .issue-arrow { display: none; }
-      .issue-num { font-size: 3rem; }
+      .issue-num { font-size: 2.5rem; }
       .hero-tag { display: block; text-align: center; font-size: 0.6rem; letter-spacing: 0.16em; }
       .hero-btns { flex-direction: column; align-items: center; width: 100%; }
       .hero-btns .btn-red, .hero-btns .btn-ghost { width: 100%; max-width: 300px; justify-content: center; }
       .hero-election-date { display: none; }
-      .bio-stats { grid-template-columns: 1fr 1fr; }
       .pillars-strip { grid-template-columns: 1fr 1fr; }
       .pillar-item { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.07); }
       .pillar-item:last-child { border-bottom: none; }
       .updates-form { flex-direction: column; }
-      .updates-form button { padding: 0.9rem; }
+      .updates-form input { border-right: 1px solid var(--border); border-bottom: none; width: 100%; }
+      .updates-form button { width: 100%; padding: 1rem; }
       .form-row { grid-template-columns: 1fr; }
       .checkbox-grid { grid-template-columns: 1fr 1fr; }
-      .footer-top { flex-direction: column; align-items: flex-start; }
+      .footer-top { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+      .footer-nav { gap: 1rem; }
       .footer-bottom { flex-direction: column; }
       .footer-disclosure { text-align: left; max-width: 100%; }
       .exp-item { grid-template-columns: 1fr; gap: 0.4rem; }
       .exp-dates { text-align: left; }
       .exp-right { padding-left: 0; }
+      .bio-cred { white-space: normal; }
+      .endorse-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 480px) {
-      .hero-name { font-size: clamp(4rem, 18vw, 7rem); }
+      .hero-name { font-size: clamp(3.5rem, 16vw, 6rem); }
       .hero-name-outline { -webkit-text-stroke-width: 2px; }
-      .statement-quote { font-size: clamp(2.8rem, 9vw, 5rem); }
+      .statement-quote { font-size: clamp(2.4rem, 9vw, 4rem); }
       .pillars-strip { grid-template-columns: 1fr; }
-      .pillar-item { padding: 2.5rem 2rem; }
+      .pillar-item { padding: 2rem 1.5rem; }
+      .section-heading { font-size: clamp(2rem, 9vw, 3rem) !important; }
+      .connect-heading { font-size: clamp(2rem, 8vw, 2.8rem); }
+      .bio-photo { height: 120vw; max-height: 440px; }
+      .footer-nav { flex-direction: column; gap: 0.8rem; }
     }
   </style>
 </head>
@@ -1240,8 +1249,7 @@
 <div class="bio" id="about">
   <div class="bio-photo">
     <img src="reedy-headshot.jpg"
-         alt="Reedy Berg, candidate for WA State House District 15"
-         style="object-position: center top;">
+         alt="Reedy Berg, candidate for WA State House District 15">
     <div class="bio-photo-overlay"></div>
     <div class="bio-photo-accent"></div>
   </div>
