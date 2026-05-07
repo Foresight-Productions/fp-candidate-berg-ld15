@@ -74,18 +74,18 @@
     #nav {
       position: fixed; top: 3px; left: 0; right: 0; z-index: 1000;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 5%; height: 68px;
-      background: rgba(7,15,30,0.97);
-      backdrop-filter: blur(24px);
-      border-bottom: 1px solid var(--border);
-      transition: border-color 0.3s, box-shadow 0.3s;
+      padding: 0 5%; height: 76px;
+      background: #ffffff;
+      border-bottom: 2px solid var(--red);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+      transition: box-shadow 0.3s;
     }
-    #nav.scrolled { border-color: rgba(200,16,46,0.4); box-shadow: 0 4px 40px rgba(0,0,0,0.6); }
+    #nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.18); }
     .nav-brand {
       flex-shrink: 0; display: flex; align-items: center;
     }
     .nav-brand img {
-      height: 42px;
+      height: 56px;
       width: auto;
       display: block;
     }
@@ -93,14 +93,14 @@
     .nav-links a {
       font-family: var(--heading); font-size: 0.78rem; font-weight: 400;
       letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--muted); transition: color 0.2s; position: relative;
+      color: #1a2744; transition: color 0.2s; position: relative;
     }
     .nav-links a::after {
       content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
       height: 1px; background: var(--red); transform: scaleX(0);
       transform-origin: left; transition: transform 0.25s;
     }
-    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover { color: var(--red); }
     .nav-links a:hover::after { transform: scaleX(1); }
     .btn-nav-donate {
       font-family: var(--heading); font-size: 0.76rem; font-weight: 700;
@@ -116,7 +116,7 @@
       display: none; background: none; border: none; cursor: pointer;
       flex-direction: column; gap: 5px; padding: 4px; flex-shrink: 0;
     }
-    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--white); transition: transform 0.3s, opacity 0.3s; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: #1a2744; transition: transform 0.3s, opacity 0.3s; }
     .nav-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
     .nav-toggle.open span:nth-child(2) { opacity: 0; }
     .nav-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
@@ -139,7 +139,7 @@
       min-height: 100vh;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      padding-top: 71px;
+      padding-top: 79px;
       position: relative;
     }
     .hero-left {
