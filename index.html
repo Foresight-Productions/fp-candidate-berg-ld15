@@ -218,6 +218,14 @@
       letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase;
       margin-bottom: 1.4rem;
     }
+    .hero-logo {
+      display: block;
+      max-width: 380px;
+      width: 100%;
+      height: auto;
+      margin-bottom: 2.8rem;
+      filter: drop-shadow(0 4px 32px rgba(200,16,46,0.25));
+    }
     .hero-tagline {
       font-family: var(--heading); font-size: clamp(1rem, 1.5vw, 1.3rem);
       font-weight: 300; color: var(--off-white); line-height: 1.6;
@@ -921,9 +929,12 @@
       padding-bottom: 2rem; border-bottom: 1px solid var(--border);
     }
     .footer-brand {
-      display: flex; align-items: center; justify-content: center;
+      font-family: var(--heading); font-weight: 700; font-size: 1.1rem;
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--white);
+      display: flex; align-items: center; gap: 0.8rem;
     }
-    .footer-brand img { height: 120px; width: auto; display: block; }
+    .footer-brand em { color: var(--red); font-style: normal; }
+    .footer-brand-stars { color: var(--red); font-size: 0.55rem; letter-spacing: 0.06em; }
     .footer-nav { display: flex; gap: 2rem; flex-wrap: wrap; }
     .footer-nav a {
       font-family: var(--heading); font-size: 0.7rem; font-weight: 400;
@@ -984,6 +995,7 @@
       .hero-divider { display: none; }
       .hero-left-bar { display: none; }
       .hero-left::before { opacity: 0.3; }
+      .hero-logo { max-width: 280px; margin-left: auto; margin-right: auto; }
       .hero-tagline { margin-left: auto; margin-right: auto; }
       .hero-btns { justify-content: center; }
       .hero-right-overlay { background: linear-gradient(to top, rgba(7,15,30,0.88) 0%, transparent 50%); }
@@ -1081,20 +1093,8 @@
     <canvas id="hero-canvas"></canvas>
     <div class="hero-left-bar"></div>
 
-    <div class="hero-tag">Republican &middot; WA State House &middot; LD-15 Position 2</div>
-
-    <h1 class="hero-name">
-      <span class="hero-name-solid">Reedy</span>
-      <span class="hero-name-outline">Berg</span>
-    </h1>
-
-    <div class="hero-divider">
-      <div class="hero-divider-line"></div>
-      <div class="hero-divider-dot"></div>
-    </div>
-
-    <div class="hero-sub">Washington State House &middot; Legislative District 15 &middot; 2026</div>
-    <p class="hero-tagline">Yakima Valley raised. Teacher by calling. Ready to fight for our community in Olympia.</p>
+    <img src="berg-logo.png" alt="Reedy Berg — State Representative District 15 Position 2 Republican" class="hero-logo">
+    <p class="hero-tagline">Yakima Valley raised. Teacher by calling. Ready to serve our community in Olympia.</p>
     <div class="hero-btns">
       <a href="#donate" class="btn-red">Donate Now</a>
       <a href="#volunteer" class="btn-ghost">Volunteer</a>
@@ -1502,7 +1502,8 @@
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
-        <img src="berg-logo.png" alt="Reedy Berg for Washington">
+        Reedy <em>Berg</em>
+        <span class="footer-brand-stars">★ ★ ★</span>
       </div>
       <div class="footer-nav">
         <a href="#issues">Issues</a>
