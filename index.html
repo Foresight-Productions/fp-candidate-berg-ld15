@@ -82,12 +82,14 @@
     }
     #nav.scrolled { border-color: rgba(200,16,46,0.4); box-shadow: 0 4px 40px rgba(0,0,0,0.6); }
     .nav-brand {
-      font-family: var(--heading); font-weight: 700; font-size: 1.15rem;
-      letter-spacing: 0.14em; text-transform: uppercase; color: var(--white);
-      flex-shrink: 0; display: flex; align-items: center; gap: 0.5rem;
+      flex-shrink: 0; display: flex; align-items: center;
     }
-    .nav-brand em { color: var(--red); font-style: normal; }
-    .nav-brand-stars { color: var(--red); font-size: 0.55rem; letter-spacing: 0.08em; opacity: 0.8; }
+    .nav-brand img {
+      height: 42px;
+      width: auto;
+      display: block;
+      border-radius: 3px;
+    }
     .nav-links { display: flex; align-items: center; gap: 2.4rem; flex-shrink: 0; }
     .nav-links a {
       font-family: var(--heading); font-size: 0.78rem; font-weight: 400;
@@ -1064,8 +1066,7 @@
 <!-- NAV -->
 <nav id="nav" role="navigation" aria-label="Main navigation">
   <div class="nav-brand">
-    Reedy <em>Berg</em>
-    <span class="nav-brand-stars">★ ★ ★</span>
+    <img src="reedy-wide.png" alt="Reedy Berg — State Representative District 15">
   </div>
   <div class="nav-links">
     <a href="#issues">Issues</a>
