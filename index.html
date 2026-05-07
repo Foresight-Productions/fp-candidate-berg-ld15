@@ -234,10 +234,12 @@
     }
     .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.4rem; }
     .hero-election-date {
-      font-family: var(--body); font-size: 0.7rem; font-weight: 300;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      color: rgba(255,255,255,0.2);
+      font-family: var(--body); font-size: 0.72rem; font-weight: 400;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.8;
     }
+    .hero-election-date span { color: var(--red); margin-right: 0.4rem; }
 
     .btn-red {
       font-family: var(--heading); font-size: 0.8rem; font-weight: 600;
@@ -1115,7 +1117,10 @@
       <a href="#donate" class="btn-red">Donate Now</a>
       <a href="#volunteer" class="btn-ghost">Volunteer</a>
     </div>
-    <div class="hero-election-date">General Election · November 3, 2026</div>
+    <div class="hero-election-date">
+      <span>Primary</span>August 4, 2026<br>
+      <span>General</span>November 3, 2026
+    </div>
   </div>
 
   <div class="hero-right">
