@@ -81,13 +81,12 @@
     }
     #nav.scrolled { border-color: rgba(200,16,46,0.4); box-shadow: 0 4px 40px rgba(0,0,0,0.6); }
     .nav-brand {
-      flex-shrink: 0; display: flex; align-items: center;
+      font-family: var(--heading); font-weight: 700; font-size: 1.15rem;
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--white);
+      flex-shrink: 0; display: flex; align-items: center; gap: 0.5rem;
     }
-    .nav-brand img {
-      height: 44px;
-      width: auto;
-      display: block;
-    }
+    .nav-brand em { color: var(--red); font-style: normal; }
+    .nav-brand-stars { color: var(--red); font-size: 0.55rem; letter-spacing: 0.08em; opacity: 0.8; }
     .nav-links { display: flex; align-items: center; gap: 2.4rem; flex-shrink: 0; }
     .nav-links a {
       font-family: var(--heading); font-size: 0.78rem; font-weight: 400;
@@ -922,9 +921,9 @@
       padding-bottom: 2rem; border-bottom: 1px solid var(--border);
     }
     .footer-brand {
-      display: flex; align-items: center;
+      display: flex; align-items: center; justify-content: center;
     }
-    .footer-brand img { height: 40px; width: auto; display: block; }
+    .footer-brand img { height: 120px; width: auto; display: block; }
     .footer-nav { display: flex; gap: 2rem; flex-wrap: wrap; }
     .footer-nav a {
       font-family: var(--heading); font-size: 0.7rem; font-weight: 400;
@@ -1051,7 +1050,8 @@
 <!-- NAV -->
 <nav id="nav" role="navigation" aria-label="Main navigation">
   <div class="nav-brand">
-    <img src="berg-logo.png" alt="Reedy Berg — State Representative District 15">
+    Reedy <em>Berg</em>
+    <span class="nav-brand-stars">★ ★ ★</span>
   </div>
   <div class="nav-links">
     <a href="#issues">Issues</a>
