@@ -58,17 +58,55 @@
       background: #ffffff;
       border-bottom: 2px solid var(--red);
       box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+      transition: box-shadow 0.3s;
     }
+    #nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.18); }
+    .nav-brand { flex-shrink: 0; display: flex; align-items: center; }
     .nav-brand img { height: 68px; width: auto; display: block; }
-    .nav-back {
+    .nav-links { display: flex; align-items: center; gap: 2.4rem; flex-shrink: 0; }
+    .nav-links a {
       font-family: var(--heading); font-size: 0.78rem; font-weight: 400;
       letter-spacing: 0.18em; text-transform: uppercase;
-      color: #1a2744; text-decoration: none;
-      display: flex; align-items: center; gap: 0.5rem;
-      transition: color 0.2s;
+      color: #1a2744; text-decoration: none; transition: color 0.2s; position: relative;
     }
-    .nav-back:hover { color: var(--red); }
-    .nav-back svg { width: 16px; height: 16px; }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 1px; background: var(--red); transform: scaleX(0);
+      transform-origin: left; transition: transform 0.25s;
+    }
+    .nav-links a:hover { color: var(--red); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .btn-nav-donate {
+      font-family: var(--heading); font-size: 0.76rem; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      background: var(--red); color: var(--white) !important;
+      padding: 0.5rem 1.4rem; cursor: pointer; text-decoration: none;
+      transition: background 0.2s; min-height: 36px;
+      display: inline-flex; align-items: center;
+    }
+    .btn-nav-donate:hover { background: #A50D26; }
+    .btn-nav-donate::after { display: none !important; }
+    .nav-toggle {
+      display: none; background: none; border: none; cursor: pointer;
+      flex-direction: column; gap: 5px; padding: 4px; flex-shrink: 0;
+    }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: #1a2744; transition: transform 0.3s, opacity 0.3s; }
+    .nav-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    .nav-overlay {
+      display: none; position: fixed; inset: 0; z-index: 999;
+      background: #040A14; flex-direction: column; align-items: center;
+      justify-content: center; gap: 2.5rem; padding-top: 71px;
+    }
+    .nav-overlay.open { display: flex; }
+    .nav-overlay a {
+      font-family: var(--heading); font-size: 2.4rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--white); text-decoration: none; transition: color 0.2s;
+    }
+    .nav-overlay a:hover { color: var(--red); }
+    .nav-overlay .btn-nav-donate { font-size: 1rem; padding: 0.9rem 2.8rem; }
 
     /* PAGE WRAPPER */
     .donate-wrap {
@@ -212,8 +250,11 @@
 
     /* MOBILE */
     @media (max-width: 768px) {
-      :root { --nav-h: 78px; }
-      .nav-brand img { height: 54px; }
+      :root { --nav-h: 90px; }
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+      #nav { justify-content: space-between; }
+      .nav-brand img { height: 80px; max-width: 340px; object-fit: contain; }
 
       .donate-wrap {
         padding-top: calc(var(--nav-h) + 2rem);
@@ -234,17 +275,31 @@
 </head>
 <body>
 
-<nav id="nav">
-  <a href="/" class="nav-back">
-    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M10 3L5 8l5 5"/>
-    </svg>
-    Back to Campaign
-  </a>
+<nav id="nav" role="navigation" aria-label="Main navigation">
   <div class="nav-brand">
-    <img src="reedy-wide.png" alt="Reedy Berg for Washington">
+    <a href="/"><img src="reedy-wide.png" alt="Reedy Berg — State Representative District 15"></a>
   </div>
+  <div class="nav-links">
+    <a href="/#issues">Issues</a>
+    <a href="/#about">About</a>
+    <a href="/#endorsements">Endorsements</a>
+    <a href="/#updates">Updates</a>
+    <a href="/#contact">Contact</a>
+    <a href="/donate" class="btn-nav-donate">Donate</a>
+  </div>
+  <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="nav-overlay" id="navOverlay" aria-hidden="true">
+  <a href="/#issues" onclick="closeNav()">Issues</a>
+  <a href="/#about" onclick="closeNav()">About</a>
+  <a href="/#endorsements" onclick="closeNav()">Endorsements</a>
+  <a href="/#updates" onclick="closeNav()">Updates</a>
+  <a href="/#contact" onclick="closeNav()">Contact</a>
+  <a href="/donate" class="btn-nav-donate" onclick="closeNav()">Donate</a>
+</div>
 
 <div class="donate-wrap">
   <div class="donate-inner">
@@ -316,5 +371,24 @@
   </div>
 </div>
 
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const navOverlay = document.getElementById('navOverlay');
+  function closeNav() {
+    navToggle.classList.remove('open');
+    navOverlay.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navOverlay.setAttribute('aria-hidden', 'true');
+  }
+  navToggle.addEventListener('click', () => {
+    const open = navToggle.classList.toggle('open');
+    navOverlay.classList.toggle('open', open);
+    navToggle.setAttribute('aria-expanded', open);
+    navOverlay.setAttribute('aria-hidden', !open);
+  });
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
+  });
+</script>
 </body>
 </html>
