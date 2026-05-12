@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donate | Reedy Berg for Washington State House</title>
+  <link rel="canonical" href="https://reedyberg.com/donate">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇺🇸</text></svg>">
+  <meta name="description" content="Support Reedy Berg for Washington State House, LD-15 Position 2. Your contribution makes a difference in Central Washington.">
+  <meta name="robots" content="index, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #070F1E;
+      --surface: #0D1829;
+      --red: #C8102E;
+      --red-b: #A50D26;
+      --white: #FFFFFF;
+      --off-white: #F0EEE9;
+      --muted: rgba(255,255,255,0.55);
+      --border: rgba(255,255,255,0.08);
+      --heading: 'Oswald', sans-serif;
+      --body: 'Inter', sans-serif;
+    }
+
+    html, body { height: 100%; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: var(--body);
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    #nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%; height: 88px;
+      background: #ffffff;
+      border-bottom: 2px solid var(--red);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    }
+    .nav-brand img { height: 68px; width: auto; display: block; }
+    .nav-back {
+      font-family: var(--heading); font-size: 0.78rem; font-weight: 400;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: #1a2744; text-decoration: none;
+      display: flex; align-items: center; gap: 0.5rem;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--red); }
+    .nav-back svg { width: 16px; height: 16px; }
+
+    /* PAGE */
+    .donate-page {
+      padding-top: 88px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .donate-header {
+      background: var(--bg);
+      padding: 3.5rem 5% 2.5rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .donate-header::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+    .donate-header-tag {
+      font-family: var(--heading); font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--red); margin-bottom: 1rem;
+    }
+    .donate-header h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 7vw, 6rem);
+      letter-spacing: 0.03em;
+      line-height: 0.9;
+      margin-bottom: 1rem;
+    }
+    .donate-header h1 span { color: var(--red); -webkit-text-stroke: 2px var(--red); color: transparent; }
+    .donate-header p {
+      font-family: var(--heading); font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+      font-weight: 300; color: var(--muted); max-width: 520px; margin: 0 auto;
+      line-height: 1.6;
+    }
+    .donate-stars {
+      display: flex; justify-content: center; gap: 0.5rem;
+      margin-bottom: 1.2rem;
+    }
+    .donate-star { color: var(--red); font-size: 0.8rem; }
+
+    /* IFRAME WRAPPER */
+    .donate-embed {
+      flex: 1;
+      background: #fff;
+      padding: 0;
+    }
+    .donate-embed iframe {
+      display: block;
+      width: 100%;
+      min-height: 800px;
+      border: none;
+    }
+
+    /* FOOTER */
+    .donate-footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 2rem 5%;
+      text-align: center;
+    }
+    .donate-footer-copy {
+      font-family: var(--body); font-size: 0.72rem;
+      color: rgba(255,255,255,0.22); line-height: 1.7;
+    }
+    .donate-footer-copy a { color: rgba(255,255,255,0.35); text-decoration: underline; }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      #nav { height: 78px; }
+      .nav-brand img { height: 54px; }
+      .donate-page { padding-top: 78px; }
+      .donate-header { padding: 2.5rem 5% 2rem; }
+      .donate-embed iframe { min-height: 900px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="/" class="nav-back">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M10 3L5 8l5 5"/>
+    </svg>
+    Back to Campaign
+  </a>
+  <div class="nav-brand">
+    <img src="reedy-wide.png" alt="Reedy Berg for Washington">
+  </div>
+</nav>
+
+<div class="donate-page">
+
+  <div class="donate-header">
+    <div class="donate-stars">
+      <span class="donate-star">★</span>
+      <span class="donate-star">★</span>
+      <span class="donate-star">★</span>
+      <span class="donate-star">★</span>
+      <span class="donate-star">★</span>
+    </div>
+    <div class="donate-header-tag">Support the Campaign</div>
+    <h1>Elect Reedy<br><span>Berg</span></h1>
+    <p>Your contribution helps Reedy reach voters across Central Washington and win LD-15 Position 2. Every dollar counts.</p>
+  </div>
+
+  <div class="donate-embed">
+    <iframe
+      src="https://secure.anedot.com/reedy-for-washington/f17efd78-21dd-4a89-8d18-0db8b72696a3?embed=true"
+      width="100%"
+      height="100%"
+      frameborder="0"
+      title="Donate to Reedy Berg for Washington"
+      scrolling="auto">
+    </iframe>
+  </div>
+
+  <footer class="donate-footer">
+    <p class="donate-footer-copy">
+      Paid for by Reedy Berg for Washington &nbsp;·&nbsp; 4001 Summitview Ave Ste 5 Mailbox 207, Yakima WA 98908<br>
+      Contributions are not tax deductible. &nbsp;·&nbsp;
+      <a href="https://www.pdc.wa.gov" target="_blank" rel="noopener noreferrer">WA PDC Disclosure</a>
+    </p>
+  </footer>
+
+</div>
+
+</body>
+</html>
