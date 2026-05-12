@@ -142,14 +142,27 @@
       flex-shrink: 0; width: 18px; height: 18px; margin-top: 1px;
     }
 
-    .dl-photo {
-      width: 100%; border-radius: 6px;
-      border: 1px solid rgba(255,255,255,0.1);
-      display: block;
+    .dl-photo-wrap {
+      position: relative;
       margin-bottom: 1.8rem;
-      max-height: 220px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(200,16,46,0.25);
+      box-shadow: 0 0 0 4px rgba(200,16,46,0.08);
+    }
+    .dl-photo-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 60%, rgba(7,15,30,0.7) 100%);
+      pointer-events: none;
+    }
+    .dl-photo {
+      width: 100%;
+      display: block;
+      max-height: 280px;
       object-fit: cover;
-      object-position: top;
+      object-position: center 12%;
     }
 
     .dl-compliance {
@@ -174,7 +187,7 @@
     }
 
     /* MOBILE */
-    @media (max-width: 900px) {
+    @media (max-width: 768px) {
       :root { --nav-h: 78px; }
       .nav-brand img { height: 54px; }
 
@@ -273,7 +286,9 @@
         </li>
       </ul>
 
-      <img src="reedy-headshot.jpg" alt="Reedy Berg" class="dl-photo" onerror="this.style.display='none'">
+      <div class="dl-photo-wrap">
+        <img src="reedy-headshot.jpg" alt="Reedy Berg" class="dl-photo" onerror="this.closest('.dl-photo-wrap').style.display='none'">
+      </div>
 
       <div class="dl-compliance">
         Paid for by Reedy Berg for Washington &nbsp;·&nbsp;
