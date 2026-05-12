@@ -25,6 +25,7 @@
   <meta name="twitter:title" content="Donate to Reedy Berg | WA State House LD-15 Position 2">
   <meta name="twitter:description" content="Support Reedy Berg for Washington State House LD-15. Help fund field operations and voter outreach across Central Washington.">
   <meta name="twitter:image" content="https://reedyberg.com/og-berg.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -34,9 +35,7 @@
       --bg: #070F1E;
       --surface: #0D1829;
       --red: #C8102E;
-      --red-b: #A50D26;
       --white: #FFFFFF;
-      --off-white: #F0EEE9;
       --muted: rgba(255,255,255,0.55);
       --border: rgba(255,255,255,0.08);
       --heading: 'Oswald', sans-serif;
@@ -48,6 +47,7 @@
       background: var(--bg);
       color: var(--white);
       font-family: var(--body);
+      -webkit-font-smoothing: antialiased;
     }
 
     /* NAV */
@@ -70,22 +70,16 @@
     .nav-back:hover { color: var(--red); }
     .nav-back svg { width: 16px; height: 16px; }
 
-    /* SPLIT LAYOUT */
-    .donate-split {
-      padding-top: var(--nav-h);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: start;
+    /* PAGE WRAPPER */
+    .donate-wrap {
+      padding-top: calc(var(--nav-h) + 3rem);
+      padding-bottom: 5rem;
+      padding-left: 5%;
+      padding-right: 5%;
+      position: relative;
+      overflow: hidden;
     }
-
-    /* LEFT PANEL */
-    .donate-left {
-      background: var(--bg);
-      position: sticky;
-      top: var(--nav-h);
-      padding: 3rem 4rem;
-    }
-    .donate-left::before {
+    .donate-wrap::before {
       content: '';
       position: absolute; inset: 0;
       background-image:
@@ -95,9 +89,22 @@
       pointer-events: none;
     }
 
-    .donate-left-inner {
-      position: relative; z-index: 1;
-      max-width: 480px;
+    /* GRID */
+    .donate-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 4rem;
+      align-items: start;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* LEFT — STICKY PITCH */
+    .donate-pitch {
+      position: sticky;
+      top: calc(var(--nav-h) + 1.5rem);
     }
 
     .dl-stars {
@@ -108,12 +115,17 @@
     .dl-tag {
       font-family: var(--heading); font-size: 0.68rem; font-weight: 500;
       letter-spacing: 0.3em; text-transform: uppercase;
-      color: var(--red); margin-bottom: 0.8rem;
+      color: var(--red);
+      display: inline-flex; align-items: center; gap: 0.9rem;
+      margin-bottom: 1.4rem;
+    }
+    .dl-tag::before {
+      content: ''; width: 28px; height: 1px; background: var(--red);
     }
 
     .dl-headline {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(3.2rem, 5vw, 5.2rem);
+      font-size: clamp(3rem, 4.5vw, 5rem);
       line-height: 0.88;
       letter-spacing: 0.03em;
       margin-bottom: 1.4rem;
@@ -126,27 +138,38 @@
     .dl-divider {
       width: 48px; height: 3px;
       background: var(--red);
-      margin-bottom: 1.4rem;
+      margin-bottom: 1.6rem;
     }
 
     .dl-sub {
       font-family: var(--heading); font-size: 1rem; font-weight: 300;
-      color: var(--muted); line-height: 1.65;
+      color: var(--muted); line-height: 1.7;
       margin-bottom: 2rem;
     }
 
-    .dl-bullets {
+    /* Dollar impact rows — like Tyler's */
+    .dl-impact {
       list-style: none;
-      display: flex; flex-direction: column; gap: 0.85rem;
-      margin-bottom: 2.2rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1.6rem;
+      margin-bottom: 2rem;
+      display: flex; flex-direction: column; gap: 1.1rem;
     }
-    .dl-bullets li {
-      display: flex; align-items: flex-start; gap: 0.75rem;
-      font-family: var(--heading); font-size: 0.88rem; font-weight: 400;
-      color: rgba(255,255,255,0.82); line-height: 1.5;
+    .dl-impact li {
+      display: grid;
+      grid-template-columns: 4.5rem 1fr;
+      gap: 1rem;
+      align-items: baseline;
     }
-    .dl-bullets li svg {
-      flex-shrink: 0; width: 18px; height: 18px; margin-top: 1px;
+    .dl-amount {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      color: var(--red);
+      letter-spacing: 0.03em;
+    }
+    .dl-what {
+      font-family: var(--heading); font-size: 0.9rem; font-weight: 300;
+      color: rgba(255,255,255,0.8); line-height: 1.5;
     }
 
     .dl-campaign-img {
@@ -160,20 +183,30 @@
 
     .dl-compliance {
       font-family: var(--body); font-size: 0.68rem;
-      color: rgba(255,255,255,0.25); line-height: 1.7;
+      color: rgba(255,255,255,0.22); line-height: 1.7;
       border-top: 1px solid var(--border);
       padding-top: 1rem;
     }
-    .dl-compliance a { color: rgba(255,255,255,0.38); text-decoration: underline; }
+    .dl-compliance a { color: rgba(255,255,255,0.35); text-decoration: underline; }
 
-    /* RIGHT PANEL */
-    .donate-right {
-      background: #ffffff;
+    /* RIGHT — FORM CARD */
+    .donate-form-col {
+      background: #fff;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.4);
+      position: relative;
     }
-    .donate-right iframe {
+    .donate-form-col::before {
+      content: '';
+      position: absolute; left: 0; right: 0; top: 0;
+      height: 3px; background: var(--red); z-index: 2;
+    }
+    .donate-frame {
       width: 100%;
-      border: none;
+      border: 0;
       display: block;
+      background: #fff;
       height: 1900px;
     }
 
@@ -182,21 +215,19 @@
       :root { --nav-h: 78px; }
       .nav-brand img { height: 54px; }
 
-      .donate-split {
-        display: block;
+      .donate-wrap {
+        padding-top: calc(var(--nav-h) + 2rem);
+        padding-left: 5%;
+        padding-right: 5%;
       }
 
-      .donate-left {
+      .donate-inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .donate-pitch {
         position: static;
-        height: auto;
-        padding: 2.5rem 5%;
-      }
-      .donate-left-inner {
-        max-width: 100%;
-      }
-
-      .donate-right iframe {
-        height: 1900px;
       }
     }
   </style>
@@ -215,11 +246,11 @@
   </div>
 </nav>
 
-<div class="donate-split">
+<div class="donate-wrap">
+  <div class="donate-inner">
 
-  <!-- LEFT: Campaign info -->
-  <div class="donate-left">
-    <div class="donate-left-inner">
+    <!-- LEFT: Sticky pitch -->
+    <div class="donate-pitch">
 
       <div class="dl-stars">
         <span class="dl-star">★</span>
@@ -238,37 +269,25 @@
       <div class="dl-divider"></div>
 
       <p class="dl-sub">
-        Help Reedy reach voters across Central Washington and win LD-15 Position 2. Every contribution goes directly toward reaching our neighbors.
+        Help Reedy reach voters across Central Washington and win LD-15 Position 2. Every dollar goes directly toward reaching our neighbors.
       </p>
 
-      <ul class="dl-bullets">
+      <ul class="dl-impact">
         <li>
-          <svg viewBox="0 0 20 20" fill="none">
-            <circle cx="10" cy="10" r="9" stroke="#C8102E" stroke-width="1.5"/>
-            <path d="M6 10l3 3 5-5" stroke="#C8102E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Funds door-to-door outreach and voter contact
+          <span class="dl-amount">$25</span>
+          <span class="dl-what">Yard signs that put Reedy's name on lawns across LD-15.</span>
         </li>
         <li>
-          <svg viewBox="0 0 20 20" fill="none">
-            <circle cx="10" cy="10" r="9" stroke="#C8102E" stroke-width="1.5"/>
-            <path d="M6 10l3 3 5-5" stroke="#C8102E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Supports mailers and yard signs across LD-15
+          <span class="dl-amount">$100</span>
+          <span class="dl-what">Mail pieces delivered to undecided voters in Central Washington.</span>
         </li>
         <li>
-          <svg viewBox="0 0 20 20" fill="none">
-            <circle cx="10" cy="10" r="9" stroke="#C8102E" stroke-width="1.5"/>
-            <path d="M6 10l3 3 5-5" stroke="#C8102E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Amplifies Reedy's voice on education, water, and economic freedom
+          <span class="dl-amount">$250</span>
+          <span class="dl-what">Digital ads that reach Yakima Valley families where they already are.</span>
         </li>
         <li>
-          <svg viewBox="0 0 20 20" fill="none">
-            <circle cx="10" cy="10" r="9" stroke="#C8102E" stroke-width="1.5"/>
-            <path d="M6 10l3 3 5-5" stroke="#C8102E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Contributions are processed securely through Anedot
+          <span class="dl-amount">$500</span>
+          <span class="dl-what">A full week of voter outreach — door-knocking, phones, and events.</span>
         </li>
       </ul>
 
@@ -282,18 +301,19 @@
       </div>
 
     </div>
-  </div>
 
-  <!-- RIGHT: Anedot form -->
-  <div class="donate-right">
-    <iframe
-      src="https://secure.anedot.com/reedy-for-washington/f17efd78-21dd-4a89-8d18-0db8b72696a3?embed=true"
-      title="Donate to Reedy Berg for Washington"
-      scrolling="auto"
-      allowpaymentrequest>
-    </iframe>
-  </div>
+    <!-- RIGHT: Anedot form card -->
+    <div class="donate-form-col">
+      <iframe
+        class="donate-frame"
+        src="https://secure.anedot.com/reedy-for-washington/f17efd78-21dd-4a89-8d18-0db8b72696a3?embed=true"
+        title="Donate to Reedy Berg for Washington"
+        scrolling="auto"
+        allowpaymentrequest>
+      </iframe>
+    </div>
 
+  </div>
 </div>
 
 </body>
