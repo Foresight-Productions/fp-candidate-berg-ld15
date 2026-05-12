@@ -163,10 +163,14 @@
 
     .dl-headline {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(3rem, 4.5vw, 5rem);
-      line-height: 0.88;
-      letter-spacing: 0.03em;
+      font-size: clamp(2.4rem, 4.2vw, 4.4rem);
+      line-height: 0.95;
+      letter-spacing: 0.02em;
       margin-bottom: 1.4rem;
+      white-space: nowrap;
+    }
+    @media (max-width: 720px) {
+      .dl-headline { white-space: normal; font-size: clamp(2.6rem, 9vw, 3.6rem); }
     }
     .dl-headline span {
       -webkit-text-stroke: 2px var(--red);
@@ -318,7 +322,7 @@
       <div class="dl-tag">Support the Campaign</div>
 
       <h1 class="dl-headline">
-        Elect Reedy<br><span>Berg</span>
+        Elect Reedy <span>Berg</span>
       </h1>
 
       <div class="dl-divider"></div>
