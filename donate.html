@@ -142,27 +142,13 @@
       flex-shrink: 0; width: 18px; height: 18px; margin-top: 1px;
     }
 
-    .dl-photo-wrap {
-      position: relative;
-      margin-bottom: 1.8rem;
-      border-radius: 8px;
-      overflow: hidden;
-      border: 1px solid rgba(200,16,46,0.25);
-      box-shadow: 0 0 0 4px rgba(200,16,46,0.08);
-    }
-    .dl-photo-wrap::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, transparent 60%, rgba(7,15,30,0.7) 100%);
-      pointer-events: none;
-    }
-    .dl-photo {
+    .dl-campaign-img {
       width: 100%;
       display: block;
-      max-height: 280px;
-      object-fit: cover;
-      object-position: center 12%;
+      border-radius: 8px;
+      border: 1px solid rgba(200,16,46,0.3);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+      margin-bottom: 2rem;
     }
 
     .dl-compliance {
@@ -286,9 +272,7 @@
         </li>
       </ul>
 
-      <div class="dl-photo-wrap">
-        <img src="reedy-headshot.jpg" alt="Reedy Berg" class="dl-photo" onerror="this.closest('.dl-photo-wrap').style.display='none'">
-      </div>
+      <img src="reedy-berg.png" alt="Reedy Berg for Washington State Representative" class="dl-campaign-img">
 
       <div class="dl-compliance">
         Paid for by Reedy Berg for Washington &nbsp;·&nbsp;
