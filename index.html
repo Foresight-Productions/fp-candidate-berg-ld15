@@ -38,101 +38,193 @@
 
   <!-- JSON-LD Schema -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Person",
-        "@id": "https://reedyberg.com/#person",
-        "name": "Reedy Berg",
-        "givenName": "Reedy",
-        "familyName": "Berg",
-        "jobTitle": "Candidate for Washington State House of Representatives",
-        "description": "Republican candidate for Washington State House, Legislative District 15, Position 2. Yakima Valley native, middle school history and civics teacher, former Yakima City Council member, and Deputy Mayor.",
-        "image": "https://reedyberg.com/reedy-headshot.jpg",
-        "url": "https://reedyberg.com",
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://reedyberg.com/#person",
+      "name": "Reedy Berg",
+      "givenName": "Reedy",
+      "familyName": "Berg",
+      "jobTitle": "Candidate for Washington State House of Representatives",
+      "description": "Republican candidate for Washington State House, Legislative District 15, Position 2. Yakima Valley native, middle school history and civics teacher, former Yakima City Council member, and Deputy Mayor.",
+      "image": "https://reedyberg.com/reedy-headshot.jpg",
+      "url": "https://reedyberg.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "4001 Summitview Ave Ste 5 Mailbox 207",
+        "addressLocality": "Yakima",
+        "addressRegion": "WA",
+        "postalCode": "98908",
+        "addressCountry": "US"
+      },
+      "telephone": "(509) 255-7116",
+      "email": "info@reedyberg.com",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "Washington State Republican Party"
+      },
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "Heritage University"
+      },
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Toppenish Middle School"
+      },
+      "knowsAbout": [
+        "Agriculture",
+        "Education Policy",
+        "Tax Reform",
+        "Public Safety",
+        "Parental Rights",
+        "Washington State Legislature"
+      ],
+      "sameAs": [
+        "https://www.facebook.com/p/City-of-Yakima-Council-District-7-Reedy-Berg-100066791381435/",
+        "https://www.pdc.wa.gov/political-disclosure-reporting-data/browse-search-data/candidates/689416",
+        "https://www.yakimawa.gov/council/reedy-berg/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://reedyberg.com/#website",
+      "url": "https://reedyberg.com",
+      "name": "Reedy Berg for Washington",
+      "description": "Official campaign website of Reedy Berg, Republican candidate for Washington State House, Legislative District 15, Position 2.",
+      "publisher": {
+        "@id": "https://reedyberg.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Who is Reedy Berg?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Reedy Berg is a Republican candidate for Washington State House of Representatives, Legislative District 15, Position 2. He is a Yakima Valley native, middle school history and civics teacher at Toppenish Middle School, former Yakima City Council member, and former Deputy Mayor of Yakima."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What district is Reedy Berg running in?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Reedy Berg is running for Washington State House of Representatives in Legislative District 15 (LD-15), Position 2. LD-15 covers the Yakima Valley area of Central Washington."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When is the election for Reedy Berg?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The primary election is August 4, 2026. The general election is November 3, 2026."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are Reedy Berg's top issues?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Reedy Berg's top priorities are: 1) Empowering Parenthood and protecting parental rights, 2) Repealing the Climate Commitment Act to lower costs for Yakima Valley families and farmers, 3) Tax relief for working families, 4) Protecting and strengthening agriculture in Central Washington, 5) Fixing the homelessness crisis, and 6) Supporting public safety and law enforcement."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I contact or volunteer for Reedy Berg's campaign?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can contact the campaign at info@reedyberg.com or by phone at (509) 255-7116. The campaign mailing address is 4001 Summitview Ave Ste 5 Mailbox 207, Yakima, WA 98908. Visit reedyberg.com to volunteer or sign up for updates."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://reedyberg.com/#organization",
+      "name": "Reedy Berg for Washington",
+      "alternateName": "Reedy Berg Campaign",
+      "url": "https://reedyberg.com",
+      "logo": "https://reedyberg.com/reedy-wide.png",
+      "description": "Official campaign committee for Reedy Berg, Republican candidate for Washington State House, Legislative District 15, Position 2, 2026 election.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "4001 Summitview Ave Ste 5 Mailbox 207",
+        "addressLocality": "Yakima",
+        "addressRegion": "WA",
+        "postalCode": "98908",
+        "addressCountry": "US"
+      },
+      "telephone": "(509) 255-7116",
+      "email": "info@reedyberg.com",
+      "member": {
+        "@id": "https://reedyberg.com/#person"
+      },
+      "sameAs": [
+        "https://www.facebook.com/p/City-of-Yakima-Council-District-7-Reedy-Berg-100066791381435/",
+        "https://www.pdc.wa.gov/political-disclosure-reporting-data/browse-search-data/candidates/689416"
+      ]
+    },
+    {
+      "@type": "Event",
+      "@id": "https://reedyberg.com/#primary-2026",
+      "name": "Washington State Primary Election 2026 \u2014 LD-15 Position 2",
+      "description": "Washington State primary election for Legislative District 15, Position 2. Reedy Berg is the Republican candidate.",
+      "startDate": "2026-08-04",
+      "endDate": "2026-08-04",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "AdministrativeArea",
+        "name": "Washington State Legislative District 15",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "4001 Summitview Ave Ste 5 Mailbox 207",
-          "addressLocality": "Yakima",
           "addressRegion": "WA",
-          "postalCode": "98908",
           "addressCountry": "US"
-        },
-        "telephone": "(509) 255-7116",
-        "email": "info@reedyberg.com",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "Washington State Republican Party"
-        },
-        "alumniOf": {
-          "@type": "EducationalOrganization",
-          "name": "Heritage University"
-        },
-        "worksFor": {
-          "@type": "Organization",
-          "name": "Toppenish Middle School"
-        },
-        "knowsAbout": ["Agriculture", "Education Policy", "Tax Reform", "Public Safety", "Parental Rights", "Washington State Legislature"]
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://reedyberg.com/#website",
-        "url": "https://reedyberg.com",
-        "name": "Reedy Berg for Washington",
-        "description": "Official campaign website of Reedy Berg, Republican candidate for Washington State House, Legislative District 15, Position 2.",
-        "publisher": {
-          "@id": "https://reedyberg.com/#person"
         }
       },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Who is Reedy Berg?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Reedy Berg is a Republican candidate for Washington State House of Representatives, Legislative District 15, Position 2. He is a Yakima Valley native, middle school history and civics teacher at Toppenish Middle School, former Yakima City Council member, and former Deputy Mayor of Yakima."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What district is Reedy Berg running in?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Reedy Berg is running for Washington State House of Representatives in Legislative District 15 (LD-15), Position 2. LD-15 covers the Yakima Valley area of Central Washington."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "When is the election for Reedy Berg?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "The primary election is August 4, 2026. The general election is November 3, 2026."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What are Reedy Berg's top issues?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Reedy Berg's top priorities are: 1) Empowering Parenthood and protecting parental rights, 2) Repealing the Climate Commitment Act to lower costs for Yakima Valley families and farmers, 3) Tax relief for working families, 4) Protecting and strengthening agriculture in Central Washington, 5) Fixing the homelessness crisis, and 6) Supporting public safety and law enforcement."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How can I contact or volunteer for Reedy Berg's campaign?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "You can contact the campaign at info@reedyberg.com or by phone at (509) 255-7116. The campaign mailing address is 4001 Summitview Ave Ste 5 Mailbox 207, Yakima, WA 98908. Visit reedyberg.com to volunteer or sign up for updates."
-            }
-          }
-        ]
+      "organizer": {
+        "@type": "GovernmentOrganization",
+        "name": "Washington Secretary of State",
+        "url": "https://www.sos.wa.gov"
+      },
+      "about": {
+        "@id": "https://reedyberg.com/#person"
       }
-    ]
-  }
-  </script>
+    },
+    {
+      "@type": "Event",
+      "@id": "https://reedyberg.com/#general-2026",
+      "name": "Washington State General Election 2026 \u2014 LD-15 Position 2",
+      "description": "Washington State general election for Legislative District 15, Position 2. Reedy Berg is the Republican candidate.",
+      "startDate": "2026-11-03",
+      "endDate": "2026-11-03",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "AdministrativeArea",
+        "name": "Washington State Legislative District 15",
+        "address": {
+          "@type": "PostalAddress",
+          "addressRegion": "WA",
+          "addressCountry": "US"
+        }
+      },
+      "organizer": {
+        "@type": "GovernmentOrganization",
+        "name": "Washington Secretary of State",
+        "url": "https://www.sos.wa.gov"
+      },
+      "about": {
+        "@id": "https://reedyberg.com/#person"
+      }
+    }
+  ]
+}
+</script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
